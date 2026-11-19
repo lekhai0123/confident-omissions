@@ -1,0 +1,335 @@
+{
+ "RT-DETR (v13, reference)": {
+  "n_targets": 640,
+  "units": 12000,
+  "proposals_per_unit": 57.1,
+  "proposal_coverage": 0.7312,
+  "table": {
+   "Entropy (pixel uncertainty)": {
+    "R@0.5": 0.015625,
+    "R@1.0": 0.0359375,
+    "R@2.0": 0.0625,
+    "FROC[0,2]": 0.03453125,
+    "variant": "+max"
+   },
+   "Margin / MSP (pixel uncertainty)": {
+    "R@0.5": 0.0296875,
+    "R@1.0": 0.059375,
+    "R@2.0": 0.1203125,
+    "FROC[0,2]": 0.06546874999999999,
+    "variant": "+max"
+   },
+   "Energy (Liu et al. 2020)": {
+    "R@0.5": 0.0265625,
+    "R@1.0": 0.053125,
+    "R@2.0": 0.1109375,
+    "FROC[0,2]": 0.057109375,
+    "variant": "+max"
+   },
+   "RbA score (Nayal et al. 2023)": {
+    "R@0.5": 0.0421875,
+    "R@1.0": 0.08125,
+    "R@2.0": 0.121875,
+    "FROC[0,2]": 0.07734375,
+    "variant": "+max"
+   },
+   "Mahalanobis, predicted class (Lee et al. 2018)": {
+    "R@0.5": 0.0234375,
+    "R@1.0": 0.0609375,
+    "R@2.0": 0.109375,
+    "FROC[0,2]": 0.062421875,
+    "variant": "+max"
+   },
+   "Mahalanobis, min over classes": {
+    "R@0.5": 0.0234375,
+    "R@1.0": 0.0625,
+    "R@2.0": 0.1109375,
+    "FROC[0,2]": 0.063203125,
+    "variant": "+max"
+   },
+   "Ensemble disagreement (cross-model JS)": {
+    "R@0.5": 0.05,
+    "R@1.0": 0.09375,
+    "R@2.0": 0.1546875,
+    "FROC[0,2]": 0.09210937500000002,
+    "variant": "+max"
+   },
+   "Detector confidence alone": {
+    "R@0.5": 0.0375,
+    "R@1.0": 0.05,
+    "R@2.0": 0.0765625,
+    "FROC[0,2]": 0.05164062500000001
+   },
+   "Rule: detector x segmenter-stuff x (1-entropy)": {
+    "R@0.5": 0.3328125,
+    "R@1.0": 0.4171875,
+    "R@2.0": 0.515625,
+    "FROC[0,2]": 0.40515624999999994
+   },
+   "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+    "R@0.5": 0.30625,
+    "R@1.0": 0.4375,
+    "R@2.0": 0.6,
+    "FROC[0,2]": 0.42164062499999994
+   },
+   "Ours (CO verifier, single model)": {
+    "R@0.5": 0.4203125,
+    "R@1.0": 0.534375,
+    "R@2.0": 0.634375,
+    "FROC[0,2]": 0.505234375
+   },
+   "Ours, retrained on this detector (BDD 2-fold, supplementary)": {
+    "R@0.5": 0.475,
+    "R@1.0": 0.5515625,
+    "R@2.0": 0.625,
+    "FROC[0,2]": 0.5276562499999999
+   }
+  },
+  "paired": {
+   "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+   "diff": 0.0969,
+   "ci95": [
+    0.0525,
+    0.1409
+   ],
+   "p_one_sided": 0.0
+  },
+  "count_match": {
+   "ours_frozen": {
+    "cm@0.5": {
+     "recall": 0.4031,
+     "fa_strict": 0.463,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.525,
+     "fa_strict": 0.947,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.6281,
+     "fa_strict": 1.929,
+     "flags_per_unit": 2.0
+    }
+   },
+   "ours_2fold": {
+    "cm@0.5": {
+     "recall": 0.4609,
+     "fa_strict": 0.461,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.5484,
+     "fa_strict": 0.948,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.6203,
+     "fa_strict": 1.933,
+     "flags_per_unit": 2.0
+    }
+   },
+   "rule": {
+    "cm@0.5": {
+     "recall": 0.3297,
+     "fa_strict": 0.481,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.4125,
+     "fa_strict": 0.975,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.5125,
+     "fa_strict": 1.966,
+     "flags_per_unit": 2.0
+    }
+   },
+   "metaseg": {
+    "cm@0.5": {
+     "recall": 0.2906,
+     "fa_strict": 0.473,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.4297,
+     "fa_strict": 0.957,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.5922,
+     "fa_strict": 1.935,
+     "flags_per_unit": 2.0
+    }
+   }
+  }
+ },
+ "Faster R-CNN (v20b)": {
+  "n_targets": 640,
+  "units": 12000,
+  "proposals_per_unit": 36.0,
+  "proposal_coverage": 0.625,
+  "table": {
+   "Entropy (pixel uncertainty)": {
+    "R@0.5": 0.0,
+    "R@1.0": 0.0015625,
+    "R@2.0": 0.13125,
+    "FROC[0,2]": 0.032109374999999996,
+    "variant": "-max"
+   },
+   "Margin / MSP (pixel uncertainty)": {
+    "R@0.5": 0.0234375,
+    "R@1.0": 0.053125,
+    "R@2.0": 0.090625,
+    "FROC[0,2]": 0.05242187500000001,
+    "variant": "+max"
+   },
+   "Energy (Liu et al. 2020)": {
+    "R@0.5": 0.025,
+    "R@1.0": 0.053125,
+    "R@2.0": 0.096875,
+    "FROC[0,2]": 0.053203125000000004,
+    "variant": "+max"
+   },
+   "RbA score (Nayal et al. 2023)": {
+    "R@0.5": 0.0453125,
+    "R@1.0": 0.0734375,
+    "R@2.0": 0.128125,
+    "FROC[0,2]": 0.074375,
+    "variant": "+max"
+   },
+   "Mahalanobis, predicted class (Lee et al. 2018)": {
+    "R@0.5": 0.03125,
+    "R@1.0": 0.06875,
+    "R@2.0": 0.1015625,
+    "FROC[0,2]": 0.0625,
+    "variant": "+max"
+   },
+   "Mahalanobis, min over classes": {
+    "R@0.5": 0.034375,
+    "R@1.0": 0.06875,
+    "R@2.0": 0.103125,
+    "FROC[0,2]": 0.063515625,
+    "variant": "+max"
+   },
+   "Ensemble disagreement (cross-model JS)": {
+    "R@0.5": 0.05,
+    "R@1.0": 0.08125,
+    "R@2.0": 0.1421875,
+    "FROC[0,2]": 0.08031249999999998,
+    "variant": "+max"
+   },
+   "Detector confidence alone": {
+    "R@0.5": 0.0125,
+    "R@1.0": 0.01875,
+    "R@2.0": 0.046875,
+    "FROC[0,2]": 0.0228125
+   },
+   "Rule: detector x segmenter-stuff x (1-entropy)": {
+    "R@0.5": 0.3796875,
+    "R@1.0": 0.446875,
+    "R@2.0": 0.484375,
+    "FROC[0,2]": 0.41999999999999993
+   },
+   "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+    "R@0.5": 0.3828125,
+    "R@1.0": 0.515625,
+    "R@2.0": 0.5796875,
+    "FROC[0,2]": 0.466796875
+   },
+   "Ours (CO verifier, single model)": {
+    "R@0.5": 0.475,
+    "R@1.0": 0.5390625,
+    "R@2.0": 0.5921875,
+    "FROC[0,2]": 0.51078125
+   },
+   "Ours, retrained on this detector (BDD 2-fold, supplementary)": {
+    "R@0.5": 0.45625,
+    "R@1.0": 0.5421875,
+    "R@2.0": 0.584375,
+    "FROC[0,2]": 0.51078125
+   }
+  },
+  "paired": {
+   "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+   "diff": 0.0234,
+   "ci95": [
+    -0.0066,
+    0.0542
+   ],
+   "p_one_sided": 0.078
+  },
+  "count_match": {
+   "ours_frozen": {
+    "cm@0.5": {
+     "recall": 0.4719,
+     "fa_strict": 0.459,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.5375,
+     "fa_strict": 0.949,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.5922,
+     "fa_strict": 1.939,
+     "flags_per_unit": 2.0
+    }
+   },
+   "ours_2fold": {
+    "cm@0.5": {
+     "recall": 0.4469,
+     "fa_strict": 0.457,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.5344,
+     "fa_strict": 0.947,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.5828,
+     "fa_strict": 1.94,
+     "flags_per_unit": 2.0
+    }
+   },
+   "rule": {
+    "cm@0.5": {
+     "recall": 0.3625,
+     "fa_strict": 0.478,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.4453,
+     "fa_strict": 0.973,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.4844,
+     "fa_strict": 1.969,
+     "flags_per_unit": 2.0
+    }
+   },
+   "metaseg": {
+    "cm@0.5": {
+     "recall": 0.3609,
+     "fa_strict": 0.468,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.5062,
+     "fa_strict": 0.951,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.5797,
+     "fa_strict": 1.94,
+     "flags_per_unit": 2.0
+    }
+   }
+  }
+ },
+ "note": "frozen = trained on ACDC with RT-DETR proposals (v11); same 3000 BDD images; ACDC LOCO with the new detector (protocol (a)) pending"
+}

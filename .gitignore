@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/
+results/kaggle-*/
+*.npz
+.ipynb_checkpoints/
+kernel-metadata.json

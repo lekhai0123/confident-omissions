@@ -1,0 +1,3530 @@
+{
+ "per_condition": [
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "fog",
+   "group": "ACDC adverse (real)",
+   "miou": 0.6993,
+   "n_objects": 2908,
+   "n_images": 490,
+   "n_omitted": 309,
+   "n_co": 59,
+   "omitted_share": 0.1063,
+   "omitted_share_ci": [
+    0.0939,
+    0.1203
+   ],
+   "co_share": 0.0203,
+   "co_share_ci": [
+    0.0151,
+    0.0254
+   ],
+   "confident_share_of_omissions": 0.1909,
+   "confident_share_of_omissions_ci": [
+    0.1475,
+    0.2369
+   ],
+   "silent_share_of_omissions": 0.2589,
+   "silent_share_of_omissions_ci": [
+    0.2069,
+    0.318
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "fog_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6887,
+   "n_objects": 2543,
+   "n_images": 249,
+   "n_omitted": 254,
+   "n_co": 49,
+   "omitted_share": 0.0999,
+   "omitted_share_ci": [
+    0.0868,
+    0.1138
+   ],
+   "co_share": 0.0193,
+   "co_share_ci": [
+    0.0138,
+    0.0257
+   ],
+   "confident_share_of_omissions": 0.1929,
+   "confident_share_of_omissions_ci": [
+    0.1385,
+    0.2562
+   ],
+   "silent_share_of_omissions": 0.1654,
+   "silent_share_of_omissions_ci": [
+    0.1184,
+    0.225
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "night",
+   "group": "ACDC adverse (real)",
+   "miou": 0.3775,
+   "n_objects": 3269,
+   "n_images": 488,
+   "n_omitted": 863,
+   "n_co": 81,
+   "omitted_share": 0.264,
+   "omitted_share_ci": [
+    0.2433,
+    0.2841
+   ],
+   "co_share": 0.0248,
+   "co_share_ci": [
+    0.0188,
+    0.0317
+   ],
+   "confident_share_of_omissions": 0.0939,
+   "confident_share_of_omissions_ci": [
+    0.072,
+    0.1168
+   ],
+   "silent_share_of_omissions": 0.4554,
+   "silent_share_of_omissions_ci": [
+    0.4144,
+    0.4943
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "night_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6544,
+   "n_objects": 2989,
+   "n_images": 253,
+   "n_omitted": 367,
+   "n_co": 50,
+   "omitted_share": 0.1228,
+   "omitted_share_ci": [
+    0.1082,
+    0.1389
+   ],
+   "co_share": 0.0167,
+   "co_share_ci": [
+    0.0122,
+    0.0222
+   ],
+   "confident_share_of_omissions": 0.1362,
+   "confident_share_of_omissions_ci": [
+    0.0997,
+    0.176
+   ],
+   "silent_share_of_omissions": 0.2044,
+   "silent_share_of_omissions_ci": [
+    0.1589,
+    0.252
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "rain",
+   "group": "ACDC adverse (real)",
+   "miou": 0.5924,
+   "n_objects": 2688,
+   "n_images": 493,
+   "n_omitted": 230,
+   "n_co": 21,
+   "omitted_share": 0.0856,
+   "omitted_share_ci": [
+    0.0735,
+    0.0992
+   ],
+   "co_share": 0.0078,
+   "co_share_ci": [
+    0.0045,
+    0.0116
+   ],
+   "confident_share_of_omissions": 0.0913,
+   "confident_share_of_omissions_ci": [
+    0.0545,
+    0.1328
+   ],
+   "silent_share_of_omissions": 0.3261,
+   "silent_share_of_omissions_ci": [
+    0.25,
+    0.4091
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "rain_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.7064,
+   "n_objects": 2466,
+   "n_images": 249,
+   "n_omitted": 279,
+   "n_co": 46,
+   "omitted_share": 0.1131,
+   "omitted_share_ci": [
+    0.099,
+    0.1284
+   ],
+   "co_share": 0.0187,
+   "co_share_ci": [
+    0.013,
+    0.0247
+   ],
+   "confident_share_of_omissions": 0.1649,
+   "confident_share_of_omissions_ci": [
+    0.1165,
+    0.221
+   ],
+   "silent_share_of_omissions": 0.2688,
+   "silent_share_of_omissions_ci": [
+    0.2038,
+    0.3416
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "snow",
+   "group": "ACDC adverse (real)",
+   "miou": 0.5608,
+   "n_objects": 3517,
+   "n_images": 497,
+   "n_omitted": 379,
+   "n_co": 35,
+   "omitted_share": 0.1078,
+   "omitted_share_ci": [
+    0.0956,
+    0.1203
+   ],
+   "co_share": 0.01,
+   "co_share_ci": [
+    0.0062,
+    0.0139
+   ],
+   "confident_share_of_omissions": 0.0923,
+   "confident_share_of_omissions_ci": [
+    0.0596,
+    0.1243
+   ],
+   "silent_share_of_omissions": 0.2823,
+   "silent_share_of_omissions_ci": [
+    0.2286,
+    0.3376
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "mask2former-swin-small",
+   "condition": "snow_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6904,
+   "n_objects": 2921,
+   "n_images": 250,
+   "n_omitted": 405,
+   "n_co": 54,
+   "omitted_share": 0.1387,
+   "omitted_share_ci": [
+    0.1218,
+    0.1565
+   ],
+   "co_share": 0.0185,
+   "co_share_ci": [
+    0.0124,
+    0.0253
+   ],
+   "confident_share_of_omissions": 0.1333,
+   "confident_share_of_omissions_ci": [
+    0.0931,
+    0.1783
+   ],
+   "silent_share_of_omissions": 0.1877,
+   "silent_share_of_omissions_ci": [
+    0.1348,
+    0.2456
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "fog",
+   "group": "ACDC adverse (real)",
+   "miou": 0.5581,
+   "n_objects": 2908,
+   "n_images": 490,
+   "n_omitted": 561,
+   "n_co": 36,
+   "omitted_share": 0.1929,
+   "omitted_share_ci": [
+    0.1774,
+    0.2096
+   ],
+   "co_share": 0.0124,
+   "co_share_ci": [
+    0.0081,
+    0.0168
+   ],
+   "confident_share_of_omissions": 0.0642,
+   "confident_share_of_omissions_ci": [
+    0.0432,
+    0.087
+   ],
+   "silent_share_of_omissions": 0.1266,
+   "silent_share_of_omissions_ci": [
+    0.0966,
+    0.1581
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "fog_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.5969,
+   "n_objects": 2543,
+   "n_images": 249,
+   "n_omitted": 473,
+   "n_co": 8,
+   "omitted_share": 0.186,
+   "omitted_share_ci": [
+    0.1674,
+    0.2056
+   ],
+   "co_share": 0.0031,
+   "co_share_ci": [
+    0.0012,
+    0.0053
+   ],
+   "confident_share_of_omissions": 0.0169,
+   "confident_share_of_omissions_ci": [
+    0.0061,
+    0.029
+   ],
+   "silent_share_of_omissions": 0.0233,
+   "silent_share_of_omissions_ci": [
+    0.0111,
+    0.0379
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "night",
+   "group": "ACDC adverse (real)",
+   "miou": 0.1922,
+   "n_objects": 3269,
+   "n_images": 488,
+   "n_omitted": 1556,
+   "n_co": 177,
+   "omitted_share": 0.476,
+   "omitted_share_ci": [
+    0.4498,
+    0.5015
+   ],
+   "co_share": 0.0541,
+   "co_share_ci": [
+    0.044,
+    0.0655
+   ],
+   "confident_share_of_omissions": 0.1138,
+   "confident_share_of_omissions_ci": [
+    0.0936,
+    0.1357
+   ],
+   "silent_share_of_omissions": 0.3348,
+   "silent_share_of_omissions_ci": [
+    0.3024,
+    0.3659
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "night_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.5275,
+   "n_objects": 2989,
+   "n_images": 253,
+   "n_omitted": 750,
+   "n_co": 38,
+   "omitted_share": 0.2509,
+   "omitted_share_ci": [
+    0.2249,
+    0.2762
+   ],
+   "co_share": 0.0127,
+   "co_share_ci": [
+    0.0062,
+    0.0209
+   ],
+   "confident_share_of_omissions": 0.0507,
+   "confident_share_of_omissions_ci": [
+    0.0259,
+    0.082
+   ],
+   "silent_share_of_omissions": 0.084,
+   "silent_share_of_omissions_ci": [
+    0.0548,
+    0.1161
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "rain",
+   "group": "ACDC adverse (real)",
+   "miou": 0.4802,
+   "n_objects": 2688,
+   "n_images": 493,
+   "n_omitted": 452,
+   "n_co": 39,
+   "omitted_share": 0.1682,
+   "omitted_share_ci": [
+    0.1512,
+    0.1862
+   ],
+   "co_share": 0.0145,
+   "co_share_ci": [
+    0.0101,
+    0.02
+   ],
+   "confident_share_of_omissions": 0.0863,
+   "confident_share_of_omissions_ci": [
+    0.0614,
+    0.1138
+   ],
+   "silent_share_of_omissions": 0.2235,
+   "silent_share_of_omissions_ci": [
+    0.186,
+    0.2648
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "rain_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.557,
+   "n_objects": 2466,
+   "n_images": 249,
+   "n_omitted": 487,
+   "n_co": 18,
+   "omitted_share": 0.1975,
+   "omitted_share_ci": [
+    0.1783,
+    0.2169
+   ],
+   "co_share": 0.0073,
+   "co_share_ci": [
+    0.0036,
+    0.0119
+   ],
+   "confident_share_of_omissions": 0.037,
+   "confident_share_of_omissions_ci": [
+    0.0183,
+    0.0611
+   ],
+   "silent_share_of_omissions": 0.0637,
+   "silent_share_of_omissions_ci": [
+    0.0393,
+    0.0929
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "snow",
+   "group": "ACDC adverse (real)",
+   "miou": 0.4266,
+   "n_objects": 3517,
+   "n_images": 497,
+   "n_omitted": 795,
+   "n_co": 24,
+   "omitted_share": 0.226,
+   "omitted_share_ci": [
+    0.2084,
+    0.2434
+   ],
+   "co_share": 0.0068,
+   "co_share_ci": [
+    0.004,
+    0.0097
+   ],
+   "confident_share_of_omissions": 0.0302,
+   "confident_share_of_omissions_ci": [
+    0.0177,
+    0.0427
+   ],
+   "silent_share_of_omissions": 0.1887,
+   "silent_share_of_omissions_ci": [
+    0.1507,
+    0.2265
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b0",
+   "condition": "snow_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.5706,
+   "n_objects": 2921,
+   "n_images": 250,
+   "n_omitted": 738,
+   "n_co": 28,
+   "omitted_share": 0.2527,
+   "omitted_share_ci": [
+    0.23,
+    0.2776
+   ],
+   "co_share": 0.0096,
+   "co_share_ci": [
+    0.0053,
+    0.0147
+   ],
+   "confident_share_of_omissions": 0.0379,
+   "confident_share_of_omissions_ci": [
+    0.0218,
+    0.0557
+   ],
+   "silent_share_of_omissions": 0.084,
+   "silent_share_of_omissions_ci": [
+    0.0556,
+    0.1153
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "fog",
+   "group": "ACDC adverse (real)",
+   "miou": 0.6398,
+   "n_objects": 2908,
+   "n_images": 490,
+   "n_omitted": 384,
+   "n_co": 24,
+   "omitted_share": 0.132,
+   "omitted_share_ci": [
+    0.1181,
+    0.1463
+   ],
+   "co_share": 0.0083,
+   "co_share_ci": [
+    0.0052,
+    0.0117
+   ],
+   "confident_share_of_omissions": 0.0625,
+   "confident_share_of_omissions_ci": [
+    0.0396,
+    0.0889
+   ],
+   "silent_share_of_omissions": 0.1719,
+   "silent_share_of_omissions_ci": [
+    0.1309,
+    0.215
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "fog_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6575,
+   "n_objects": 2543,
+   "n_images": 249,
+   "n_omitted": 359,
+   "n_co": 8,
+   "omitted_share": 0.1412,
+   "omitted_share_ci": [
+    0.1235,
+    0.16
+   ],
+   "co_share": 0.0031,
+   "co_share_ci": [
+    0.0012,
+    0.0055
+   ],
+   "confident_share_of_omissions": 0.0223,
+   "confident_share_of_omissions_ci": [
+    0.0087,
+    0.039
+   ],
+   "silent_share_of_omissions": 0.0474,
+   "silent_share_of_omissions_ci": [
+    0.0261,
+    0.0718
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "night",
+   "group": "ACDC adverse (real)",
+   "miou": 0.2582,
+   "n_objects": 3269,
+   "n_images": 488,
+   "n_omitted": 927,
+   "n_co": 27,
+   "omitted_share": 0.2836,
+   "omitted_share_ci": [
+    0.2626,
+    0.3035
+   ],
+   "co_share": 0.0083,
+   "co_share_ci": [
+    0.0049,
+    0.0123
+   ],
+   "confident_share_of_omissions": 0.0291,
+   "confident_share_of_omissions_ci": [
+    0.0174,
+    0.0431
+   ],
+   "silent_share_of_omissions": 0.2028,
+   "silent_share_of_omissions_ci": [
+    0.165,
+    0.2393
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "night_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6187,
+   "n_objects": 2989,
+   "n_images": 253,
+   "n_omitted": 484,
+   "n_co": 15,
+   "omitted_share": 0.1619,
+   "omitted_share_ci": [
+    0.1461,
+    0.1796
+   ],
+   "co_share": 0.005,
+   "co_share_ci": [
+    0.0023,
+    0.0087
+   ],
+   "confident_share_of_omissions": 0.031,
+   "confident_share_of_omissions_ci": [
+    0.0136,
+    0.0522
+   ],
+   "silent_share_of_omissions": 0.0537,
+   "silent_share_of_omissions_ci": [
+    0.0331,
+    0.0761
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "rain",
+   "group": "ACDC adverse (real)",
+   "miou": 0.553,
+   "n_objects": 2688,
+   "n_images": 493,
+   "n_omitted": 321,
+   "n_co": 13,
+   "omitted_share": 0.1194,
+   "omitted_share_ci": [
+    0.1061,
+    0.1336
+   ],
+   "co_share": 0.0048,
+   "co_share_ci": [
+    0.0024,
+    0.008
+   ],
+   "confident_share_of_omissions": 0.0405,
+   "confident_share_of_omissions_ci": [
+    0.0201,
+    0.0659
+   ],
+   "silent_share_of_omissions": 0.1838,
+   "silent_share_of_omissions_ci": [
+    0.1424,
+    0.2343
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "rain_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6495,
+   "n_objects": 2466,
+   "n_images": 249,
+   "n_omitted": 362,
+   "n_co": 17,
+   "omitted_share": 0.1468,
+   "omitted_share_ci": [
+    0.1303,
+    0.1639
+   ],
+   "co_share": 0.0069,
+   "co_share_ci": [
+    0.0036,
+    0.0105
+   ],
+   "confident_share_of_omissions": 0.047,
+   "confident_share_of_omissions_ci": [
+    0.0246,
+    0.0736
+   ],
+   "silent_share_of_omissions": 0.0635,
+   "silent_share_of_omissions_ci": [
+    0.0365,
+    0.0939
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "snow",
+   "group": "ACDC adverse (real)",
+   "miou": 0.5067,
+   "n_objects": 3517,
+   "n_images": 497,
+   "n_omitted": 466,
+   "n_co": 19,
+   "omitted_share": 0.1325,
+   "omitted_share_ci": [
+    0.1199,
+    0.145
+   ],
+   "co_share": 0.0054,
+   "co_share_ci": [
+    0.0031,
+    0.0079
+   ],
+   "confident_share_of_omissions": 0.0408,
+   "confident_share_of_omissions_ci": [
+    0.0234,
+    0.0593
+   ],
+   "silent_share_of_omissions": 0.1803,
+   "silent_share_of_omissions_ci": [
+    0.1444,
+    0.2178
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b2",
+   "condition": "snow_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6536,
+   "n_objects": 2921,
+   "n_images": 250,
+   "n_omitted": 501,
+   "n_co": 15,
+   "omitted_share": 0.1715,
+   "omitted_share_ci": [
+    0.1533,
+    0.1899
+   ],
+   "co_share": 0.0051,
+   "co_share_ci": [
+    0.0023,
+    0.0083
+   ],
+   "confident_share_of_omissions": 0.0299,
+   "confident_share_of_omissions_ci": [
+    0.0139,
+    0.0473
+   ],
+   "silent_share_of_omissions": 0.0739,
+   "silent_share_of_omissions_ci": [
+    0.0413,
+    0.1087
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "fog",
+   "group": "ACDC adverse (real)",
+   "miou": 0.6791,
+   "n_objects": 2908,
+   "n_images": 490,
+   "n_omitted": 328,
+   "n_co": 27,
+   "omitted_share": 0.1128,
+   "omitted_share_ci": [
+    0.0996,
+    0.127
+   ],
+   "co_share": 0.0093,
+   "co_share_ci": [
+    0.0059,
+    0.0132
+   ],
+   "confident_share_of_omissions": 0.0823,
+   "confident_share_of_omissions_ci": [
+    0.053,
+    0.1161
+   ],
+   "silent_share_of_omissions": 0.1189,
+   "silent_share_of_omissions_ci": [
+    0.0861,
+    0.1543
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "fog_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.7014,
+   "n_objects": 2543,
+   "n_images": 249,
+   "n_omitted": 341,
+   "n_co": 13,
+   "omitted_share": 0.1341,
+   "omitted_share_ci": [
+    0.1185,
+    0.1509
+   ],
+   "co_share": 0.0051,
+   "co_share_ci": [
+    0.0027,
+    0.0079
+   ],
+   "confident_share_of_omissions": 0.0381,
+   "confident_share_of_omissions_ci": [
+    0.0202,
+    0.0609
+   ],
+   "silent_share_of_omissions": 0.0587,
+   "silent_share_of_omissions_ci": [
+    0.0363,
+    0.087
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "night",
+   "group": "ACDC adverse (real)",
+   "miou": 0.3238,
+   "n_objects": 3269,
+   "n_images": 488,
+   "n_omitted": 1040,
+   "n_co": 28,
+   "omitted_share": 0.3181,
+   "omitted_share_ci": [
+    0.299,
+    0.3391
+   ],
+   "co_share": 0.0086,
+   "co_share_ci": [
+    0.0043,
+    0.014
+   ],
+   "confident_share_of_omissions": 0.0269,
+   "confident_share_of_omissions_ci": [
+    0.0139,
+    0.0434
+   ],
+   "silent_share_of_omissions": 0.1635,
+   "silent_share_of_omissions_ci": [
+    0.1345,
+    0.1956
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "night_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6477,
+   "n_objects": 2989,
+   "n_images": 253,
+   "n_omitted": 522,
+   "n_co": 19,
+   "omitted_share": 0.1746,
+   "omitted_share_ci": [
+    0.157,
+    0.1941
+   ],
+   "co_share": 0.0064,
+   "co_share_ci": [
+    0.0018,
+    0.0118
+   ],
+   "confident_share_of_omissions": 0.0364,
+   "confident_share_of_omissions_ci": [
+    0.0109,
+    0.0664
+   ],
+   "silent_share_of_omissions": 0.0556,
+   "silent_share_of_omissions_ci": [
+    0.0268,
+    0.0848
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "rain",
+   "group": "ACDC adverse (real)",
+   "miou": 0.6017,
+   "n_objects": 2688,
+   "n_images": 493,
+   "n_omitted": 307,
+   "n_co": 22,
+   "omitted_share": 0.1142,
+   "omitted_share_ci": [
+    0.1015,
+    0.1287
+   ],
+   "co_share": 0.0082,
+   "co_share_ci": [
+    0.0045,
+    0.0128
+   ],
+   "confident_share_of_omissions": 0.0717,
+   "confident_share_of_omissions_ci": [
+    0.0411,
+    0.1093
+   ],
+   "silent_share_of_omissions": 0.1336,
+   "silent_share_of_omissions_ci": [
+    0.0912,
+    0.1842
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "rain_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6896,
+   "n_objects": 2466,
+   "n_images": 249,
+   "n_omitted": 358,
+   "n_co": 22,
+   "omitted_share": 0.1452,
+   "omitted_share_ci": [
+    0.1301,
+    0.1618
+   ],
+   "co_share": 0.0089,
+   "co_share_ci": [
+    0.0045,
+    0.0147
+   ],
+   "confident_share_of_omissions": 0.0615,
+   "confident_share_of_omissions_ci": [
+    0.0305,
+    0.0991
+   ],
+   "silent_share_of_omissions": 0.0642,
+   "silent_share_of_omissions_ci": [
+    0.0369,
+    0.0942
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "snow",
+   "group": "ACDC adverse (real)",
+   "miou": 0.5496,
+   "n_objects": 3517,
+   "n_images": 497,
+   "n_omitted": 445,
+   "n_co": 22,
+   "omitted_share": 0.1265,
+   "omitted_share_ci": [
+    0.1152,
+    0.1394
+   ],
+   "co_share": 0.0063,
+   "co_share_ci": [
+    0.0036,
+    0.0092
+   ],
+   "confident_share_of_omissions": 0.0494,
+   "confident_share_of_omissions_ci": [
+    0.0294,
+    0.0701
+   ],
+   "silent_share_of_omissions": 0.1528,
+   "silent_share_of_omissions_ci": [
+    0.116,
+    0.1853
+   ]
+  },
+  {
+   "dataset": "acdc",
+   "model": "segformer-b5",
+   "condition": "snow_ref",
+   "group": "ACDC normal ref",
+   "miou": 0.6802,
+   "n_objects": 2921,
+   "n_images": 250,
+   "n_omitted": 517,
+   "n_co": 17,
+   "omitted_share": 0.177,
+   "omitted_share_ci": [
+    0.1586,
+    0.1997
+   ],
+   "co_share": 0.0058,
+   "co_share_ci": [
+    0.0025,
+    0.0099
+   ],
+   "confident_share_of_omissions": 0.0329,
+   "confident_share_of_omissions_ci": [
+    0.0142,
+    0.0557
+   ],
+   "silent_share_of_omissions": 0.0696,
+   "silent_share_of_omissions_ci": [
+    0.0417,
+    0.1014
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "brightness-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.8113,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 629,
+   "n_co": 87,
+   "omitted_share": 0.07,
+   "omitted_share_ci": [
+    0.0636,
+    0.0771
+   ],
+   "co_share": 0.0097,
+   "co_share_ci": [
+    0.0074,
+    0.0123
+   ],
+   "confident_share_of_omissions": 0.1383,
+   "confident_share_of_omissions_ci": [
+    0.1061,
+    0.1727
+   ],
+   "silent_share_of_omissions": 0.4006,
+   "silent_share_of_omissions_ci": [
+    0.3494,
+    0.451
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "clean",
+   "group": "Cityscapes clean",
+   "miou": 0.8273,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 486,
+   "n_co": 90,
+   "omitted_share": 0.0541,
+   "omitted_share_ci": [
+    0.0487,
+    0.0601
+   ],
+   "co_share": 0.01,
+   "co_share_ci": [
+    0.0077,
+    0.0125
+   ],
+   "confident_share_of_omissions": 0.1852,
+   "confident_share_of_omissions_ci": [
+    0.145,
+    0.2257
+   ],
+   "silent_share_of_omissions": 0.4609,
+   "silent_share_of_omissions_ci": [
+    0.4048,
+    0.5162
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "contrast-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6685,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1864,
+   "n_co": 103,
+   "omitted_share": 0.2075,
+   "omitted_share_ci": [
+    0.1931,
+    0.2219
+   ],
+   "co_share": 0.0115,
+   "co_share_ci": [
+    0.0085,
+    0.0146
+   ],
+   "confident_share_of_omissions": 0.0553,
+   "confident_share_of_omissions_ci": [
+    0.0411,
+    0.0701
+   ],
+   "silent_share_of_omissions": 0.3273,
+   "silent_share_of_omissions_ci": [
+    0.2904,
+    0.362
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "dark-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6838,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1178,
+   "n_co": 103,
+   "omitted_share": 0.1312,
+   "omitted_share_ci": [
+    0.1211,
+    0.1418
+   ],
+   "co_share": 0.0115,
+   "co_share_ci": [
+    0.009,
+    0.0141
+   ],
+   "confident_share_of_omissions": 0.0874,
+   "confident_share_of_omissions_ci": [
+    0.0697,
+    0.1074
+   ],
+   "silent_share_of_omissions": 0.354,
+   "silent_share_of_omissions_ci": [
+    0.3144,
+    0.3916
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "dark-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4841,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2176,
+   "n_co": 56,
+   "omitted_share": 0.2423,
+   "omitted_share_ci": [
+    0.2267,
+    0.2582
+   ],
+   "co_share": 0.0062,
+   "co_share_ci": [
+    0.0042,
+    0.0083
+   ],
+   "confident_share_of_omissions": 0.0257,
+   "confident_share_of_omissions_ci": [
+    0.0172,
+    0.0342
+   ],
+   "silent_share_of_omissions": 0.5432,
+   "silent_share_of_omissions_ci": [
+    0.504,
+    0.5834
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "defocus_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7126,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2111,
+   "n_co": 71,
+   "omitted_share": 0.235,
+   "omitted_share_ci": [
+    0.2208,
+    0.2512
+   ],
+   "co_share": 0.0079,
+   "co_share_ci": [
+    0.0059,
+    0.0102
+   ],
+   "confident_share_of_omissions": 0.0336,
+   "confident_share_of_omissions_ci": [
+    0.025,
+    0.0432
+   ],
+   "silent_share_of_omissions": 0.3273,
+   "silent_share_of_omissions_ci": [
+    0.2942,
+    0.3611
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "fog-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7888,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 799,
+   "n_co": 132,
+   "omitted_share": 0.089,
+   "omitted_share_ci": [
+    0.0817,
+    0.0968
+   ],
+   "co_share": 0.0147,
+   "co_share_ci": [
+    0.0116,
+    0.0179
+   ],
+   "confident_share_of_omissions": 0.1652,
+   "confident_share_of_omissions_ci": [
+    0.1339,
+    0.2005
+   ],
+   "silent_share_of_omissions": 0.4093,
+   "silent_share_of_omissions_ci": [
+    0.364,
+    0.457
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "fog-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6937,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1084,
+   "n_co": 118,
+   "omitted_share": 0.1207,
+   "omitted_share_ci": [
+    0.1106,
+    0.131
+   ],
+   "co_share": 0.0131,
+   "co_share_ci": [
+    0.0107,
+    0.0159
+   ],
+   "confident_share_of_omissions": 0.1089,
+   "confident_share_of_omissions_ci": [
+    0.0884,
+    0.1305
+   ],
+   "silent_share_of_omissions": 0.4105,
+   "silent_share_of_omissions_ci": [
+    0.3635,
+    0.4521
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "gaussian_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7374,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1863,
+   "n_co": 66,
+   "omitted_share": 0.2074,
+   "omitted_share_ci": [
+    0.1933,
+    0.2221
+   ],
+   "co_share": 0.0073,
+   "co_share_ci": [
+    0.0052,
+    0.0098
+   ],
+   "confident_share_of_omissions": 0.0354,
+   "confident_share_of_omissions_ci": [
+    0.0255,
+    0.0464
+   ],
+   "silent_share_of_omissions": 0.3333,
+   "silent_share_of_omissions_ci": [
+    0.296,
+    0.3679
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "gaussian_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5243,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 4178,
+   "n_co": 11,
+   "omitted_share": 0.4652,
+   "omitted_share_ci": [
+    0.4445,
+    0.4869
+   ],
+   "co_share": 0.0012,
+   "co_share_ci": [
+    0.0005,
+    0.0021
+   ],
+   "confident_share_of_omissions": 0.0026,
+   "confident_share_of_omissions_ci": [
+    0.0011,
+    0.0045
+   ],
+   "silent_share_of_omissions": 0.3234,
+   "silent_share_of_omissions_ci": [
+    0.2927,
+    0.3565
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "gaussian_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.449,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2055,
+   "n_co": 63,
+   "omitted_share": 0.2288,
+   "omitted_share_ci": [
+    0.2117,
+    0.2456
+   ],
+   "co_share": 0.007,
+   "co_share_ci": [
+    0.0052,
+    0.0091
+   ],
+   "confident_share_of_omissions": 0.0307,
+   "confident_share_of_omissions_ci": [
+    0.0225,
+    0.0402
+   ],
+   "silent_share_of_omissions": 0.4389,
+   "silent_share_of_omissions_ci": [
+    0.4018,
+    0.4745
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "gaussian_noise-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.2364,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 5403,
+   "n_co": 0,
+   "omitted_share": 0.6015,
+   "omitted_share_ci": [
+    0.5763,
+    0.6261
+   ],
+   "co_share": 0.0,
+   "co_share_ci": [
+    0.0,
+    0.0
+   ],
+   "confident_share_of_omissions": 0.0,
+   "confident_share_of_omissions_ci": [
+    0.0,
+    0.0
+   ],
+   "silent_share_of_omissions": 0.4636,
+   "silent_share_of_omissions_ci": [
+    0.4282,
+    0.4989
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "jpeg-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5712,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2417,
+   "n_co": 205,
+   "omitted_share": 0.2691,
+   "omitted_share_ci": [
+    0.2504,
+    0.2887
+   ],
+   "co_share": 0.0228,
+   "co_share_ci": [
+    0.0178,
+    0.0284
+   ],
+   "confident_share_of_omissions": 0.0848,
+   "confident_share_of_omissions_ci": [
+    0.067,
+    0.104
+   ],
+   "silent_share_of_omissions": 0.3993,
+   "silent_share_of_omissions_ci": [
+    0.3602,
+    0.4402
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "jpeg-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.3368,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 4611,
+   "n_co": 18,
+   "omitted_share": 0.5134,
+   "omitted_share_ci": [
+    0.4878,
+    0.5382
+   ],
+   "co_share": 0.002,
+   "co_share_ci": [
+    0.0007,
+    0.0038
+   ],
+   "confident_share_of_omissions": 0.0039,
+   "confident_share_of_omissions_ci": [
+    0.0012,
+    0.0073
+   ],
+   "silent_share_of_omissions": 0.5162,
+   "silent_share_of_omissions_ci": [
+    0.4815,
+    0.5513
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "motion_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7112,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1576,
+   "n_co": 151,
+   "omitted_share": 0.1755,
+   "omitted_share_ci": [
+    0.1623,
+    0.1883
+   ],
+   "co_share": 0.0168,
+   "co_share_ci": [
+    0.0133,
+    0.0201
+   ],
+   "confident_share_of_omissions": 0.0958,
+   "confident_share_of_omissions_ci": [
+    0.0777,
+    0.1151
+   ],
+   "silent_share_of_omissions": 0.3813,
+   "silent_share_of_omissions_ci": [
+    0.3424,
+    0.4186
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "motion_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6161,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2353,
+   "n_co": 165,
+   "omitted_share": 0.262,
+   "omitted_share_ci": [
+    0.2453,
+    0.279
+   ],
+   "co_share": 0.0184,
+   "co_share_ci": [
+    0.015,
+    0.0221
+   ],
+   "confident_share_of_omissions": 0.0701,
+   "confident_share_of_omissions_ci": [
+    0.0577,
+    0.0846
+   ],
+   "silent_share_of_omissions": 0.3778,
+   "silent_share_of_omissions_ci": [
+    0.3394,
+    0.4133
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "mask2former-swin-small",
+   "condition": "shot_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5202,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1729,
+   "n_co": 74,
+   "omitted_share": 0.1925,
+   "omitted_share_ci": [
+    0.1785,
+    0.2066
+   ],
+   "co_share": 0.0082,
+   "co_share_ci": [
+    0.0062,
+    0.0104
+   ],
+   "confident_share_of_omissions": 0.0428,
+   "confident_share_of_omissions_ci": [
+    0.0325,
+    0.0553
+   ],
+   "silent_share_of_omissions": 0.3869,
+   "silent_share_of_omissions_ci": [
+    0.3457,
+    0.4257
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "brightness-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7052,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1048,
+   "n_co": 33,
+   "omitted_share": 0.1167,
+   "omitted_share_ci": [
+    0.1082,
+    0.1261
+   ],
+   "co_share": 0.0037,
+   "co_share_ci": [
+    0.0023,
+    0.0053
+   ],
+   "confident_share_of_omissions": 0.0315,
+   "confident_share_of_omissions_ci": [
+    0.0203,
+    0.0453
+   ],
+   "silent_share_of_omissions": 0.0782,
+   "silent_share_of_omissions_ci": [
+    0.0566,
+    0.0997
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "clean",
+   "group": "Cityscapes clean",
+   "miou": 0.7437,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 831,
+   "n_co": 38,
+   "omitted_share": 0.0925,
+   "omitted_share_ci": [
+    0.0848,
+    0.1005
+   ],
+   "co_share": 0.0042,
+   "co_share_ci": [
+    0.0028,
+    0.0058
+   ],
+   "confident_share_of_omissions": 0.0457,
+   "confident_share_of_omissions_ci": [
+    0.0308,
+    0.0623
+   ],
+   "silent_share_of_omissions": 0.0674,
+   "silent_share_of_omissions_ci": [
+    0.0466,
+    0.0881
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "contrast-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5523,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1906,
+   "n_co": 35,
+   "omitted_share": 0.2122,
+   "omitted_share_ci": [
+    0.1971,
+    0.228
+   ],
+   "co_share": 0.0039,
+   "co_share_ci": [
+    0.0025,
+    0.0053
+   ],
+   "confident_share_of_omissions": 0.0184,
+   "confident_share_of_omissions_ci": [
+    0.0121,
+    0.025
+   ],
+   "silent_share_of_omissions": 0.2623,
+   "silent_share_of_omissions_ci": [
+    0.2287,
+    0.2938
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "dark-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.3749,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2300,
+   "n_co": 171,
+   "omitted_share": 0.2561,
+   "omitted_share_ci": [
+    0.2391,
+    0.2751
+   ],
+   "co_share": 0.019,
+   "co_share_ci": [
+    0.0146,
+    0.0241
+   ],
+   "confident_share_of_omissions": 0.0743,
+   "confident_share_of_omissions_ci": [
+    0.058,
+    0.0913
+   ],
+   "silent_share_of_omissions": 0.3296,
+   "silent_share_of_omissions_ci": [
+    0.2933,
+    0.3642
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "dark-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1251,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 5971,
+   "n_co": 949,
+   "omitted_share": 0.6648,
+   "omitted_share_ci": [
+    0.6392,
+    0.6912
+   ],
+   "co_share": 0.1057,
+   "co_share_ci": [
+    0.0833,
+    0.1281
+   ],
+   "confident_share_of_omissions": 0.1589,
+   "confident_share_of_omissions_ci": [
+    0.1258,
+    0.19
+   ],
+   "silent_share_of_omissions": 0.7232,
+   "silent_share_of_omissions_ci": [
+    0.6899,
+    0.7533
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "defocus_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5832,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1885,
+   "n_co": 27,
+   "omitted_share": 0.2099,
+   "omitted_share_ci": [
+    0.1958,
+    0.2242
+   ],
+   "co_share": 0.003,
+   "co_share_ci": [
+    0.0018,
+    0.0044
+   ],
+   "confident_share_of_omissions": 0.0143,
+   "confident_share_of_omissions_ci": [
+    0.0085,
+    0.0209
+   ],
+   "silent_share_of_omissions": 0.1485,
+   "silent_share_of_omissions_ci": [
+    0.1292,
+    0.171
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "fog-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6166,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1426,
+   "n_co": 50,
+   "omitted_share": 0.1588,
+   "omitted_share_ci": [
+    0.1467,
+    0.1709
+   ],
+   "co_share": 0.0056,
+   "co_share_ci": [
+    0.0038,
+    0.0077
+   ],
+   "confident_share_of_omissions": 0.0351,
+   "confident_share_of_omissions_ci": [
+    0.0242,
+    0.0484
+   ],
+   "silent_share_of_omissions": 0.1234,
+   "silent_share_of_omissions_ci": [
+    0.1009,
+    0.1469
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "fog-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5137,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1959,
+   "n_co": 100,
+   "omitted_share": 0.2181,
+   "omitted_share_ci": [
+    0.2035,
+    0.234
+   ],
+   "co_share": 0.0111,
+   "co_share_ci": [
+    0.0083,
+    0.0142
+   ],
+   "confident_share_of_omissions": 0.051,
+   "confident_share_of_omissions_ci": [
+    0.0383,
+    0.065
+   ],
+   "silent_share_of_omissions": 0.2164,
+   "silent_share_of_omissions_ci": [
+    0.186,
+    0.2449
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "gaussian_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6032,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1738,
+   "n_co": 20,
+   "omitted_share": 0.1935,
+   "omitted_share_ci": [
+    0.181,
+    0.2065
+   ],
+   "co_share": 0.0022,
+   "co_share_ci": [
+    0.0013,
+    0.0033
+   ],
+   "confident_share_of_omissions": 0.0115,
+   "confident_share_of_omissions_ci": [
+    0.0066,
+    0.0167
+   ],
+   "silent_share_of_omissions": 0.111,
+   "silent_share_of_omissions_ci": [
+    0.091,
+    0.1301
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "gaussian_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.2784,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 3187,
+   "n_co": 17,
+   "omitted_share": 0.3548,
+   "omitted_share_ci": [
+    0.3358,
+    0.3744
+   ],
+   "co_share": 0.0019,
+   "co_share_ci": [
+    0.001,
+    0.003
+   ],
+   "confident_share_of_omissions": 0.0053,
+   "confident_share_of_omissions_ci": [
+    0.0027,
+    0.0085
+   ],
+   "silent_share_of_omissions": 0.5033,
+   "silent_share_of_omissions_ci": [
+    0.4652,
+    0.5387
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "gaussian_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.0749,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 7987,
+   "n_co": 3413,
+   "omitted_share": 0.8892,
+   "omitted_share_ci": [
+    0.8705,
+    0.9063
+   ],
+   "co_share": 0.38,
+   "co_share_ci": [
+    0.3404,
+    0.4194
+   ],
+   "confident_share_of_omissions": 0.4273,
+   "confident_share_of_omissions_ci": [
+    0.3847,
+    0.4676
+   ],
+   "silent_share_of_omissions": 0.9129,
+   "silent_share_of_omissions_ci": [
+    0.8947,
+    0.9292
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "gaussian_noise-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.0327,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 8982,
+   "n_co": 151,
+   "omitted_share": 1.0,
+   "omitted_share_ci": [
+    1.0,
+    1.0
+   ],
+   "co_share": 0.0168,
+   "co_share_ci": [
+    0.0078,
+    0.0275
+   ],
+   "confident_share_of_omissions": 0.0168,
+   "confident_share_of_omissions_ci": [
+    0.0078,
+    0.0275
+   ],
+   "silent_share_of_omissions": 0.9993,
+   "silent_share_of_omissions_ci": [
+    0.9987,
+    0.9998
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "jpeg-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.3976,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2450,
+   "n_co": 81,
+   "omitted_share": 0.2728,
+   "omitted_share_ci": [
+    0.2541,
+    0.2927
+   ],
+   "co_share": 0.009,
+   "co_share_ci": [
+    0.0065,
+    0.0119
+   ],
+   "confident_share_of_omissions": 0.0331,
+   "confident_share_of_omissions_ci": [
+    0.0243,
+    0.0424
+   ],
+   "silent_share_of_omissions": 0.2759,
+   "silent_share_of_omissions_ci": [
+    0.2445,
+    0.3046
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "jpeg-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1791,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 6089,
+   "n_co": 112,
+   "omitted_share": 0.6779,
+   "omitted_share_ci": [
+    0.6541,
+    0.7003
+   ],
+   "co_share": 0.0125,
+   "co_share_ci": [
+    0.0084,
+    0.0172
+   ],
+   "confident_share_of_omissions": 0.0184,
+   "confident_share_of_omissions_ci": [
+    0.0125,
+    0.0252
+   ],
+   "silent_share_of_omissions": 0.4595,
+   "silent_share_of_omissions_ci": [
+    0.436,
+    0.484
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "motion_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5931,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2104,
+   "n_co": 80,
+   "omitted_share": 0.2342,
+   "omitted_share_ci": [
+    0.2186,
+    0.2513
+   ],
+   "co_share": 0.0089,
+   "co_share_ci": [
+    0.0064,
+    0.0117
+   ],
+   "confident_share_of_omissions": 0.038,
+   "confident_share_of_omissions_ci": [
+    0.0274,
+    0.0496
+   ],
+   "silent_share_of_omissions": 0.1383,
+   "silent_share_of_omissions_ci": [
+    0.1179,
+    0.1578
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "motion_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4839,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2986,
+   "n_co": 117,
+   "omitted_share": 0.3324,
+   "omitted_share_ci": [
+    0.3117,
+    0.3548
+   ],
+   "co_share": 0.013,
+   "co_share_ci": [
+    0.0099,
+    0.0164
+   ],
+   "confident_share_of_omissions": 0.0392,
+   "confident_share_of_omissions_ci": [
+    0.0303,
+    0.0492
+   ],
+   "silent_share_of_omissions": 0.2127,
+   "silent_share_of_omissions_ci": [
+    0.1865,
+    0.2397
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b0",
+   "condition": "shot_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1012,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 7489,
+   "n_co": 3408,
+   "omitted_share": 0.8338,
+   "omitted_share_ci": [
+    0.8127,
+    0.8549
+   ],
+   "co_share": 0.3794,
+   "co_share_ci": [
+    0.3421,
+    0.4174
+   ],
+   "confident_share_of_omissions": 0.4551,
+   "confident_share_of_omissions_ci": [
+    0.4153,
+    0.493
+   ],
+   "silent_share_of_omissions": 0.878,
+   "silent_share_of_omissions_ci": [
+    0.8556,
+    0.8971
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "brightness-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7745,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 689,
+   "n_co": 26,
+   "omitted_share": 0.0767,
+   "omitted_share_ci": [
+    0.0692,
+    0.0841
+   ],
+   "co_share": 0.0029,
+   "co_share_ci": [
+    0.0018,
+    0.0041
+   ],
+   "confident_share_of_omissions": 0.0377,
+   "confident_share_of_omissions_ci": [
+    0.0239,
+    0.0539
+   ],
+   "silent_share_of_omissions": 0.074,
+   "silent_share_of_omissions_ci": [
+    0.053,
+    0.098
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "clean",
+   "group": "Cityscapes clean",
+   "miou": 0.799,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 579,
+   "n_co": 23,
+   "omitted_share": 0.0645,
+   "omitted_share_ci": [
+    0.0583,
+    0.0707
+   ],
+   "co_share": 0.0026,
+   "co_share_ci": [
+    0.0016,
+    0.0036
+   ],
+   "confident_share_of_omissions": 0.0397,
+   "confident_share_of_omissions_ci": [
+    0.025,
+    0.0573
+   ],
+   "silent_share_of_omissions": 0.0587,
+   "silent_share_of_omissions_ci": [
+    0.0391,
+    0.0791
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "contrast-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7162,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1406,
+   "n_co": 39,
+   "omitted_share": 0.1565,
+   "omitted_share_ci": [
+    0.1434,
+    0.1701
+   ],
+   "co_share": 0.0043,
+   "co_share_ci": [
+    0.0029,
+    0.0058
+   ],
+   "confident_share_of_omissions": 0.0277,
+   "confident_share_of_omissions_ci": [
+    0.0188,
+    0.037
+   ],
+   "silent_share_of_omissions": 0.1223,
+   "silent_share_of_omissions_ci": [
+    0.1013,
+    0.1456
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "dark-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4843,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2363,
+   "n_co": 114,
+   "omitted_share": 0.2631,
+   "omitted_share_ci": [
+    0.2449,
+    0.2818
+   ],
+   "co_share": 0.0127,
+   "co_share_ci": [
+    0.0094,
+    0.0162
+   ],
+   "confident_share_of_omissions": 0.0482,
+   "confident_share_of_omissions_ci": [
+    0.036,
+    0.061
+   ],
+   "silent_share_of_omissions": 0.2171,
+   "silent_share_of_omissions_ci": [
+    0.1842,
+    0.2504
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "dark-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1766,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 6182,
+   "n_co": 374,
+   "omitted_share": 0.6883,
+   "omitted_share_ci": [
+    0.6635,
+    0.7136
+   ],
+   "co_share": 0.0416,
+   "co_share_ci": [
+    0.03,
+    0.0538
+   ],
+   "confident_share_of_omissions": 0.0605,
+   "confident_share_of_omissions_ci": [
+    0.0438,
+    0.0772
+   ],
+   "silent_share_of_omissions": 0.5131,
+   "silent_share_of_omissions_ci": [
+    0.4842,
+    0.5444
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "defocus_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6699,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2020,
+   "n_co": 13,
+   "omitted_share": 0.2249,
+   "omitted_share_ci": [
+    0.2098,
+    0.2413
+   ],
+   "co_share": 0.0014,
+   "co_share_ci": [
+    0.0008,
+    0.0023
+   ],
+   "confident_share_of_omissions": 0.0064,
+   "confident_share_of_omissions_ci": [
+    0.0034,
+    0.0103
+   ],
+   "silent_share_of_omissions": 0.1188,
+   "silent_share_of_omissions_ci": [
+    0.0993,
+    0.1398
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "fog-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7471,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 863,
+   "n_co": 43,
+   "omitted_share": 0.0961,
+   "omitted_share_ci": [
+    0.0874,
+    0.1045
+   ],
+   "co_share": 0.0048,
+   "co_share_ci": [
+    0.0033,
+    0.0065
+   ],
+   "confident_share_of_omissions": 0.0498,
+   "confident_share_of_omissions_ci": [
+    0.0341,
+    0.0671
+   ],
+   "silent_share_of_omissions": 0.095,
+   "silent_share_of_omissions_ci": [
+    0.0727,
+    0.1169
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "fog-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6659,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1187,
+   "n_co": 74,
+   "omitted_share": 0.1322,
+   "omitted_share_ci": [
+    0.1202,
+    0.1439
+   ],
+   "co_share": 0.0082,
+   "co_share_ci": [
+    0.0062,
+    0.0106
+   ],
+   "confident_share_of_omissions": 0.0623,
+   "confident_share_of_omissions_ci": [
+    0.0468,
+    0.0797
+   ],
+   "silent_share_of_omissions": 0.1449,
+   "silent_share_of_omissions_ci": [
+    0.1188,
+    0.171
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "gaussian_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6861,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1826,
+   "n_co": 18,
+   "omitted_share": 0.2033,
+   "omitted_share_ci": [
+    0.1896,
+    0.2191
+   ],
+   "co_share": 0.002,
+   "co_share_ci": [
+    0.0011,
+    0.003
+   ],
+   "confident_share_of_omissions": 0.0099,
+   "confident_share_of_omissions_ci": [
+    0.0054,
+    0.015
+   ],
+   "silent_share_of_omissions": 0.1002,
+   "silent_share_of_omissions_ci": [
+    0.0799,
+    0.1196
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "gaussian_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.461,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 3672,
+   "n_co": 4,
+   "omitted_share": 0.4088,
+   "omitted_share_ci": [
+    0.3904,
+    0.4295
+   ],
+   "co_share": 0.0004,
+   "co_share_ci": [
+    0.0001,
+    0.0009
+   ],
+   "confident_share_of_omissions": 0.0011,
+   "confident_share_of_omissions_ci": [
+    0.0003,
+    0.0023
+   ],
+   "silent_share_of_omissions": 0.299,
+   "silent_share_of_omissions_ci": [
+    0.2688,
+    0.3295
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "gaussian_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1479,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 6644,
+   "n_co": 432,
+   "omitted_share": 0.7397,
+   "omitted_share_ci": [
+    0.7143,
+    0.7653
+   ],
+   "co_share": 0.0481,
+   "co_share_ci": [
+    0.0346,
+    0.0622
+   ],
+   "confident_share_of_omissions": 0.065,
+   "confident_share_of_omissions_ci": [
+    0.0472,
+    0.0837
+   ],
+   "silent_share_of_omissions": 0.6299,
+   "silent_share_of_omissions_ci": [
+    0.6012,
+    0.6582
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "gaussian_noise-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.0258,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 8843,
+   "n_co": 6387,
+   "omitted_share": 0.9845,
+   "omitted_share_ci": [
+    0.9781,
+    0.9899
+   ],
+   "co_share": 0.7111,
+   "co_share_ci": [
+    0.6676,
+    0.7513
+   ],
+   "confident_share_of_omissions": 0.7223,
+   "confident_share_of_omissions_ci": [
+    0.6795,
+    0.7615
+   ],
+   "silent_share_of_omissions": 0.9065,
+   "silent_share_of_omissions_ci": [
+    0.8942,
+    0.9173
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "jpeg-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4769,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2763,
+   "n_co": 87,
+   "omitted_share": 0.3076,
+   "omitted_share_ci": [
+    0.2884,
+    0.3281
+   ],
+   "co_share": 0.0097,
+   "co_share_ci": [
+    0.0066,
+    0.0129
+   ],
+   "confident_share_of_omissions": 0.0315,
+   "confident_share_of_omissions_ci": [
+    0.0221,
+    0.0407
+   ],
+   "silent_share_of_omissions": 0.2678,
+   "silent_share_of_omissions_ci": [
+    0.2337,
+    0.3009
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "jpeg-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.2319,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 5411,
+   "n_co": 34,
+   "omitted_share": 0.6024,
+   "omitted_share_ci": [
+    0.5773,
+    0.625
+   ],
+   "co_share": 0.0038,
+   "co_share_ci": [
+    0.0022,
+    0.0055
+   ],
+   "confident_share_of_omissions": 0.0063,
+   "confident_share_of_omissions_ci": [
+    0.0036,
+    0.0092
+   ],
+   "silent_share_of_omissions": 0.4724,
+   "silent_share_of_omissions_ci": [
+    0.4451,
+    0.498
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "motion_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6677,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1741,
+   "n_co": 62,
+   "omitted_share": 0.1938,
+   "omitted_share_ci": [
+    0.1789,
+    0.2081
+   ],
+   "co_share": 0.0069,
+   "co_share_ci": [
+    0.0046,
+    0.0092
+   ],
+   "confident_share_of_omissions": 0.0356,
+   "confident_share_of_omissions_ci": [
+    0.0245,
+    0.0478
+   ],
+   "silent_share_of_omissions": 0.1126,
+   "silent_share_of_omissions_ci": [
+    0.0927,
+    0.1342
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "motion_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.5934,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2658,
+   "n_co": 113,
+   "omitted_share": 0.2959,
+   "omitted_share_ci": [
+    0.2773,
+    0.3167
+   ],
+   "co_share": 0.0126,
+   "co_share_ci": [
+    0.0093,
+    0.0162
+   ],
+   "confident_share_of_omissions": 0.0425,
+   "confident_share_of_omissions_ci": [
+    0.0318,
+    0.0544
+   ],
+   "silent_share_of_omissions": 0.2024,
+   "silent_share_of_omissions_ci": [
+    0.1808,
+    0.226
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b2",
+   "condition": "shot_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.1928,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 6358,
+   "n_co": 475,
+   "omitted_share": 0.7079,
+   "omitted_share_ci": [
+    0.6819,
+    0.733
+   ],
+   "co_share": 0.0529,
+   "co_share_ci": [
+    0.0383,
+    0.0675
+   ],
+   "confident_share_of_omissions": 0.0747,
+   "confident_share_of_omissions_ci": [
+    0.0542,
+    0.0945
+   ],
+   "silent_share_of_omissions": 0.5712,
+   "silent_share_of_omissions_ci": [
+    0.5399,
+    0.6012
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "brightness-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.794,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 656,
+   "n_co": 30,
+   "omitted_share": 0.073,
+   "omitted_share_ci": [
+    0.0667,
+    0.0802
+   ],
+   "co_share": 0.0033,
+   "co_share_ci": [
+    0.0022,
+    0.0046
+   ],
+   "confident_share_of_omissions": 0.0457,
+   "confident_share_of_omissions_ci": [
+    0.031,
+    0.0624
+   ],
+   "silent_share_of_omissions": 0.0915,
+   "silent_share_of_omissions_ci": [
+    0.0698,
+    0.1151
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "clean",
+   "group": "Cityscapes clean",
+   "miou": 0.8129,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 537,
+   "n_co": 30,
+   "omitted_share": 0.0598,
+   "omitted_share_ci": [
+    0.0542,
+    0.0659
+   ],
+   "co_share": 0.0033,
+   "co_share_ci": [
+    0.0022,
+    0.0045
+   ],
+   "confident_share_of_omissions": 0.0559,
+   "confident_share_of_omissions_ci": [
+    0.0363,
+    0.075
+   ],
+   "silent_share_of_omissions": 0.0875,
+   "silent_share_of_omissions_ci": [
+    0.064,
+    0.1116
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "contrast-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7403,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1227,
+   "n_co": 51,
+   "omitted_share": 0.1366,
+   "omitted_share_ci": [
+    0.1253,
+    0.1491
+   ],
+   "co_share": 0.0057,
+   "co_share_ci": [
+    0.0039,
+    0.0075
+   ],
+   "confident_share_of_omissions": 0.0416,
+   "confident_share_of_omissions_ci": [
+    0.0296,
+    0.0541
+   ],
+   "silent_share_of_omissions": 0.1654,
+   "silent_share_of_omissions_ci": [
+    0.1393,
+    0.1919
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "dark-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6714,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1574,
+   "n_co": 105,
+   "omitted_share": 0.1752,
+   "omitted_share_ci": [
+    0.1621,
+    0.1894
+   ],
+   "co_share": 0.0117,
+   "co_share_ci": [
+    0.0088,
+    0.0147
+   ],
+   "confident_share_of_omissions": 0.0667,
+   "confident_share_of_omissions_ci": [
+    0.0517,
+    0.0826
+   ],
+   "silent_share_of_omissions": 0.1855,
+   "silent_share_of_omissions_ci": [
+    0.1531,
+    0.2174
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "dark-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4481,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 3509,
+   "n_co": 231,
+   "omitted_share": 0.3907,
+   "omitted_share_ci": [
+    0.3691,
+    0.4134
+   ],
+   "co_share": 0.0257,
+   "co_share_ci": [
+    0.0193,
+    0.0322
+   ],
+   "confident_share_of_omissions": 0.0658,
+   "confident_share_of_omissions_ci": [
+    0.05,
+    0.081
+   ],
+   "silent_share_of_omissions": 0.3967,
+   "silent_share_of_omissions_ci": [
+    0.3602,
+    0.4314
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "defocus_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6881,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1994,
+   "n_co": 31,
+   "omitted_share": 0.222,
+   "omitted_share_ci": [
+    0.2071,
+    0.237
+   ],
+   "co_share": 0.0035,
+   "co_share_ci": [
+    0.0023,
+    0.0048
+   ],
+   "confident_share_of_omissions": 0.0155,
+   "confident_share_of_omissions_ci": [
+    0.0104,
+    0.0218
+   ],
+   "silent_share_of_omissions": 0.1815,
+   "silent_share_of_omissions_ci": [
+    0.1583,
+    0.2075
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "fog-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7774,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 802,
+   "n_co": 48,
+   "omitted_share": 0.0893,
+   "omitted_share_ci": [
+    0.0819,
+    0.0975
+   ],
+   "co_share": 0.0053,
+   "co_share_ci": [
+    0.0037,
+    0.0072
+   ],
+   "confident_share_of_omissions": 0.0599,
+   "confident_share_of_omissions_ci": [
+    0.0431,
+    0.0777
+   ],
+   "silent_share_of_omissions": 0.1234,
+   "silent_share_of_omissions_ci": [
+    0.0954,
+    0.1507
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "fog-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7245,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1094,
+   "n_co": 70,
+   "omitted_share": 0.1218,
+   "omitted_share_ci": [
+    0.1109,
+    0.1327
+   ],
+   "co_share": 0.0078,
+   "co_share_ci": [
+    0.0056,
+    0.0102
+   ],
+   "confident_share_of_omissions": 0.064,
+   "confident_share_of_omissions_ci": [
+    0.0466,
+    0.0828
+   ],
+   "silent_share_of_omissions": 0.1499,
+   "silent_share_of_omissions_ci": [
+    0.1207,
+    0.1794
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "gaussian_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.7124,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1759,
+   "n_co": 24,
+   "omitted_share": 0.1958,
+   "omitted_share_ci": [
+    0.1825,
+    0.21
+   ],
+   "co_share": 0.0027,
+   "co_share_ci": [
+    0.0017,
+    0.0038
+   ],
+   "confident_share_of_omissions": 0.0136,
+   "confident_share_of_omissions_ci": [
+    0.0087,
+    0.0192
+   ],
+   "silent_share_of_omissions": 0.1592,
+   "silent_share_of_omissions_ci": [
+    0.1336,
+    0.1847
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "gaussian_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.519,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 4014,
+   "n_co": 36,
+   "omitted_share": 0.4469,
+   "omitted_share_ci": [
+    0.4257,
+    0.4689
+   ],
+   "co_share": 0.004,
+   "co_share_ci": [
+    0.0024,
+    0.0059
+   ],
+   "confident_share_of_omissions": 0.009,
+   "confident_share_of_omissions_ci": [
+    0.0053,
+    0.013
+   ],
+   "silent_share_of_omissions": 0.2823,
+   "silent_share_of_omissions_ci": [
+    0.2521,
+    0.3154
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "gaussian_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.4527,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 3361,
+   "n_co": 223,
+   "omitted_share": 0.3742,
+   "omitted_share_ci": [
+    0.3526,
+    0.3962
+   ],
+   "co_share": 0.0248,
+   "co_share_ci": [
+    0.0184,
+    0.0317
+   ],
+   "confident_share_of_omissions": 0.0663,
+   "confident_share_of_omissions_ci": [
+    0.0504,
+    0.083
+   ],
+   "silent_share_of_omissions": 0.3722,
+   "silent_share_of_omissions_ci": [
+    0.3329,
+    0.4094
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "gaussian_noise-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.136,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 7665,
+   "n_co": 27,
+   "omitted_share": 0.8534,
+   "omitted_share_ci": [
+    0.8343,
+    0.872
+   ],
+   "co_share": 0.003,
+   "co_share_ci": [
+    0.0009,
+    0.0058
+   ],
+   "confident_share_of_omissions": 0.0035,
+   "confident_share_of_omissions_ci": [
+    0.001,
+    0.0068
+   ],
+   "silent_share_of_omissions": 0.7949,
+   "silent_share_of_omissions_ci": [
+    0.7758,
+    0.8138
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "jpeg-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6069,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2245,
+   "n_co": 97,
+   "omitted_share": 0.2499,
+   "omitted_share_ci": [
+    0.2336,
+    0.2672
+   ],
+   "co_share": 0.0108,
+   "co_share_ci": [
+    0.0082,
+    0.0136
+   ],
+   "confident_share_of_omissions": 0.0432,
+   "confident_share_of_omissions_ci": [
+    0.0336,
+    0.0537
+   ],
+   "silent_share_of_omissions": 0.2401,
+   "silent_share_of_omissions_ci": [
+    0.2015,
+    0.2756
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "jpeg-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.3868,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 4703,
+   "n_co": 187,
+   "omitted_share": 0.5236,
+   "omitted_share_ci": [
+    0.4989,
+    0.5491
+   ],
+   "co_share": 0.0208,
+   "co_share_ci": [
+    0.0138,
+    0.0294
+   ],
+   "confident_share_of_omissions": 0.0398,
+   "confident_share_of_omissions_ci": [
+    0.0264,
+    0.0551
+   ],
+   "silent_share_of_omissions": 0.529,
+   "silent_share_of_omissions_ci": [
+    0.4981,
+    0.5598
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "motion_blur-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.705,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 1720,
+   "n_co": 113,
+   "omitted_share": 0.1915,
+   "omitted_share_ci": [
+    0.1781,
+    0.2051
+   ],
+   "co_share": 0.0126,
+   "co_share_ci": [
+    0.0095,
+    0.0158
+   ],
+   "confident_share_of_omissions": 0.0657,
+   "confident_share_of_omissions_ci": [
+    0.0505,
+    0.0816
+   ],
+   "silent_share_of_omissions": 0.2017,
+   "silent_share_of_omissions_ci": [
+    0.1764,
+    0.2261
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "motion_blur-5",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.6296,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2485,
+   "n_co": 178,
+   "omitted_share": 0.2767,
+   "omitted_share_ci": [
+    0.2588,
+    0.2967
+   ],
+   "co_share": 0.0198,
+   "co_share_ci": [
+    0.0152,
+    0.0254
+   ],
+   "confident_share_of_omissions": 0.0716,
+   "confident_share_of_omissions_ci": [
+    0.0559,
+    0.0891
+   ],
+   "silent_share_of_omissions": 0.2757,
+   "silent_share_of_omissions_ci": [
+    0.2471,
+    0.3059
+   ]
+  },
+  {
+   "dataset": "cs",
+   "model": "segformer-b5",
+   "condition": "shot_noise-3",
+   "group": "Cityscapes-C (synthetic)",
+   "miou": 0.515,
+   "n_objects": 8982,
+   "n_images": 440,
+   "n_omitted": 2881,
+   "n_co": 208,
+   "omitted_share": 0.3208,
+   "omitted_share_ci": [
+    0.3014,
+    0.3411
+   ],
+   "co_share": 0.0232,
+   "co_share_ci": [
+    0.0183,
+    0.0291
+   ],
+   "confident_share_of_omissions": 0.0722,
+   "confident_share_of_omissions_ci": [
+    0.0579,
+    0.0901
+   ],
+   "silent_share_of_omissions": 0.2936,
+   "silent_share_of_omissions_ci": [
+    0.2613,
+    0.3268
+   ]
+  }
+ ],
+ "pooled": {
+  "mask2former-swin-small": {
+   "ACDC adverse (real)": {
+    "n_objects": 12382,
+    "n_images": 1968,
+    "n_omitted": 1781,
+    "n_co": 196,
+    "omitted_share": 0.1438,
+    "omitted_share_ci": [
+     0.1352,
+     0.1522
+    ],
+    "co_share": 0.0158,
+    "co_share_ci": [
+     0.0135,
+     0.0182
+    ],
+    "confident_share_of_omissions": 0.1101,
+    "confident_share_of_omissions_ci": [
+     0.0947,
+     0.1267
+    ],
+    "silent_share_of_omissions": 0.3678,
+    "silent_share_of_omissions_ci": [
+     0.3416,
+     0.3971
+    ]
+   },
+   "ACDC normal ref": {
+    "n_objects": 10919,
+    "n_images": 1001,
+    "n_omitted": 1305,
+    "n_co": 199,
+    "omitted_share": 0.1195,
+    "omitted_share_ci": [
+     0.1119,
+     0.1271
+    ],
+    "co_share": 0.0182,
+    "co_share_ci": [
+     0.0153,
+     0.021
+    ],
+    "confident_share_of_omissions": 0.1525,
+    "confident_share_of_omissions_ci": [
+     0.1298,
+     0.1752
+    ],
+    "silent_share_of_omissions": 0.2054,
+    "silent_share_of_omissions_ci": [
+     0.1761,
+     0.2339
+    ]
+   },
+   "Cityscapes clean": {
+    "n_objects": 8982,
+    "n_images": 440,
+    "n_omitted": 486,
+    "n_co": 90,
+    "omitted_share": 0.0541,
+    "omitted_share_ci": [
+     0.0487,
+     0.0601
+    ],
+    "co_share": 0.01,
+    "co_share_ci": [
+     0.0077,
+     0.0125
+    ],
+    "confident_share_of_omissions": 0.1852,
+    "confident_share_of_omissions_ci": [
+     0.145,
+     0.2257
+    ],
+    "silent_share_of_omissions": 0.4609,
+    "silent_share_of_omissions_ci": [
+     0.4048,
+     0.5162
+    ]
+   },
+   "Cityscapes-C (synthetic)": {
+    "n_objects": 143712,
+    "n_images": 440,
+    "n_omitted": 36026,
+    "n_co": 1423,
+    "omitted_share": 0.2507,
+    "omitted_share_ci": [
+     0.2391,
+     0.2626
+    ],
+    "co_share": 0.0099,
+    "co_share_ci": [
+     0.0085,
+     0.0114
+    ],
+    "confident_share_of_omissions": 0.0395,
+    "confident_share_of_omissions_ci": [
+     0.0343,
+     0.0453
+    ],
+    "silent_share_of_omissions": 0.411,
+    "silent_share_of_omissions_ci": [
+     0.3898,
+     0.4329
+    ]
+   }
+  },
+  "segformer-b0": {
+   "ACDC adverse (real)": {
+    "n_objects": 12382,
+    "n_images": 1968,
+    "n_omitted": 3364,
+    "n_co": 276,
+    "omitted_share": 0.2717,
+    "omitted_share_ci": [
+     0.2597,
+     0.2837
+    ],
+    "co_share": 0.0223,
+    "co_share_ci": [
+     0.0189,
+     0.0258
+    ],
+    "confident_share_of_omissions": 0.082,
+    "confident_share_of_omissions_ci": [
+     0.0707,
+     0.0938
+    ],
+    "silent_share_of_omissions": 0.2506,
+    "silent_share_of_omissions_ci": [
+     0.2302,
+     0.27
+    ]
+   },
+   "ACDC normal ref": {
+    "n_objects": 10919,
+    "n_images": 1001,
+    "n_omitted": 2448,
+    "n_co": 92,
+    "omitted_share": 0.2242,
+    "omitted_share_ci": [
+     0.2119,
+     0.2356
+    ],
+    "co_share": 0.0084,
+    "co_share_ci": [
+     0.0059,
+     0.0112
+    ],
+    "confident_share_of_omissions": 0.0376,
+    "confident_share_of_omissions_ci": [
+     0.0266,
+     0.0487
+    ],
+    "silent_share_of_omissions": 0.0682,
+    "silent_share_of_omissions_ci": [
+     0.0538,
+     0.0838
+    ]
+   },
+   "Cityscapes clean": {
+    "n_objects": 8982,
+    "n_images": 440,
+    "n_omitted": 831,
+    "n_co": 38,
+    "omitted_share": 0.0925,
+    "omitted_share_ci": [
+     0.0848,
+     0.1005
+    ],
+    "co_share": 0.0042,
+    "co_share_ci": [
+     0.0028,
+     0.0058
+    ],
+    "confident_share_of_omissions": 0.0457,
+    "confident_share_of_omissions_ci": [
+     0.0308,
+     0.0623
+    ],
+    "silent_share_of_omissions": 0.0674,
+    "silent_share_of_omissions_ci": [
+     0.0466,
+     0.0881
+    ]
+   },
+   "Cityscapes-C (synthetic)": {
+    "n_objects": 143712,
+    "n_images": 440,
+    "n_omitted": 59507,
+    "n_co": 8764,
+    "omitted_share": 0.4141,
+    "omitted_share_ci": [
+     0.4027,
+     0.4256
+    ],
+    "co_share": 0.061,
+    "co_share_ci": [
+     0.0549,
+     0.0666
+    ],
+    "confident_share_of_omissions": 0.1473,
+    "confident_share_of_omissions_ci": [
+     0.133,
+     0.1598
+    ],
+    "silent_share_of_omissions": 0.5979,
+    "silent_share_of_omissions_ci": [
+     0.5812,
+     0.6136
+    ]
+   }
+  },
+  "segformer-b2": {
+   "ACDC adverse (real)": {
+    "n_objects": 12382,
+    "n_images": 1968,
+    "n_omitted": 2098,
+    "n_co": 83,
+    "omitted_share": 0.1694,
+    "omitted_share_ci": [
+     0.1608,
+     0.1771
+    ],
+    "co_share": 0.0067,
+    "co_share_ci": [
+     0.0051,
+     0.0082
+    ],
+    "confident_share_of_omissions": 0.0396,
+    "confident_share_of_omissions_ci": [
+     0.0305,
+     0.0486
+    ],
+    "silent_share_of_omissions": 0.1892,
+    "silent_share_of_omissions_ci": [
+     0.1696,
+     0.2092
+    ]
+   },
+   "ACDC normal ref": {
+    "n_objects": 10919,
+    "n_images": 1001,
+    "n_omitted": 1706,
+    "n_co": 55,
+    "omitted_share": 0.1562,
+    "omitted_share_ci": [
+     0.1473,
+     0.1653
+    ],
+    "co_share": 0.005,
+    "co_share_ci": [
+     0.0036,
+     0.0067
+    ],
+    "confident_share_of_omissions": 0.0322,
+    "confident_share_of_omissions_ci": [
+     0.023,
+     0.0422
+    ],
+    "silent_share_of_omissions": 0.0604,
+    "silent_share_of_omissions_ci": [
+     0.0472,
+     0.074
+    ]
+   },
+   "Cityscapes clean": {
+    "n_objects": 8982,
+    "n_images": 440,
+    "n_omitted": 579,
+    "n_co": 23,
+    "omitted_share": 0.0645,
+    "omitted_share_ci": [
+     0.0583,
+     0.0707
+    ],
+    "co_share": 0.0026,
+    "co_share_ci": [
+     0.0016,
+     0.0036
+    ],
+    "confident_share_of_omissions": 0.0397,
+    "confident_share_of_omissions_ci": [
+     0.025,
+     0.0573
+    ],
+    "silent_share_of_omissions": 0.0587,
+    "silent_share_of_omissions_ci": [
+     0.0391,
+     0.0791
+    ]
+   },
+   "Cityscapes-C (synthetic)": {
+    "n_objects": 143712,
+    "n_images": 440,
+    "n_omitted": 54626,
+    "n_co": 8295,
+    "omitted_share": 0.3801,
+    "omitted_share_ci": [
+     0.369,
+     0.3925
+    ],
+    "co_share": 0.0577,
+    "co_share_ci": [
+     0.0544,
+     0.0609
+    ],
+    "confident_share_of_omissions": 0.1519,
+    "confident_share_of_omissions_ci": [
+     0.1439,
+     0.1603
+    ],
+    "silent_share_of_omissions": 0.4677,
+    "silent_share_of_omissions_ci": [
+     0.4519,
+     0.4831
+    ]
+   }
+  },
+  "segformer-b5": {
+   "ACDC adverse (real)": {
+    "n_objects": 12382,
+    "n_images": 1968,
+    "n_omitted": 2120,
+    "n_co": 99,
+    "omitted_share": 0.1712,
+    "omitted_share_ci": [
+     0.162,
+     0.1794
+    ],
+    "co_share": 0.008,
+    "co_share_ci": [
+     0.0062,
+     0.0099
+    ],
+    "confident_share_of_omissions": 0.0467,
+    "confident_share_of_omissions_ci": [
+     0.0361,
+     0.0573
+    ],
+    "silent_share_of_omissions": 0.15,
+    "silent_share_of_omissions_ci": [
+     0.1323,
+     0.1687
+    ]
+   },
+   "ACDC normal ref": {
+    "n_objects": 10919,
+    "n_images": 1001,
+    "n_omitted": 1738,
+    "n_co": 71,
+    "omitted_share": 0.1592,
+    "omitted_share_ci": [
+     0.1496,
+     0.1683
+    ],
+    "co_share": 0.0065,
+    "co_share_ci": [
+     0.0043,
+     0.009
+    ],
+    "confident_share_of_omissions": 0.0409,
+    "confident_share_of_omissions_ci": [
+     0.0273,
+     0.0563
+    ],
+    "silent_share_of_omissions": 0.0621,
+    "silent_share_of_omissions_ci": [
+     0.048,
+     0.0764
+    ]
+   },
+   "Cityscapes clean": {
+    "n_objects": 8982,
+    "n_images": 440,
+    "n_omitted": 537,
+    "n_co": 30,
+    "omitted_share": 0.0598,
+    "omitted_share_ci": [
+     0.0542,
+     0.0659
+    ],
+    "co_share": 0.0033,
+    "co_share_ci": [
+     0.0022,
+     0.0045
+    ],
+    "confident_share_of_omissions": 0.0559,
+    "confident_share_of_omissions_ci": [
+     0.0363,
+     0.075
+    ],
+    "silent_share_of_omissions": 0.0875,
+    "silent_share_of_omissions_ci": [
+     0.064,
+     0.1116
+    ]
+   },
+   "Cityscapes-C (synthetic)": {
+    "n_objects": 143712,
+    "n_images": 440,
+    "n_omitted": 41689,
+    "n_co": 1659,
+    "omitted_share": 0.2901,
+    "omitted_share_ci": [
+     0.2784,
+     0.3025
+    ],
+    "co_share": 0.0115,
+    "co_share_ci": [
+     0.0096,
+     0.0137
+    ],
+    "confident_share_of_omissions": 0.0398,
+    "confident_share_of_omissions_ci": [
+     0.0334,
+     0.0468
+    ],
+    "silent_share_of_omissions": 0.3894,
+    "silent_share_of_omissions_ci": [
+     0.3699,
+     0.409
+    ]
+   }
+  }
+ }
+}

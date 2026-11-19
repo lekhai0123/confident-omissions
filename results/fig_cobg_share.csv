@@ -1,0 +1,109 @@
+model,group,condition,x,y
+segformer-b0,Cityscapes-C (synthetic),brightness-5,11.724902939545203,1.7975402081362346
+segformer-b0,Cityscapes clean,clean,9.295618413754854,2.2673031026252985
+segformer-b0,Cityscapes-C (synthetic),contrast-5,21.253466444814197,1.2526096033402923
+segformer-b0,Cityscapes-C (synthetic),dark-3,25.64614531336661,6.790657439446367
+segformer-b0,Cityscapes-C (synthetic),dark-5,66.44481419855796,15.742904841402337
+segformer-b0,Cityscapes-C (synthetic),defocus_blur-3,21.03161397670549,0.9493670886075949
+segformer-b0,Cityscapes-C (synthetic),fog-3,15.917914586799778,2.299651567944251
+segformer-b0,Cityscapes-C (synthetic),fog-5,21.852468108707708,4.01015228426396
+segformer-b0,Cityscapes-C (synthetic),gaussian_blur-3,19.40099833610649,0.6289308176100629
+segformer-b0,Cityscapes-C (synthetic),gaussian_blur-5,35.5185801442041,0.09369144284821987
+segformer-b0,Cityscapes-C (synthetic),gaussian_noise-3,88.90737659456461,42.64504054897068
+segformer-b0,Cityscapes-C (synthetic),gaussian_noise-5,100.0,1.6749861342207433
+segformer-b0,Cityscapes-C (synthetic),jpeg-3,27.343316694398226,3.204868154158215
+segformer-b0,Cityscapes-C (synthetic),jpeg-5,67.75374376039933,1.7845448592010478
+segformer-b0,Cityscapes-C (synthetic),motion_blur-3,23.449805879090405,2.3651844843897822
+segformer-b0,Cityscapes-C (synthetic),motion_blur-5,33.26677759290072,2.634211403801267
+segformer-b0,Cityscapes-C (synthetic),shot_noise-3,83.37215751525235,45.436402341671105
+segformer-b0,ACDC adverse (real),fog,19.291609353507564,3.5650623885918002
+segformer-b0,ACDC reference frames,fog_ref,18.600078647267008,1.0570824524312896
+segformer-b0,ACDC adverse (real),night,47.59865402263689,10.861182519280206
+segformer-b0,ACDC reference frames,night_ref,25.092004014720644,4.533333333333333
+segformer-b0,ACDC adverse (real),rain,16.81547619047619,7.743362831858407
+segformer-b0,ACDC reference frames,rain_ref,19.748580697485806,2.8747433264887063
+segformer-b0,ACDC adverse (real),snow,22.604492465169177,2.5157232704402515
+segformer-b0,ACDC reference frames,snow_ref,25.265320095857582,3.658536585365854
+segformer-b0,BDD100K (real),all,23.433632212993015,5.28169014084507
+segformer-b0,WildDash2 (real),all,25.95093034743949,5.536167512690355
+segformer-b2,Cityscapes-C (synthetic),brightness-5,7.698280643372158,1.585014409221902
+segformer-b2,Cityscapes clean,clean,6.455906821963394,1.5463917525773196
+segformer-b2,Cityscapes-C (synthetic),contrast-5,15.684969495285635,2.1216407355021216
+segformer-b2,Cityscapes-C (synthetic),dark-3,26.311702717692736,4.1736930860033725
+segformer-b2,Cityscapes-C (synthetic),dark-5,68.85191347753744,6.089898501691638
+segformer-b2,Cityscapes-C (synthetic),defocus_blur-3,22.495840266222963,0.4930966469428008
+segformer-b2,Cityscapes-C (synthetic),fog-3,9.661674986134221,3.3295063145809416
+segformer-b2,Cityscapes-C (synthetic),fog-5,13.266777592900722,5.2675585284280935
+segformer-b2,Cityscapes-C (synthetic),gaussian_blur-3,20.33277870216306,0.6001091107474086
+segformer-b2,Cityscapes-C (synthetic),gaussian_blur-5,40.89850249584027,0.027122321670735014
+segformer-b2,Cityscapes-C (synthetic),gaussian_noise-3,73.95452024403771,6.329683515824208
+segformer-b2,Cityscapes-C (synthetic),gaussian_noise-5,98.45812534664448,72.21721496169445
+segformer-b2,Cityscapes-C (synthetic),jpeg-3,30.815307820299502,3.0597552195824336
+segformer-b2,Cityscapes-C (synthetic),jpeg-5,60.27731558513589,0.6256900993743099
+segformer-b2,Cityscapes-C (synthetic),motion_blur-3,19.412090959511925,2.6285714285714286
+segformer-b2,Cityscapes-C (synthetic),motion_blur-5,29.628397115917913,3.4444028453762634
+segformer-b2,Cityscapes-C (synthetic),shot_noise-3,70.79312257348863,7.317455343152616
+segformer-b2,ACDC adverse (real),fog,13.204951856946355,2.6041666666666665
+segformer-b2,ACDC reference frames,fog_ref,14.117184427841133,0.5571030640668524
+segformer-b2,ACDC adverse (real),night,28.35729580911594,2.373247033441208
+segformer-b2,ACDC reference frames,night_ref,16.192706590833055,2.272727272727273
+segformer-b2,ACDC adverse (real),rain,11.941964285714286,3.115264797507788
+segformer-b2,ACDC reference frames,rain_ref,14.679643146796431,2.7624309392265194
+segformer-b2,ACDC adverse (real),snow,13.249928916690362,1.9313304721030042
+segformer-b2,ACDC reference frames,snow_ref,17.151660390277303,2.7944111776447107
+segformer-b2,BDD100K (real),all,20.446669233731228,3.6588646758138283
+segformer-b2,WildDash2 (real),all,22.896426807179317,1.8518518518518519
+segformer-b5,Cityscapes-C (synthetic),brightness-5,7.310038824181919,2.579666160849772
+segformer-b5,Cityscapes clean,clean,5.978924015529673,2.226345083487941
+segformer-b5,Cityscapes-C (synthetic),contrast-5,13.699389905712701,3.562753036437247
+segformer-b5,Cityscapes-C (synthetic),dark-3,17.57071547420965,5.681818181818182
+segformer-b5,Cityscapes-C (synthetic),dark-5,39.0904048807543,6.2996594778660615
+segformer-b5,Cityscapes-C (synthetic),defocus_blur-3,22.229617304492514,1.347305389221557
+segformer-b5,Cityscapes-C (synthetic),fog-3,9.007210205213534,4.433497536945813
+segformer-b5,Cityscapes-C (synthetic),fog-5,12.246256239600665,5.072463768115942
+segformer-b5,Cityscapes-C (synthetic),gaussian_blur-3,19.611758180809762,1.3009049773755657
+segformer-b5,Cityscapes-C (synthetic),gaussian_blur-5,44.681087077093736,0.7447864945382324
+segformer-b5,Cityscapes-C (synthetic),gaussian_noise-3,37.470881863560734,6.039076376554174
+segformer-b5,Cityscapes-C (synthetic),gaussian_noise-5,85.32445923460898,0.35101404056162244
+segformer-b5,Cityscapes-C (synthetic),jpeg-3,25.0471436494731,4.030115146147033
+segformer-b5,Cityscapes-C (synthetic),jpeg-5,52.37936772046589,3.981363828886065
+segformer-b5,Cityscapes-C (synthetic),motion_blur-3,19.168053244592347,5.150462962962963
+segformer-b5,Cityscapes-C (synthetic),motion_blur-5,27.698280643372158,5.726872246696035
+segformer-b5,Cityscapes-C (synthetic),shot_noise-3,32.124237382140876,6.698895027624309
+segformer-b5,ACDC adverse (real),fog,11.279229711141678,3.9634146341463414
+segformer-b5,ACDC reference frames,fog_ref,13.40935902477389,1.1730205278592376
+segformer-b5,ACDC adverse (real),night,31.81401040073417,2.2115384615384617
+segformer-b5,ACDC reference frames,night_ref,17.464034794245567,3.256704980842912
+segformer-b5,ACDC adverse (real),rain,11.421130952380953,4.88599348534202
+segformer-b5,ACDC reference frames,rain_ref,14.517437145174371,3.35195530726257
+segformer-b5,ACDC adverse (real),snow,12.652829115723629,3.3707865168539324
+segformer-b5,ACDC reference frames,snow_ref,17.699418007531666,3.288201160541586
+segformer-b5,BDD100K (real),all,20.19913086528412,4.411764705882353
+segformer-b5,WildDash2 (real),all,23.345134200559855,3.1211426556162936
+mask2former-swin-small,Cityscapes-C (synthetic),brightness-5,7.032723239046034,6.466876971608833
+mask2former-swin-small,Cityscapes clean,clean,5.4353854686633385,7.755102040816326
+mask2former-swin-small,Cityscapes-C (synthetic),contrast-5,20.76539101497504,5.0747863247863245
+mask2former-swin-small,Cityscapes-C (synthetic),dark-3,13.144758735440933,6.244725738396625
+mask2former-swin-small,Cityscapes-C (synthetic),dark-5,24.237382140876317,2.059496567505721
+mask2former-swin-small,Cityscapes-C (synthetic),defocus_blur-3,23.516361619523018,2.2169811320754715
+mask2former-swin-small,Cityscapes-C (synthetic),fog-3,8.94065446478092,11.41439205955335
+mask2former-swin-small,Cityscapes-C (synthetic),fog-5,12.102052135330005,7.974335472043997
+mask2former-swin-small,Cityscapes-C (synthetic),gaussian_blur-3,20.76539101497504,2.02991452991453
+mask2former-swin-small,Cityscapes-C (synthetic),gaussian_blur-5,46.53355518580144,0.21454112038140644
+mask2former-swin-small,Cityscapes-C (synthetic),gaussian_noise-3,22.895174708818637,1.4050387596899225
+mask2former-swin-small,Cityscapes-C (synthetic),gaussian_noise-5,60.166389351081534,0.0
+mask2former-swin-small,Cityscapes-C (synthetic),jpeg-3,26.966167498613423,7.445495680789798
+mask2former-swin-small,Cityscapes-C (synthetic),jpeg-5,51.35884636716583,0.38876889848812096
+mask2former-swin-small,Cityscapes-C (synthetic),motion_blur-3,17.57071547420965,5.744949494949495
+mask2former-swin-small,Cityscapes-C (synthetic),motion_blur-5,26.189683860232947,4.531977975434138
+mask2former-swin-small,Cityscapes-C (synthetic),shot_noise-3,19.25679423183583,2.0737327188940093
+mask2former-swin-small,ACDC adverse (real),fog,10.62585969738652,4.854368932038835
+mask2former-swin-small,ACDC reference frames,fog_ref,9.98820290994888,3.1496062992125986
+mask2former-swin-small,ACDC adverse (real),night,26.39951055368614,7.995365005793743
+mask2former-swin-small,ACDC reference frames,night_ref,12.278353964536635,5.449591280653951
+mask2former-swin-small,ACDC adverse (real),rain,8.556547619047619,2.1739130434782608
+mask2former-swin-small,ACDC reference frames,rain_ref,11.313868613138686,4.659498207885305
+mask2former-swin-small,ACDC adverse (real),snow,10.776229741256753,5.277044854881266
+mask2former-swin-small,ACDC reference frames,snow_ref,13.865114686751113,6.91358024691358
+mask2former-swin-small,BDD100K (real),all,16.04598712800484,4.010970174837161
+mask2former-swin-small,WildDash2 (real),all,18.059443438168945,2.3250512878960565

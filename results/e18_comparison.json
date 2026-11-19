@@ -1,0 +1,209 @@
+{
+ "ACDC": {
+  "Entropy (pixel uncertainty)": {
+   "R@0.5": 0.002127659574468085,
+   "R@1.0": 0.006382978723404255,
+   "R@2.0": 0.05319148936170213,
+   "FROC[0,2]": 0.014148936170212767,
+   "variant": "-max"
+  },
+  "Margin / MSP (pixel uncertainty)": {
+   "R@0.5": 0.023404255319148935,
+   "R@1.0": 0.03404255319148936,
+   "R@2.0": 0.05531914893617021,
+   "FROC[0,2]": 0.033191489361702124,
+   "variant": "+max"
+  },
+  "Energy (Liu et al. 2020)": {
+   "R@0.5": 0.031914893617021274,
+   "R@1.0": 0.06382978723404255,
+   "R@2.0": 0.1127659574468085,
+   "FROC[0,2]": 0.06170212765957446,
+   "variant": "+max"
+  },
+  "RbA score (Nayal et al. 2023)": {
+   "R@0.5": 0.04042553191489362,
+   "R@1.0": 0.07659574468085106,
+   "R@2.0": 0.12127659574468085,
+   "FROC[0,2]": 0.07553191489361702,
+   "variant": "+max"
+  },
+  "Mahalanobis, predicted class (Lee et al. 2018)": {
+   "R@0.5": 0.01702127659574468,
+   "R@1.0": 0.03829787234042553,
+   "R@2.0": 0.05319148936170213,
+   "FROC[0,2]": 0.03382978723404255,
+   "variant": "+mean"
+  },
+  "Mahalanobis, min over classes": {
+   "R@0.5": 0.019148936170212766,
+   "R@1.0": 0.03829787234042553,
+   "R@2.0": 0.0574468085106383,
+   "FROC[0,2]": 0.035531914893617025,
+   "variant": "+mean"
+  },
+  "Ensemble disagreement (cross-model JS)": {
+   "R@0.5": 0.12127659574468085,
+   "R@1.0": 0.1829787234042553,
+   "R@2.0": 0.2404255319148936,
+   "FROC[0,2]": 0.16691489361702128,
+   "variant": "+mean"
+  },
+  "Maag & Rottmann fg/bg on shared proposals": {
+   "R@0.5": 0.1,
+   "R@1.0": 0.1574468085106383,
+   "R@2.0": 0.20425531914893616,
+   "FROC[0,2]": 0.1382978723404255,
+   "variant": "+mean"
+  },
+  "Detector confidence alone": {
+   "R@0.5": 0.027659574468085105,
+   "R@1.0": 0.04468085106382979,
+   "R@2.0": 0.10851063829787234,
+   "FROC[0,2]": 0.049148936170212765
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "R@0.5": 0.4021276595744681,
+   "R@1.0": 0.502127659574468,
+   "R@2.0": 0.5765957446808511,
+   "FROC[0,2]": 0.480531914893617
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "R@0.5": 0.23829787234042554,
+   "R@1.0": 0.4127659574468085,
+   "R@2.0": 0.6212765957446809,
+   "FROC[0,2]": 0.3910638297872341
+  },
+  "Ours (CO verifier, single model)": {
+   "R@0.5": 0.425531914893617,
+   "R@1.0": 0.5893617021276596,
+   "R@2.0": 0.7170212765957447,
+   "FROC[0,2]": 0.5478723404255319
+  },
+  "Maag & Rottmann + meta-classifier (native)": {
+   "R@0.5": 0.019148936170212766,
+   "R@1.0": 0.019148936170212766,
+   "R@2.0": 0.09361702127659574,
+   "FROC[0,2]": 0.03446808510638298,
+   "native": true
+  },
+  "Ours + Maag proposals": {
+   "R@0.5": 0.4595744680851064,
+   "R@1.0": 0.6297872340425532,
+   "R@2.0": 0.7595744680851064,
+   "FROC[0,2]": 0.5881914893617022
+  },
+  "Maag & Rottmann proposals, unscored (native operating point)": {
+   "R@native": 0.117,
+   "FA_native": 5.529,
+   "native": true
+  }
+ },
+ "ACDC_paired": {
+  "vs": "Rule: detector x segmenter-stuff x (1-entropy)",
+  "diff": 0.0872,
+  "ci95": [
+   0.041,
+   0.1333
+  ],
+  "p_one_sided": 0.0
+ },
+ "BDD": {
+  "Entropy (pixel uncertainty)": {
+   "R@0.5": 0.015625,
+   "R@1.0": 0.0359375,
+   "R@2.0": 0.0625,
+   "FROC[0,2]": 0.03453125,
+   "variant": "+max"
+  },
+  "Margin / MSP (pixel uncertainty)": {
+   "R@0.5": 0.0296875,
+   "R@1.0": 0.059375,
+   "R@2.0": 0.1203125,
+   "FROC[0,2]": 0.06546874999999999,
+   "variant": "+max"
+  },
+  "Energy (Liu et al. 2020)": {
+   "R@0.5": 0.0265625,
+   "R@1.0": 0.053125,
+   "R@2.0": 0.1109375,
+   "FROC[0,2]": 0.057109375,
+   "variant": "+max"
+  },
+  "RbA score (Nayal et al. 2023)": {
+   "R@0.5": 0.0421875,
+   "R@1.0": 0.08125,
+   "R@2.0": 0.121875,
+   "FROC[0,2]": 0.07734375,
+   "variant": "+max"
+  },
+  "Mahalanobis, predicted class (Lee et al. 2018)": {
+   "R@0.5": 0.0234375,
+   "R@1.0": 0.0609375,
+   "R@2.0": 0.109375,
+   "FROC[0,2]": 0.062421875,
+   "variant": "+max"
+  },
+  "Mahalanobis, min over classes": {
+   "R@0.5": 0.0234375,
+   "R@1.0": 0.0625,
+   "R@2.0": 0.1109375,
+   "FROC[0,2]": 0.063203125,
+   "variant": "+max"
+  },
+  "Ensemble disagreement (cross-model JS)": {
+   "R@0.5": 0.05,
+   "R@1.0": 0.09375,
+   "R@2.0": 0.1546875,
+   "FROC[0,2]": 0.09210937500000002,
+   "variant": "+max"
+  },
+  "Detector confidence alone": {
+   "R@0.5": 0.0375,
+   "R@1.0": 0.05,
+   "R@2.0": 0.0765625,
+   "FROC[0,2]": 0.05164062500000001
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "R@0.5": 0.3328125,
+   "R@1.0": 0.4171875,
+   "R@2.0": 0.515625,
+   "FROC[0,2]": 0.40515624999999994
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "R@0.5": 0.30625,
+   "R@1.0": 0.4375,
+   "R@2.0": 0.6,
+   "FROC[0,2]": 0.42164062499999994
+  },
+  "Ours (CO verifier, single model)": {
+   "R@0.5": 0.4203125,
+   "R@1.0": 0.534375,
+   "R@2.0": 0.634375,
+   "FROC[0,2]": 0.505234375
+  }
+ },
+ "BDD_paired": {
+  "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+  "diff": 0.0969,
+  "ci95": [
+   0.0525,
+   0.1409
+  ],
+  "p_one_sided": 0.0
+ },
+ "maag_fidelity": {
+  "maag_props_per_unit": 5.536,
+  "maag_strict_fa_per_unit": 5.529,
+  "cover0.5_co_stuff": 0.117,
+  "cover0.5_omitted_into_bg_any_conf": 0.0814,
+  "cover0.25_co_stuff": 0.1362,
+  "cover0.25_omitted_into_bg_any_conf": 0.1213,
+  "cover0.1_co_stuff": 0.1426,
+  "cover0.1_omitted_into_bg_any_conf": 0.1433
+ },
+ "n_targets": {
+  "ACDC": 470,
+  "BDD": 640
+ }
+}

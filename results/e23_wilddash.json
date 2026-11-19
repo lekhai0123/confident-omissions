@@ -1,0 +1,305 @@
+{
+ "n_images_processed": 2760,
+ "n_units": 11032,
+ "n_targets": 731,
+ "proposal_coverage": 0.8304,
+ "failure_stats": {
+  "segformer-b0": {
+   "objects": 24292,
+   "omitted_share": 0.2595,
+   "confident_share_of_omissions": 0.116,
+   "co_stuff_share_of_omissions": 0.0554,
+   "n_co_stuff": 349
+  },
+  "segformer-b2": {
+   "objects": 24292,
+   "omitted_share": 0.229,
+   "confident_share_of_omissions": 0.103,
+   "co_stuff_share_of_omissions": 0.0185,
+   "n_co_stuff": 103
+  },
+  "segformer-b5": {
+   "objects": 24292,
+   "omitted_share": 0.2335,
+   "confident_share_of_omissions": 0.1095,
+   "co_stuff_share_of_omissions": 0.0312,
+   "n_co_stuff": 177
+  },
+  "mask2former-swin-small": {
+   "objects": 24292,
+   "omitted_share": 0.1806,
+   "confident_share_of_omissions": 0.1441,
+   "co_stuff_share_of_omissions": 0.0233,
+   "n_co_stuff": 102
+  }
+ },
+ "table": {
+  "Entropy (pixel uncertainty)": {
+   "R@0.5": 0.006839945280437756,
+   "R@1.0": 0.009575923392612859,
+   "R@2.0": 0.028727770177838577,
+   "FROC[0,2]": 0.012722298221614229,
+   "variant": "+max"
+  },
+  "Margin / MSP (pixel uncertainty)": {
+   "R@0.5": 0.006839945280437756,
+   "R@1.0": 0.023255813953488372,
+   "R@2.0": 0.06155950752393981,
+   "FROC[0,2]": 0.028590971272229822,
+   "variant": "+max"
+  },
+  "Energy (Liu et al. 2020)": {
+   "R@0.5": 0.024623803009575923,
+   "R@1.0": 0.04514363885088919,
+   "R@2.0": 0.08344733242134063,
+   "FROC[0,2]": 0.04425444596443228,
+   "variant": "+max"
+  },
+  "RbA score (Nayal et al. 2023)": {
+   "R@0.5": 0.027359781121751026,
+   "R@1.0": 0.05198358413132695,
+   "R@2.0": 0.09986320109439124,
+   "FROC[0,2]": 0.052941176470588235,
+   "variant": "+max"
+  },
+  "Mahalanobis, predicted class (Lee et al. 2018)": {
+   "R@0.5": 0.024623803009575923,
+   "R@1.0": 0.046511627906976744,
+   "R@2.0": 0.057455540355677154,
+   "FROC[0,2]": 0.03898768809849521,
+   "variant": "+max"
+  },
+  "Mahalanobis, min over classes": {
+   "R@0.5": 0.025991792065663474,
+   "R@1.0": 0.04377564979480164,
+   "R@2.0": 0.057455540355677154,
+   "FROC[0,2]": 0.039603283173734606,
+   "variant": "+max"
+  },
+  "Ensemble disagreement (cross-model JS)": {
+   "R@0.5": 0.058823529411764705,
+   "R@1.0": 0.09302325581395349,
+   "R@2.0": 0.15047879616963064,
+   "FROC[0,2]": 0.09432284541723666,
+   "variant": "+mean"
+  },
+  "Maag & Rottmann fg/bg on shared proposals": {
+   "R@0.5": 0.09028727770177838,
+   "R@1.0": 0.16689466484268126,
+   "R@2.0": 0.2421340629274966,
+   "FROC[0,2]": 0.154172366621067,
+   "variant": "+mean"
+  },
+  "Detector confidence alone": {
+   "R@0.5": 0.02051983584131327,
+   "R@1.0": 0.038303693570451436,
+   "R@2.0": 0.07660738714090287,
+   "FROC[0,2]": 0.04008207934336526
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "R@0.5": 0.4487004103967168,
+   "R@1.0": 0.5266757865937073,
+   "R@2.0": 0.6142270861833106,
+   "FROC[0,2]": 0.5044459644322845
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "R@0.5": 0.4103967168262654,
+   "R@1.0": 0.5540355677154583,
+   "R@2.0": 0.7318741450068399,
+   "FROC[0,2]": 0.5300273597811218
+  },
+  "Ours (CO verifier, single model)": {
+   "R@0.5": 0.5718194254445964,
+   "R@1.0": 0.6949384404924761,
+   "R@2.0": 0.7633378932968536,
+   "FROC[0,2]": 0.6457592339261286
+  },
+  "Maag & Rottmann + meta-classifier (native)": {
+   "R@0.5": 0.15321477428180574,
+   "R@1.0": 0.16552667578659372,
+   "R@2.0": 0.16552667578659372,
+   "FROC[0,2]": 0.15663474692202461,
+   "native": true
+  },
+  "Ours + Maag proposals": {
+   "R@0.5": 0.5868673050615595,
+   "R@1.0": 0.6894664842681258,
+   "R@2.0": 0.7606019151846786,
+   "FROC[0,2]": 0.6497264021887824
+  },
+  "Maag & Rottmann proposals, unscored (native operating point)": {
+   "R@native": 0.1874,
+   "FA_native": 10.779,
+   "native": true
+  }
+ },
+ "paired": {
+  "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+  "diff": 0.1409,
+  "ci95": [
+   0.1063,
+   0.1763
+  ],
+  "p_one_sided": 0.0
+ },
+ "count_match": {
+  "Ours (CO verifier, single model)": {
+   "cm@0.5": {
+    "recall": 0.5445,
+    "fa_strict": 0.433,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.6826,
+    "fa_strict": 0.91,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.7579,
+    "fa_strict": 1.888,
+    "flags_per_unit": 2.0
+   }
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "cm@0.5": {
+    "recall": 0.383,
+    "fa_strict": 0.454,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.5321,
+    "fa_strict": 0.929,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.7223,
+    "fa_strict": 1.897,
+    "flags_per_unit": 2.0
+   }
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "cm@0.5": {
+    "recall": 0.4378,
+    "fa_strict": 0.467,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.5226,
+    "fa_strict": 0.959,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.6129,
+    "fa_strict": 1.945,
+    "flags_per_unit": 2.0
+   }
+  }
+ },
+ "ours_per_model": {
+  "segformer-b0": {
+   "cm": {
+    "cm@0.5": {
+     "recall": 0.5444,
+     "fa_strict": 0.385,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.6848,
+     "fa_strict": 0.833,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.8023,
+     "fa_strict": 1.782,
+     "flags_per_unit": 2.0
+    }
+   },
+   "oracle": {
+    "R@0.5": 0.6103151862464183,
+    "R@1.0": 0.7048710601719198,
+    "R@2.0": 0.8108882521489972,
+    "FROC[0,2]": 0.6803724928366763
+   },
+   "n_targets": 349
+  },
+  "segformer-b2": {
+   "cm": {
+    "cm@0.5": {
+     "recall": 0.6117,
+     "fa_strict": 0.463,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.6893,
+     "fa_strict": 0.948,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.7961,
+     "fa_strict": 1.934,
+     "flags_per_unit": 2.0
+    }
+   },
+   "oracle": {
+    "R@0.5": 0.6213592233009708,
+    "R@1.0": 0.6893203883495146,
+    "R@2.0": 0.7961165048543689,
+    "FROC[0,2]": 0.6645631067961164
+   },
+   "n_targets": 103
+  },
+  "segformer-b5": {
+   "cm": {
+    "cm@0.5": {
+     "recall": 0.5198,
+     "fa_strict": 0.442,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.6215,
+     "fa_strict": 0.922,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.6893,
+     "fa_strict": 1.9,
+     "flags_per_unit": 2.0
+    }
+   },
+   "oracle": {
+    "R@0.5": 0.536723163841808,
+    "R@1.0": 0.6271186440677966,
+    "R@2.0": 0.6892655367231638,
+    "FROC[0,2]": 0.5949152542372882
+   },
+   "n_targets": 177
+  },
+  "mask2former-swin-small": {
+   "cm": {
+    "cm@0.5": {
+     "recall": 0.4314,
+     "fa_strict": 0.471,
+     "flags_per_unit": 0.5
+    },
+    "cm@1.0": {
+     "recall": 0.5196,
+     "fa_strict": 0.963,
+     "flags_per_unit": 1.0
+    },
+    "cm@2.0": {
+     "recall": 0.6471,
+     "fa_strict": 1.951,
+     "flags_per_unit": 2.0
+    }
+   },
+   "oracle": {
+    "R@0.5": 0.4411764705882353,
+    "R@1.0": 0.5294117647058824,
+    "R@2.0": 0.6568627450980392,
+    "FROC[0,2]": 0.5063725490196077
+   },
+   "n_targets": 102
+  }
+ },
+ "note": "train = all ACDC (v11), no retraining; WildDash run stopped at 2760/4256 images (time budget)"
+}

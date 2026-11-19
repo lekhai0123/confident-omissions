@@ -1,0 +1,57 @@
+[
+ {
+  "check": "kaggle-v6: Cityscapes eval images exclude the 50 dev images",
+  "pass": true,
+  "evidence": "440 unique Cityscapes eval stems of 500 val images (dev = first 50 of a seeded permutation, eval = the rest, by construction in run_p4)"
+ },
+ {
+  "check": "kaggle-v10a-csc: Cityscapes eval images exclude the 50 dev images",
+  "pass": true,
+  "evidence": "443 unique Cityscapes eval stems of 500 val images (dev = first 50 of a seeded permutation, eval = the rest, by construction in run_p4)"
+ },
+ {
+  "check": "kaggle-v9-arch: Cityscapes eval images exclude the 50 dev images",
+  "pass": true,
+  "evidence": "317 unique Cityscapes eval stems of 500 val images (dev = first 50 of a seeded permutation, eval = the rest, by construction in run_p4)"
+ },
+ {
+  "check": "v11: temperature / Mahalanobis fitted on Cityscapes only",
+  "pass": true,
+  "evidence": "dev items come from list_val(Cityscapes root); ACDC items only enter the evaluation loop"
+ },
+ {
+  "check": "LOCO: held-out adverse stems never appear in training conditions",
+  "pass": true,
+  "evidence": "overlap counts {'fog': 0, 'night': 0, 'rain': 0, 'snow': 0}; the held-out condition's _ref split is excluded from training as well"
+ },
+ {
+  "check": "LOCO: no recording sequence shared across conditions",
+  "pass": true,
+  "evidence": "shared sequences per held-out condition: {'fog': 0, 'night': 0, 'rain': 0, 'snow': 0}"
+ },
+ {
+  "check": "verifier features contain no ground-truth-derived column",
+  "pass": true,
+  "evidence": "44 feature columns; offending: []"
+ },
+ {
+  "check": "recall denominator = all confident omissions into background (incl. uncovered)",
+  "pass": true,
+  "evidence": "470 target objects in adverse conditions; 8024 image x model units"
+ },
+ {
+  "check": "E9 figure scores come from a verifier trained without the frame's condition",
+  "pass": true,
+  "evidence": "e9_figure.py trains per held-out condition (LOCO) and scores only that condition"
+ },
+ {
+  "check": "E6: Cityscapes val (source) and ACDC (target) are disjoint datasets; segmenters trained on Cityscapes train",
+  "pass": true,
+  "evidence": "public checkpoints fine-tuned on Cityscapes train; fg/bg net (E1) trained on Cityscapes train only"
+ },
+ {
+  "check": "verifier hyper-parameters not tuned on test data",
+  "pass": true,
+  "evidence": "HistGradientBoosting(300 iters, lr 0.05, balanced), 25% negative subsampling \u2014 fixed before any evaluation, unchanged"
+ }
+]

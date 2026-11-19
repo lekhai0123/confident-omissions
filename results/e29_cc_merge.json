@@ -1,0 +1,18 @@
+{
+ "images": 2006,
+ "thing_instances": 12382,
+ "merged_share_all": 0.3505,
+ "merged_share_by_class": {
+  "person": 0.168,
+  "rider": 0.023,
+  "car": 0.466,
+  "truck": 0.085,
+  "bus": 0.07,
+  "train": 0.079,
+  "motorcycle": 0.056,
+  "bicycle": 0.105
+ },
+ "targets": 470,
+ "targets_merged_share": 0.166,
+ "targets_merged": 78
+}

@@ -1,0 +1,146 @@
+{
+ "models": [
+  "mask2former-swin-large",
+  "mask2former-swin-small",
+  "mask2former-swin-tiny",
+  "maskformer-resnet101",
+  "segformer-b0",
+  "segformer-b1",
+  "segformer-b2",
+  "segformer-b3",
+  "segformer-b4",
+  "segformer-b5"
+ ],
+ "n_models": 10,
+ "pairs": {
+  "fog~fog-3": {
+   "rho_miou": 0.818,
+   "p_miou": 0.0038,
+   "rho_omitted": 0.855,
+   "p_omitted": 0.0016,
+   "rho_conf_bg": 0.782,
+   "p_conf_bg": 0.0075,
+   "rho_conf_bg_ci": [
+    0.115,
+    0.867
+   ]
+  },
+  "fog~fog-5": {
+   "rho_miou": 0.891,
+   "p_miou": 0.0005,
+   "rho_omitted": 0.903,
+   "p_omitted": 0.0003,
+   "rho_conf_bg": 0.685,
+   "p_conf_bg": 0.0289,
+   "rho_conf_bg_ci": [
+    0.2,
+    0.879
+   ]
+  },
+  "night~dark-3": {
+   "rho_miou": 0.964,
+   "p_miou": 0.0,
+   "rho_omitted": 0.697,
+   "p_omitted": 0.0251,
+   "rho_conf_bg": -0.309,
+   "p_conf_bg": 0.3848,
+   "rho_conf_bg_ci": [
+    -0.491,
+    0.067
+   ]
+  },
+  "night~dark-5": {
+   "rho_miou": 0.988,
+   "p_miou": 0.0,
+   "rho_omitted": 0.624,
+   "p_omitted": 0.0537,
+   "rho_conf_bg": -0.006,
+   "p_conf_bg": 0.9867,
+   "rho_conf_bg_ci": [
+    -0.285,
+    0.195
+   ]
+  },
+  "night~brightness-5": {
+   "rho_miou": 0.964,
+   "p_miou": 0.0,
+   "rho_omitted": 0.879,
+   "p_omitted": 0.0008,
+   "rho_conf_bg": -0.248,
+   "p_conf_bg": 0.4888,
+   "rho_conf_bg_ci": [
+    -0.442,
+    0.2
+   ]
+  },
+  "rain~motion_blur-3": {
+   "rho_miou": 0.891,
+   "p_miou": 0.0005,
+   "rho_omitted": 0.939,
+   "p_omitted": 0.0001,
+   "rho_conf_bg": 0.115,
+   "p_conf_bg": 0.7514,
+   "rho_conf_bg_ci": [
+    -0.661,
+    0.418
+   ]
+  },
+  "rain~defocus_blur-3": {
+   "rho_miou": 0.77,
+   "p_miou": 0.0092,
+   "rho_omitted": -0.042,
+   "p_omitted": 0.9074,
+   "rho_conf_bg": 0.018,
+   "p_conf_bg": 0.9602,
+   "rho_conf_bg_ci": [
+    -0.648,
+    0.43
+   ]
+  },
+  "snow~gaussian_noise-3": {
+   "rho_miou": 0.83,
+   "p_miou": 0.0029,
+   "rho_omitted": 0.915,
+   "p_omitted": 0.0002,
+   "rho_conf_bg": -0.43,
+   "p_conf_bg": 0.2145,
+   "rho_conf_bg_ci": [
+    -0.685,
+    0.067
+   ]
+  },
+  "snow~shot_noise-3": {
+   "rho_miou": 0.83,
+   "p_miou": 0.0029,
+   "rho_omitted": 0.927,
+   "p_omitted": 0.0001,
+   "rho_conf_bg": -0.636,
+   "p_conf_bg": 0.0479,
+   "rho_conf_bg_ci": [
+    -0.758,
+    0.018
+   ]
+  },
+  "snow~contrast-5": {
+   "rho_miou": 0.891,
+   "p_miou": 0.0005,
+   "rho_omitted": 0.261,
+   "p_omitted": 0.4671,
+   "rho_conf_bg": 0.721,
+   "p_conf_bg": 0.0186,
+   "rho_conf_bg_ci": [
+    0.248,
+    0.879
+   ]
+  }
+ },
+ "summary": {
+  "miou": 10,
+  "omitted": 7,
+  "conf_bg": 3,
+  "conf_bg_ci_excludes_0_pos": 3,
+  "conf_bg_ci_excludes_0_neg": 0
+ },
+ "bonferroni_conf_bg_pos": 0,
+ "bonferroni_miou_pos": 9
+}

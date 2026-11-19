@@ -1,0 +1,182 @@
+{
+ "LOCO": {
+  "n_co_stuff": 470,
+  "units": 8024,
+  "froc": {
+   "0.1": {
+    "recall": 0.1617,
+    "fa_per_unit": 0.048,
+    "recall_segformer-b0": 0.1967,
+    "recall_segformer-b2": 0.0784,
+    "recall_segformer-b5": 0.0606,
+    "recall_mask2former-swin-small": 0.1835
+   },
+   "0.2": {
+    "recall": 0.234,
+    "fa_per_unit": 0.092,
+    "recall_segformer-b0": 0.2951,
+    "recall_segformer-b2": 0.1569,
+    "recall_segformer-b5": 0.0909,
+    "recall_mask2former-swin-small": 0.2202
+   },
+   "0.3": {
+    "recall": 0.3234,
+    "fa_per_unit": 0.145,
+    "recall_segformer-b0": 0.3852,
+    "recall_segformer-b2": 0.2941,
+    "recall_segformer-b5": 0.1364,
+    "recall_mask2former-swin-small": 0.3119
+   },
+   "0.5": {
+    "recall": 0.3979,
+    "fa_per_unit": 0.252,
+    "recall_segformer-b0": 0.4549,
+    "recall_segformer-b2": 0.3725,
+    "recall_segformer-b5": 0.197,
+    "recall_mask2former-swin-small": 0.4037,
+    "recall_ci95": [
+     0.3375,
+     0.4632
+    ]
+   },
+   "0.75": {
+    "recall": 0.466,
+    "fa_per_unit": 0.398,
+    "recall_segformer-b0": 0.541,
+    "recall_segformer-b2": 0.4314,
+    "recall_segformer-b5": 0.2273,
+    "recall_mask2former-swin-small": 0.4587
+   },
+   "1.0": {
+    "recall": 0.5234,
+    "fa_per_unit": 0.539,
+    "recall_segformer-b0": 0.5861,
+    "recall_segformer-b2": 0.4706,
+    "recall_segformer-b5": 0.303,
+    "recall_mask2former-swin-small": 0.5413,
+    "recall_ci95": [
+     0.4589,
+     0.5895
+    ]
+   },
+   "1.5": {
+    "recall": 0.6021,
+    "fa_per_unit": 0.849,
+    "recall_segformer-b0": 0.6639,
+    "recall_segformer-b2": 0.5882,
+    "recall_segformer-b5": 0.3939,
+    "recall_mask2former-swin-small": 0.5963
+   },
+   "2.0": {
+    "recall": 0.6489,
+    "fa_per_unit": 1.188,
+    "recall_segformer-b0": 0.7049,
+    "recall_segformer-b2": 0.6078,
+    "recall_segformer-b5": 0.4697,
+    "recall_mask2former-swin-small": 0.6514,
+    "recall_ci95": [
+     0.5922,
+     0.7063
+    ]
+   },
+   "3.0": {
+    "recall": 0.7489,
+    "fa_per_unit": 1.914,
+    "recall_segformer-b0": 0.7951,
+    "recall_segformer-b2": 0.7647,
+    "recall_segformer-b5": 0.6364,
+    "recall_mask2former-swin-small": 0.7064
+   }
+  }
+ },
+ "LOCO x LOMO (unseen segmenter)": {
+  "n_co_stuff": 470,
+  "units": 8024,
+  "froc": {
+   "0.1": {
+    "recall": 0.0872,
+    "fa_per_unit": 0.031,
+    "recall_segformer-b0": 0.0779,
+    "recall_segformer-b2": 0.0392,
+    "recall_segformer-b5": 0.0758,
+    "recall_mask2former-swin-small": 0.1376
+   },
+   "0.2": {
+    "recall": 0.1851,
+    "fa_per_unit": 0.059,
+    "recall_segformer-b0": 0.2131,
+    "recall_segformer-b2": 0.098,
+    "recall_segformer-b5": 0.1061,
+    "recall_mask2former-swin-small": 0.211
+   },
+   "0.3": {
+    "recall": 0.2915,
+    "fa_per_unit": 0.113,
+    "recall_segformer-b0": 0.3525,
+    "recall_segformer-b2": 0.1373,
+    "recall_segformer-b5": 0.1818,
+    "recall_mask2former-swin-small": 0.2936
+   },
+   "0.5": {
+    "recall": 0.3638,
+    "fa_per_unit": 0.187,
+    "recall_segformer-b0": 0.4344,
+    "recall_segformer-b2": 0.2353,
+    "recall_segformer-b5": 0.197,
+    "recall_mask2former-swin-small": 0.367,
+    "recall_ci95": [
+     0.3079,
+     0.4215
+    ]
+   },
+   "0.75": {
+    "recall": 0.4255,
+    "fa_per_unit": 0.3,
+    "recall_segformer-b0": 0.4918,
+    "recall_segformer-b2": 0.3725,
+    "recall_segformer-b5": 0.2121,
+    "recall_mask2former-swin-small": 0.4312
+   },
+   "1.0": {
+    "recall": 0.4681,
+    "fa_per_unit": 0.425,
+    "recall_segformer-b0": 0.5287,
+    "recall_segformer-b2": 0.4118,
+    "recall_segformer-b5": 0.2273,
+    "recall_mask2former-swin-small": 0.5046,
+    "recall_ci95": [
+     0.4064,
+     0.5295
+    ]
+   },
+   "1.5": {
+    "recall": 0.5553,
+    "fa_per_unit": 0.705,
+    "recall_segformer-b0": 0.6025,
+    "recall_segformer-b2": 0.4902,
+    "recall_segformer-b5": 0.3636,
+    "recall_mask2former-swin-small": 0.5963
+   },
+   "2.0": {
+    "recall": 0.5979,
+    "fa_per_unit": 1.016,
+    "recall_segformer-b0": 0.6352,
+    "recall_segformer-b2": 0.549,
+    "recall_segformer-b5": 0.4545,
+    "recall_mask2former-swin-small": 0.6239,
+    "recall_ci95": [
+     0.5412,
+     0.6549
+    ]
+   },
+   "3.0": {
+    "recall": 0.717,
+    "fa_per_unit": 1.719,
+    "recall_segformer-b0": 0.7664,
+    "recall_segformer-b2": 0.6667,
+    "recall_segformer-b5": 0.5606,
+    "recall_mask2former-swin-small": 0.7248
+   }
+  }
+ }
+}

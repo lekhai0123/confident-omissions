@@ -1,0 +1,143 @@
+{
+ "rows": {
+  "Full (main configuration)": {
+   "R@0.5": 0.425531914893617,
+   "R@1.0": 0.5893617021276596,
+   "R@2.0": 0.7170212765957447,
+   "FROC[0,2]": 0.5478723404255319
+  },
+  "- detector cues (det score, detector-thing/segmenter-stuff)": {
+   "R@0.5": 0.2702127659574468,
+   "R@1.0": 0.4297872340425532,
+   "R@2.0": 0.6680851063829787,
+   "FROC[0,2]": 0.4269148936170213,
+   "delta_vs_full@1.0": -0.1596,
+   "ci95": [
+    -0.2157,
+    -0.1045
+   ]
+  },
+  "- segmenter uncertainty (entropy, margin)": {
+   "R@0.5": 0.3127659574468085,
+   "R@1.0": 0.4148936170212766,
+   "R@2.0": 0.5574468085106383,
+   "FROC[0,2]": 0.40202127659574466,
+   "delta_vs_full@1.0": -0.1745,
+   "ci95": [
+    -0.2208,
+    -0.1301
+   ]
+  },
+  "- Mahalanobis": {
+   "R@0.5": 0.44680851063829785,
+   "R@1.0": 0.6361702127659574,
+   "R@2.0": 0.7510638297872341,
+   "FROC[0,2]": 0.5756382978723406,
+   "delta_vs_full@1.0": 0.0468,
+   "ci95": [
+    0.012,
+    0.0835
+   ]
+  },
+  "- segmenter thing-probability / stuff fraction": {
+   "R@0.5": 0.3851063829787234,
+   "R@1.0": 0.5191489361702127,
+   "R@2.0": 0.6787234042553192,
+   "FROC[0,2]": 0.4927659574468084,
+   "delta_vs_full@1.0": -0.0702,
+   "ci95": [
+    -0.115,
+    -0.0275
+   ]
+  },
+  "- geometry (area, box, position, fill)": {
+   "R@0.5": 0.474468085106383,
+   "R@1.0": 0.6021276595744681,
+   "R@2.0": 0.7297872340425532,
+   "FROC[0,2]": 0.575,
+   "delta_vs_full@1.0": 0.0128,
+   "ci95": [
+    -0.0238,
+    0.0501
+   ]
+  },
+  "- gamma-brightened detector pass": {
+   "R@0.5": 0.4021276595744681,
+   "R@1.0": 0.5404255319148936,
+   "R@2.0": 0.6042553191489362,
+   "FROC[0,2]": 0.485,
+   "delta_vs_full@1.0": -0.0489,
+   "ci95": [
+    -0.1162,
+    0.029
+   ]
+  },
+  "generic target (any omitted object)": {
+   "R@0.5": 0.2553191489361702,
+   "R@1.0": 0.29148936170212764,
+   "R@2.0": 0.3595744680851064,
+   "FROC[0,2]": 0.2854255319148936,
+   "delta_vs_full@1.0": -0.2979,
+   "ci95": [
+    -0.3573,
+    -0.2434
+   ]
+  },
+  "logistic regression instead of GBM": {
+   "R@0.5": 0.46382978723404256,
+   "R@1.0": 0.6,
+   "R@2.0": 0.7340425531914894,
+   "FROC[0,2]": 0.5689361702127659,
+   "delta_vs_full@1.0": 0.0106,
+   "ci95": [
+    -0.0483,
+    0.0723
+   ]
+  },
+  "+ Maag depth proposals and fg/bg features": {
+   "R@0.5": 0.4595744680851064,
+   "R@1.0": 0.6297872340425532,
+   "R@2.0": 0.7595744680851064,
+   "FROC[0,2]": 0.5881914893617022,
+   "delta_vs_full@1.0": 0.0404,
+   "ci95": [
+    -0.0166,
+    0.1015
+   ]
+  }
+ },
+ "groups": {
+  "detector cues (det score, detector-thing/segmenter-stuff)": [
+   "p_det_stuff_mean",
+   "p_det_stuff_max",
+   "det_score",
+   "src_rtdetr",
+   "src_rtdetr_gamma",
+   "src_owl"
+  ],
+  "segmenter uncertainty (entropy, margin)": [
+   "p_ent_mean",
+   "p_margin_mean",
+   "p_ent_max",
+   "p_margin_max"
+  ],
+  "Mahalanobis": [
+   "p_maha_min_mean",
+   "p_maha_pred_mean",
+   "p_maha_min_max",
+   "p_maha_pred_max"
+  ],
+  "segmenter thing-probability / stuff fraction": [
+   "p_thing_prob_mean",
+   "p_thing_prob_max",
+   "p_self_stuff_frac"
+  ],
+  "geometry (area, box, position, fill)": [
+   "p_area_frac",
+   "p_box_h",
+   "p_box_w",
+   "p_center_y",
+   "p_fill"
+  ]
+ }
+}
