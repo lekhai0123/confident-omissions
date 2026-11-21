@@ -180,7 +180,19 @@ def object_records(pred: np.ndarray, conf: np.ndarray, ent: np.ndarray, labels: 
         frac_conf_err = float(conf_err[mask].mean())
         mean_ent = float(ent[mask].mean())
         values, counts = np.unique(pred[mask], return_counts=True)
+        # joint criterion (review 2026-11-22): pixels that are BOTH predicted as stuff (trainIds 0-10, as in the
+        # paper) AND confident; ties of the majority class are flagged (np.unique + argmax picks the lower id)
+        p_o, c_o = pred[mask].astype(np.int64), conf[mask] >= conf_thr
+        st_o = p_o < 11
+        cnt = np.bincount(p_o.ravel(), minlength=N_CLASSES)[:N_CLASSES]
+        top_st = int(cnt[:11].argmax())
+        srt = np.sort(cnt)[::-1]
+        joint = {"frac_stuff": float(st_o.mean()), "frac_conf_stuff": float((st_o & c_o).mean()),
+                 "top_stuff": TRAINID_NAMES[top_st], "frac_conf_top_stuff": float(((p_o == top_st) & c_o).mean()),
+                 "maj_share": float(srt[0] / n), "maj_tie": bool(srt[0] == srt[1] and srt[0] > 0),
+                 "frac_conf_thing_err": float(((p_o >= 11) & (p_o != tid) & c_o).mean())}
         rows.append({
+            **joint,
             "instance_id": iid, "class": TRAINID_NAMES[tid], "area": n,
             "frac_true": frac_true, "omitted": frac_true <= omit_frac,
             "frac_conf_err": frac_conf_err,
@@ -315,7 +327,9 @@ def parse_args(argv=None):
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--smoke", action="store_true", help="tiny local run: 3 images, quarter resolution, 2 conditions")
     # --mode p4 (v6): several models + ground-truth-free signals, image-major loop with a time budget
-    p.add_argument("--mode", choices=["pilot", "p4", "maag_train", "cost"], default="pilot")
+    p.add_argument("--mode", choices=["pilot", "p4", "maag_train", "cost", "relabel"], default="pilot")
+    p.add_argument("--ref-dir", default="", help="relabel: folder with <set>/summary.json, images.csv, props_<tag>.csv.gz")
+    p.add_argument("--relabel-sets", default="acdc", help="relabel: comma-separated sub-folders of --ref-dir")
     p.add_argument("--cost-frames", type=int, default=20)
     p.add_argument("--conditions", default=V6_CONDITIONS, help="p4: comma-separated name-severity list")
     p.add_argument("--depth-model", default="depth-anything/Depth-Anything-V2-Small-hf", help="p4: '' disables")
@@ -631,6 +645,8 @@ def main(argv=None) -> dict:
         return run_maag_train(args)
     if args.mode == "cost":
         return run_cost(args)
+    if args.mode == "relabel":
+        return run_relabel(args)
     os.makedirs(args.out, exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     log(f"python {platform.python_version()} torch {torch.__version__} device {device}"
@@ -2184,6 +2200,179 @@ def run_p4(args) -> dict:
     summ = write_outputs(True, n_done, (time.time() - t_loop) / max(1, n_done))
     log(f"[p4] done: {n_done} images in {(time.time() - t_start) / 60:.0f} min")
     return summ
+
+
+def _box_sums(ii: torch.Tensor, boxes: torch.Tensor) -> torch.Tensor:
+    """Sums over half-open boxes (x0, y0, x1, y1) from a zero-padded integral image ii (... x H+1 x W+1)."""
+    x0, y0, x1, y1 = boxes[:, 0], boxes[:, 1], boxes[:, 2], boxes[:, 3]
+    return ii[..., y1, x1] - ii[..., y0, x1] - ii[..., y1, x0] + ii[..., y0, x0]
+
+
+def _integral(m: torch.Tensor) -> torch.Tensor:
+    return F.pad(m.double().cumsum(-2).cumsum(-1), (1, 0, 1, 0))
+
+
+def run_relabel(args) -> dict:
+    """Re-label pass for the review of 2026-11-22. Segmenters only (no detector): temperatures, image list and the
+    detector boxes come from a reference p4 run (--ref-dir/<set>). Per model and image it writes
+    (1) the object records with the joint criterion (pixels both predicted as stuff and confident, see object_records),
+    (2) the maximum softmax probability (MSP, mean / max) inside each stored detector box, a re-computed match of the
+        box to the true instances (sanity check against the stored gt_instance_id / gt_cover), and
+    (3) for datasets with true instances (ACDC, WildDash2): objects and box matches under connected-component units,
+        i.e. the object definition used for BDD100K (semantic_to_instances)."""
+    import pandas as pd
+
+    t_start = time.time()
+    deadline = t_start + args.max_minutes * 60
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    ref_root = args.ref_dir
+    log(f"[relabel] device {device}; ref {ref_root}; sets {args.relabel_sets}")
+    report = {}
+    for ds in [s for s in args.relabel_sets.split(",") if s]:
+        rd = os.path.join(ref_root, ds)
+        if not os.path.exists(os.path.join(rd, "summary.json")):
+            # Kaggle unpacks uploaded archives (also .csv.gz -> .csv) and flattens single-folder datasets: find the
+            # reference by the dataset named in its summary.json
+            hits = []
+            for p_ in glob.glob(os.path.join(ref_root or "/kaggle/input", "**", "summary.json"), recursive=True):
+                dd = os.path.dirname(p_)
+                if not glob.glob(os.path.join(dd, "props_*.csv*")):
+                    continue
+                try:
+                    with open(p_, encoding="utf-8") as f:
+                        if json.load(f)["settings"]["dataset"] == ds:
+                            hits.append(dd)
+                except Exception:  # noqa: BLE001
+                    continue
+            if not hits:
+                log(f"[relabel] {ds}: reference not found, skipped; summary files: "
+                    f"{glob.glob(os.path.join(ref_root or '/kaggle/input', '**', 'summary.json'), recursive=True)[:10]}")
+                continue
+            rd = hits[0]
+        log(f"[relabel] {ds}: reference {rd}")
+        with open(os.path.join(rd, "summary.json"), encoding="utf-8") as f:
+            ref = json.load(f)
+        st_ = ref["settings"]
+        temps = {t: v["temperature"] for t, v in ref["models"].items()}
+        keys = pd.read_csv(os.path.join(rd, "images.csv"))
+        keyset = set(zip(keys.stem.astype(str), keys.condition))
+        groups = {}
+        for tag in temps:
+            pf = os.path.join(rd, f"props_{tag}.csv.gz")
+            if not os.path.exists(pf):
+                pf = pf[:-3]
+            if os.path.exists(pf):
+                d = pd.read_csv(pf)
+                d["stem"] = d.stem.astype(str)
+                groups[tag] = {k: g[["row", "box_x0", "box_y0", "box_x1", "box_y1"]].to_numpy()
+                               for k, g in d.groupby(["stem", "condition"])}
+        dset = st_["dataset"]
+        if dset == "acdc":
+            items = list_acdc(find_acdc_root(args.acdc_root), tuple(st_["acdc_splits"].split(",")), st_["acdc_ref"])
+        elif dset == "bdd":
+            items = list_bdd(find_bdd_root(args.bdd_root), tuple(st_["bdd_splits"].split(",")))
+        elif dset == "wilddash":
+            items = list_wd(find_wd_root(args.wd_root))
+        else:
+            raise SystemExit(f"relabel: unsupported dataset {dset}")
+        items = [items[i] for i in np.random.default_rng(st_["seed"]).permutation(len(items))]
+        items = [it for it in items if (str(it["stem"]), it["cond"]) in keyset]
+        if args.max_images:
+            items = items[: args.max_images]
+        seg = [Segmenter(n, device) for n in st_["models"].split(",") if n]
+        seg = [m for m in seg if m.tag in temps]
+        s = st_["scale"]
+        min_area = max(1, int(round(st_["min_area"] * s ** 2)))
+        out_dir = os.path.join(args.out, ds)
+        os.makedirs(out_dir, exist_ok=True)
+        with_cc = dset in ("acdc", "wilddash")
+        res = {m.tag: {"obj": [], "props": [], "cc": []} for m in seg}
+        log(f"[relabel] {ds}: {len(items)} images (ref {len(keyset)}), models {[m.tag for m in seg]}, scale {s}, cc {with_cc}")
+
+        def flush(final: bool, n_done: int):
+            for tag, R in res.items():
+                pd.DataFrame(R["obj"]).to_csv(os.path.join(out_dir, f"objects_rl_{tag}.csv"), index=False)
+                pd.DataFrame(R["props"]).to_csv(os.path.join(out_dir, f"props_rl_{tag}.csv"), index=False)
+                if with_cc:
+                    pd.DataFrame(R["cc"]).to_csv(os.path.join(out_dir, f"objects_cc_{tag}.csv"), index=False)
+            info = {"status": "done" if final else "running", "n_done": n_done, "n_items": len(items),
+                    "elapsed_min": round((time.time() - t_start) / 60, 1), "temperatures": temps, "min_area": min_area}
+            with open(os.path.join(out_dir, "summary_rl.json"), "w", encoding="utf-8") as f:
+                json.dump(info, f, indent=2)
+            return info
+
+        n_done, t_loop = 0, time.time()
+        for k, item in enumerate(items):
+            if n_done and time.time() + 1.3 * (time.time() - t_loop) / n_done > deadline:
+                log(f"[relabel] {ds}: stopping at {k} (time budget)")
+                break
+            loader = {"acdc": load_acdc, "bdd": load_bdd, "wilddash": load_wd}[dset]
+            x, inst, _ = loader(item, s)
+            stem, cond = str(item["stem"]), item["cond"]
+            labels = labels_from_instances(inst)
+            objs = instance_objects(inst, min_area)
+            cc_objs = instance_objects(semantic_to_instances(labels), min_area) if with_cc else []
+            x = x.to(device)
+            H2, W2 = labels[::2, ::2].shape
+            # half-res masks (same downsampling as the proposal matching of p4) and their integral images
+            def mask_ii(ob):
+                if not ob:
+                    return None, None
+                G = torch.stack([downsample_mask(torch.from_numpy(mk).to(device)) for _, _, mk in ob]).float()
+                return _integral(G), G.sum((1, 2))
+            ii_inst, a_inst = mask_ii(objs)
+            ii_cc, a_cc = mask_ii(cc_objs)
+            for m in seg:
+                T = temps[m.tag]
+                logits, _ = m(x, want_feat=False)
+                probs = torch.softmax(logits[0] / T, dim=0)
+                del logits
+                conf_t, pred_t = probs.max(dim=0)
+                ent_t = -(probs * probs.clamp_min(1e-12).log()).sum(dim=0) / np.log(N_CLASSES)
+                del probs
+                pred, conf, ent = pred_t.cpu().numpy(), conf_t.cpu().numpy(), ent_t.cpu().numpy()
+                keep = ("instance_id", "class", "area", "frac_true", "omitted", "frac_conf_err", "confident_omission",
+                        "predicted_as", "frac_stuff", "frac_conf_stuff", "top_stuff", "frac_conf_top_stuff", "maj_share",
+                        "maj_tie", "frac_conf_thing_err", "mean_conf")
+                for rw in object_records(pred, conf, ent, labels, objs, st_["conf_thr"], st_["omit_frac"]):
+                    res[m.tag]["obj"].append({**{kk: rw[kk] for kk in keep}, "stem": stem, "condition": cond, "model": m.tag})
+                if with_cc:
+                    for rw in object_records(pred, conf, ent, labels, cc_objs, st_["conf_thr"], st_["omit_frac"]):
+                        res[m.tag]["cc"].append({**{kk: rw[kk] for kk in keep}, "stem": stem, "condition": cond, "model": m.tag})
+                g = groups.get(m.tag, {}).get((stem, cond))
+                if g is not None and len(g):
+                    conf_h = F.avg_pool2d(conf_t[None, None], 2)[0, 0][:H2, :W2]
+                    bx = torch.from_numpy(g[:, 1:5].astype(np.int64)).to(device)
+                    bx[:, [0, 2]] = bx[:, [0, 2]].clamp(0, W2)
+                    bx[:, [1, 3]] = bx[:, [1, 3]].clamp(0, H2)
+                    barea = ((bx[:, 2] - bx[:, 0]) * (bx[:, 3] - bx[:, 1])).clamp_min(1).double()
+                    msp_mean = (_box_sums(_integral(conf_h), bx) / barea).cpu().numpy()
+                    msp_max = [float(conf_h[b[1]:b[3], b[0]:b[2]].max()) if (b[3] > b[1] and b[2] > b[0]) else float("nan")
+                               for b in bx.tolist()]
+                    out = {"row": g[:, 0], "p_msp_mean": msp_mean, "p_msp_max": np.array(msp_max)}
+                    for nm, ii, ga in (("chk", ii_inst, a_inst), ("cc", ii_cc, a_cc)):
+                        if ii is None:
+                            continue
+                        inter = _box_sums(ii, bx).T                       # boxes x objects
+                        cover = inter / ga[None].double().clamp_min(1)
+                        best = cover.argmax(1)
+                        bc = cover.gather(1, best[:, None])[:, 0]
+                        bi = inter.gather(1, best[:, None])[:, 0]
+                        biou = bi / (barea + ga.double()[best] - bi)
+                        ids = np.array([(objs if nm == "chk" else cc_objs)[j][0] for j in best.cpu().numpy()])
+                        out.update({f"{nm}_id": ids, f"{nm}_cover": bc.cpu().numpy(), f"{nm}_iou": biou.cpu().numpy()})
+                    res[m.tag]["props"].extend(pd.DataFrame(out).to_dict("records"))
+                del conf_t, pred_t, ent_t
+            n_done += 1
+            if n_done == 1 or n_done % args.save_every == 0:
+                log(f"[relabel] {ds}: {n_done}/{len(items)} images, {(time.time() - t_loop) / n_done:.2f} s/image")
+                flush(False, n_done)
+        report[ds] = flush(True, n_done)
+        log(f"[relabel] {ds} done: {n_done} images")
+        del seg
+        if device == "cuda":
+            torch.cuda.empty_cache()
+    return report
 
 
 # Kaggle scripts get no command-line arguments: the arguments for a Kaggle run are set here.

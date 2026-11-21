@@ -89,8 +89,8 @@ def main():
                 a.set_xlim(x0, x1)
                 a.set_ylim(y1, y0)
         label = {"segformer-b5": "SegFormer-B5", "mask2former-swin-small": "Mask2Former-S"}[r.model]
-        ax_img.set_title(f"{r.condition}, {label}: found {int(r.n_found)}/{int(r.n)}, false alarms {int(r.n_fa)}", fontsize=8)
-        ax_pred.set_title("segmenter prediction", fontsize=8)
+        ax_img.set_title(f"{r.condition}, {label}: found {int(r.n_found)}/{int(r.n)}, false alarms {int(r.n_fa)}", fontsize=7.5)
+        ax_pred.set_title("segmenter prediction", fontsize=7.5)
         for a in (ax_img, ax_pred):
             a.axis("off")
 
@@ -108,7 +108,7 @@ def main():
 
     for kind_set, name, crop in ((["success"], "fig_e9_success", True), (["missed", "false alarms"], "fig_e9_failures", False)):
         S = sel[sel.kind.isin(kind_set)]
-        fig, axes = plt.subplots(len(S), 2, figsize=(7.2, 2.25 * len(S)))
+        fig, axes = plt.subplots(len(S), 2, figsize=(5.4, 1.78 * len(S)))  # text width: no LaTeX scaling
         for row, (_, r) in zip(np.atleast_2d(axes), S.iterrows()):
             img, inst, pred = render(r)
             draw(row[0], row[1], r, img, inst, pred, crop_box(r, inst, inst.shape) if crop else None)

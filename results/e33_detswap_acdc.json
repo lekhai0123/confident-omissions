@@ -1,0 +1,287 @@
+{
+ "targets": {
+  "rtdetr": 470,
+  "frcnn": 470
+ },
+ "proposals_per_unit": {
+  "rtdetr": 55.2,
+  "frcnn": 30.8
+ },
+ "coverage": {
+  "rtdetr": 0.866,
+  "frcnn": 0.7787
+ },
+ "rtdetr_table": {
+  "Entropy (pixel uncertainty)": {
+   "R@0.5": 0.002127659574468085,
+   "R@1.0": 0.006382978723404255,
+   "R@2.0": 0.05319148936170213,
+   "FROC[0,2]": 0.014148936170212767,
+   "variant": "-max"
+  },
+  "Margin / MSP (pixel uncertainty)": {
+   "R@0.5": 0.023404255319148935,
+   "R@1.0": 0.03404255319148936,
+   "R@2.0": 0.05531914893617021,
+   "FROC[0,2]": 0.033191489361702124,
+   "variant": "+max"
+  },
+  "Energy (Liu et al. 2020)": {
+   "R@0.5": 0.031914893617021274,
+   "R@1.0": 0.06382978723404255,
+   "R@2.0": 0.1127659574468085,
+   "FROC[0,2]": 0.06170212765957446,
+   "variant": "+max"
+  },
+  "RbA score (Nayal et al. 2023)": {
+   "R@0.5": 0.04042553191489362,
+   "R@1.0": 0.07659574468085106,
+   "R@2.0": 0.12127659574468085,
+   "FROC[0,2]": 0.07553191489361702,
+   "variant": "+max"
+  },
+  "Mahalanobis, predicted class (Lee et al. 2018)": {
+   "R@0.5": 0.01702127659574468,
+   "R@1.0": 0.03829787234042553,
+   "R@2.0": 0.05319148936170213,
+   "FROC[0,2]": 0.03382978723404255,
+   "variant": "+mean"
+  },
+  "Mahalanobis, min over classes": {
+   "R@0.5": 0.019148936170212766,
+   "R@1.0": 0.03829787234042553,
+   "R@2.0": 0.0574468085106383,
+   "FROC[0,2]": 0.035531914893617025,
+   "variant": "+mean"
+  },
+  "Ensemble disagreement (cross-model JS)": {
+   "R@0.5": 0.12127659574468085,
+   "R@1.0": 0.1829787234042553,
+   "R@2.0": 0.2404255319148936,
+   "FROC[0,2]": 0.16691489361702128,
+   "variant": "+mean"
+  },
+  "Maag & Rottmann fg/bg on shared proposals": {
+   "R@0.5": 0.1,
+   "R@1.0": 0.1574468085106383,
+   "R@2.0": 0.20425531914893616,
+   "FROC[0,2]": 0.1382978723404255,
+   "variant": "+mean"
+  },
+  "Detector confidence alone": {
+   "R@0.5": 0.027659574468085105,
+   "R@1.0": 0.04468085106382979,
+   "R@2.0": 0.10851063829787234,
+   "FROC[0,2]": 0.049148936170212765
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "R@0.5": 0.4021276595744681,
+   "R@1.0": 0.502127659574468,
+   "R@2.0": 0.5765957446808511,
+   "FROC[0,2]": 0.480531914893617
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "R@0.5": 0.23829787234042554,
+   "R@1.0": 0.4127659574468085,
+   "R@2.0": 0.6212765957446809,
+   "FROC[0,2]": 0.3910638297872341
+  },
+  "Ours (CO verifier, single model)": {
+   "R@0.5": 0.425531914893617,
+   "R@1.0": 0.5893617021276596,
+   "R@2.0": 0.7170212765957447,
+   "FROC[0,2]": 0.5478723404255319
+  }
+ },
+ "rtdetr_paired": {
+  "vs": "Rule: detector x segmenter-stuff x (1-entropy)",
+  "diff": 0.0872,
+  "ci95": [
+   0.041,
+   0.1333
+  ],
+  "p_one_sided": 0.0
+ },
+ "frcnn_table": {
+  "Entropy (pixel uncertainty)": {
+   "R@0.5": 0.07659574468085106,
+   "R@1.0": 0.27872340425531916,
+   "R@2.0": 0.43617021276595747,
+   "FROC[0,2]": 0.24574468085106385,
+   "variant": "-max"
+  },
+  "Margin / MSP (pixel uncertainty)": {
+   "R@0.5": 0.06808510638297872,
+   "R@1.0": 0.30638297872340425,
+   "R@2.0": 0.4276595744680851,
+   "FROC[0,2]": 0.2526595744680851,
+   "variant": "-max"
+  },
+  "Energy (Liu et al. 2020)": {
+   "R@0.5": 0.04468085106382979,
+   "R@1.0": 0.09361702127659574,
+   "R@2.0": 0.15106382978723404,
+   "FROC[0,2]": 0.08776595744680851,
+   "variant": "+max"
+  },
+  "RbA score (Nayal et al. 2023)": {
+   "R@0.5": 0.06595744680851064,
+   "R@1.0": 0.1,
+   "R@2.0": 0.15106382978723404,
+   "FROC[0,2]": 0.0979787234042553,
+   "variant": "+max"
+  },
+  "Mahalanobis, predicted class (Lee et al. 2018)": {
+   "R@0.5": 0.029787234042553193,
+   "R@1.0": 0.0574468085106383,
+   "R@2.0": 0.08297872340425531,
+   "FROC[0,2]": 0.05170212765957447,
+   "variant": "+mean"
+  },
+  "Mahalanobis, min over classes": {
+   "R@0.5": 0.029787234042553193,
+   "R@1.0": 0.059574468085106386,
+   "R@2.0": 0.08936170212765958,
+   "FROC[0,2]": 0.05446808510638297,
+   "variant": "+mean"
+  },
+  "Ensemble disagreement (cross-model JS)": {
+   "R@0.5": 0.14893617021276595,
+   "R@1.0": 0.2148936170212766,
+   "R@2.0": 0.2765957446808511,
+   "FROC[0,2]": 0.2008510638297872,
+   "variant": "+mean"
+  },
+  "Detector confidence alone": {
+   "R@0.5": 0.03404255319148936,
+   "R@1.0": 0.06170212765957447,
+   "R@2.0": 0.1425531914893617,
+   "FROC[0,2]": 0.06617021276595744
+  },
+  "Rule: detector x segmenter-stuff x (1-entropy)": {
+   "R@0.5": 0.5,
+   "R@1.0": 0.5468085106382978,
+   "R@2.0": 0.5957446808510638,
+   "FROC[0,2]": 0.5328723404255319
+  },
+  "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)": {
+   "R@0.5": 0.4127659574468085,
+   "R@1.0": 0.6,
+   "R@2.0": 0.7148936170212766,
+   "FROC[0,2]": 0.5352127659574468
+  },
+  "Ours (CO verifier, single model)": {
+   "R@0.5": 0.5297872340425532,
+   "R@1.0": 0.6531914893617021,
+   "R@2.0": 0.7446808510638298,
+   "FROC[0,2]": 0.6170212765957446
+  },
+  "Ours, frozen (trained with RT-DETR proposals)": {
+   "R@0.5": 0.5148936170212766,
+   "R@1.0": 0.6404255319148936,
+   "R@2.0": 0.7382978723404255,
+   "FROC[0,2]": 0.587659574468085
+  },
+  "MetaSeg-style, frozen": {
+   "R@0.5": 0.3617021276595745,
+   "R@1.0": 0.5617021276595745,
+   "R@2.0": 0.7382978723404255,
+   "FROC[0,2]": 0.5236170212765956
+  }
+ },
+ "frcnn_paired_retrained": {
+  "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+  "diff": 0.0532,
+  "ci95": [
+   0.0151,
+   0.0934
+  ],
+  "p_one_sided": 0.0025
+ },
+ "frcnn_paired_frozen": {
+  "vs": "MetaSeg-style meta-classifier (uncertainty + geometry, GBM)",
+  "diff": 0.0404,
+  "ci95": [
+   0.0021,
+   0.0813
+  ],
+  "p_one_sided": 0.024
+ },
+ "frozen_vs_retrained": {
+  "frozen_minus_retrained": -0.0128,
+  "ci95": [
+   -0.0415,
+   0.0169
+  ]
+ },
+ "count_match": {
+  "frozen": {
+   "cm@0.5": {
+    "recall": 0.4851,
+    "fa_strict": 0.457,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.6255,
+    "fa_strict": 0.937,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.734,
+    "fa_strict": 1.914,
+    "flags_per_unit": 2.0
+   }
+  },
+  "retrained": {
+   "cm@0.5": {
+    "recall": 0.5064,
+    "fa_strict": 0.444,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.6511,
+    "fa_strict": 0.923,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.7404,
+    "fa_strict": 1.907,
+    "flags_per_unit": 2.0
+   }
+  },
+  "rule": {
+   "cm@0.5": {
+    "recall": 0.4957,
+    "fa_strict": 0.466,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.5447,
+    "fa_strict": 0.96,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.5957,
+    "fa_strict": 1.952,
+    "flags_per_unit": 2.0
+   }
+  },
+  "metaseg_retrained": {
+   "cm@0.5": {
+    "recall": 0.4021,
+    "fa_strict": 0.463,
+    "flags_per_unit": 0.5
+   },
+   "cm@1.0": {
+    "recall": 0.5894,
+    "fa_strict": 0.936,
+    "flags_per_unit": 1.0
+   },
+   "cm@2.0": {
+    "recall": 0.7106,
+    "fa_strict": 1.913,
+    "flags_per_unit": 2.0
+   }
+  }
+ }
+}

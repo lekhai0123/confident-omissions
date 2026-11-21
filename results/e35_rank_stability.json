@@ -1,0 +1,1413 @@
+{
+ "15": {
+  "models": [
+   "deeplabv3plus-r101",
+   "deeplabv3plus-r18",
+   "mask2former-swin-large",
+   "mask2former-swin-small",
+   "mask2former-swin-tiny",
+   "maskformer-resnet101",
+   "segformer-b0",
+   "segformer-b0-512-1024",
+   "segformer-b0-640-1280",
+   "segformer-b0-768-768",
+   "segformer-b1",
+   "segformer-b2",
+   "segformer-b3",
+   "segformer-b4",
+   "segformer-b5"
+  ],
+  "pairs": {
+   "fog~fog-3": {
+    "rho_miou": 0.889,
+    "rho_conf": 0.7,
+    "rho_omitted": 0.854,
+    "delta_miou_minus_conf": 0.189,
+    "delta_miou_ci95_pct": [
+     0.086,
+     0.707
+    ],
+    "delta_miou_ci95": [
+     -0.045,
+     0.314
+    ],
+    "delta_omitted_minus_conf": 0.154,
+    "delta_omitted_ci95_pct": [
+     0.029,
+     0.646
+    ],
+    "delta_omitted_ci95": [
+     -0.146,
+     0.323
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.583,
+     0.989
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.296,
+     0.881
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.918,
+      "rho_conf": 0.676
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.9,
+      "rho_conf": 0.409
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.943,
+      "rho_conf": -0.086
+     }
+    },
+    "targets_min_per_cell": 3,
+    "targets_median_per_cell": [
+     13,
+     38
+    ],
+    "noise_ceiling_conf": 0.718
+   },
+   "fog~fog-5": {
+    "rho_miou": 0.907,
+    "rho_conf": 0.682,
+    "rho_omitted": 0.929,
+    "delta_miou_minus_conf": 0.225,
+    "delta_miou_ci95_pct": [
+     0.075,
+     0.668
+    ],
+    "delta_miou_ci95": [
+     0.012,
+     0.436
+    ],
+    "delta_omitted_minus_conf": 0.246,
+    "delta_omitted_ci95_pct": [
+     0.056,
+     0.643
+    ],
+    "delta_omitted_ci95": [
+     -0.012,
+     0.518
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.679,
+     0.986
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.194,
+     0.932
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.945,
+      "rho_conf": 0.643
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.955,
+      "rho_conf": 0.5
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.6,
+      "rho_conf": 0.2
+     }
+    },
+    "targets_min_per_cell": 3,
+    "targets_median_per_cell": [
+     13,
+     50
+    ],
+    "noise_ceiling_conf": 0.741
+   },
+   "night~dark-3": {
+    "rho_miou": 0.929,
+    "rho_conf": 0.032,
+    "rho_omitted": 0.839,
+    "delta_miou_minus_conf": 0.896,
+    "delta_miou_ci95_pct": [
+     0.728,
+     1.029
+    ],
+    "delta_miou_ci95": [
+     0.768,
+     1.073
+    ],
+    "delta_omitted_minus_conf": 0.807,
+    "delta_omitted_ci95_pct": [
+     0.642,
+     0.939
+    ],
+    "delta_omitted_ci95": [
+     0.675,
+     0.986
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.701,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.521,
+     0.493
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.978,
+      "rho_conf": 0.055
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.882,
+      "rho_conf": 0.391
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.829,
+      "rho_conf": -0.486
+     }
+    },
+    "targets_min_per_cell": 8,
+    "targets_median_per_cell": [
+     40,
+     91
+    ],
+    "noise_ceiling_conf": 0.944
+   },
+   "night~dark-5": {
+    "rho_miou": 0.882,
+    "rho_conf": 0.018,
+    "rho_omitted": 0.739,
+    "delta_miou_minus_conf": 0.864,
+    "delta_miou_ci95_pct": [
+     0.704,
+     1.025
+    ],
+    "delta_miou_ci95": [
+     0.704,
+     1.025
+    ],
+    "delta_omitted_minus_conf": 0.721,
+    "delta_omitted_ci95_pct": [
+     0.553,
+     0.889
+    ],
+    "delta_omitted_ci95": [
+     0.555,
+     0.893
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.555,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.623,
+     0.563
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.989,
+      "rho_conf": -0.027
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.791,
+      "rho_conf": 0.255
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": -0.486
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     40,
+     150
+    ],
+    "noise_ceiling_conf": 0.951
+   },
+   "night~brightness-5": {
+    "rho_miou": 0.957,
+    "rho_conf": -0.371,
+    "rho_omitted": 0.829,
+    "delta_miou_minus_conf": 1.329,
+    "delta_miou_ci95_pct": [
+     1.007,
+     1.471
+    ],
+    "delta_miou_ci95": [
+     1.171,
+     1.576
+    ],
+    "delta_omitted_minus_conf": 1.2,
+    "delta_omitted_ci95_pct": [
+     0.875,
+     1.357
+    ],
+    "delta_omitted_ci95": [
+     1.029,
+     1.479
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.795,
+     0.996
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.847,
+     0.262
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.967,
+      "rho_conf": -0.335
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.918,
+      "rho_conf": -0.509
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": -0.771
+     }
+    },
+    "targets_min_per_cell": 8,
+    "targets_median_per_cell": [
+     40,
+     14
+    ],
+    "noise_ceiling_conf": 0.895
+   },
+   "rain~motion_blur-3": {
+    "rho_miou": 0.957,
+    "rho_conf": 0.132,
+    "rho_omitted": 0.682,
+    "delta_miou_minus_conf": 0.825,
+    "delta_miou_ci95_pct": [
+     0.516,
+     1.214
+    ],
+    "delta_miou_ci95": [
+     0.475,
+     1.142
+    ],
+    "delta_omitted_minus_conf": 0.55,
+    "delta_omitted_ci95_pct": [
+     0.268,
+     0.971
+    ],
+    "delta_omitted_ci95": [
+     0.167,
+     0.835
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.821,
+     0.989
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.49,
+     0.698
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.945,
+      "rho_conf": -0.187
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.945,
+      "rho_conf": 0.082
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": 0.886
+     }
+    },
+    "targets_min_per_cell": 2,
+    "targets_median_per_cell": [
+     5,
+     48
+    ],
+    "noise_ceiling_conf": 0.673
+   },
+   "rain~defocus_blur-3": {
+    "rho_miou": 0.918,
+    "rho_conf": 0.15,
+    "rho_omitted": 0.136,
+    "delta_miou_minus_conf": 0.768,
+    "delta_miou_ci95_pct": [
+     0.528,
+     1.254
+    ],
+    "delta_miou_ci95": [
+     0.406,
+     1.088
+    ],
+    "delta_omitted_minus_conf": -0.014,
+    "delta_omitted_ci95_pct": [
+     -0.32,
+     0.481
+    ],
+    "delta_omitted_ci95": [
+     -0.424,
+     0.343
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.705,
+     0.996
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.438,
+     0.716
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.89,
+      "rho_conf": -0.165
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.982,
+      "rho_conf": 0.091
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.943,
+      "rho_conf": 0.657
+     }
+    },
+    "targets_min_per_cell": 2,
+    "targets_median_per_cell": [
+     5,
+     29
+    ],
+    "noise_ceiling_conf": 0.689
+   },
+   "snow~gaussian_noise-3": {
+    "rho_miou": 0.811,
+    "rho_conf": -0.436,
+    "rho_omitted": 0.775,
+    "delta_miou_minus_conf": 1.246,
+    "delta_miou_ci95_pct": [
+     0.828,
+     1.372
+    ],
+    "delta_miou_ci95": [
+     1.093,
+     1.5
+    ],
+    "delta_omitted_minus_conf": 1.211,
+    "delta_omitted_ci95_pct": [
+     0.75,
+     1.336
+    ],
+    "delta_omitted_ci95": [
+     1.053,
+     1.456
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.474,
+     0.957
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.755,
+     0.092
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.868,
+      "rho_conf": -0.533
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.8,
+      "rho_conf": -0.3
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": 0.886
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     14,
+     176
+    ],
+    "noise_ceiling_conf": 0.822
+   },
+   "snow~shot_noise-3": {
+    "rho_miou": 0.821,
+    "rho_conf": -0.564,
+    "rho_omitted": 0.754,
+    "delta_miou_minus_conf": 1.386,
+    "delta_miou_ci95_pct": [
+     0.953,
+     1.489
+    ],
+    "delta_miou_ci95": [
+     1.25,
+     1.574
+    ],
+    "delta_omitted_minus_conf": 1.318,
+    "delta_omitted_ci95_pct": [
+     0.826,
+     1.414
+    ],
+    "delta_omitted_ci95": [
+     1.188,
+     1.556
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.468,
+     0.957
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.798,
+     -0.038
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.879,
+      "rho_conf": -0.61
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.8,
+      "rho_conf": -0.609
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": 0.943
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     14,
+     149
+    ],
+    "noise_ceiling_conf": 0.832
+   },
+   "snow~contrast-5": {
+    "rho_miou": 0.918,
+    "rho_conf": 0.629,
+    "rho_omitted": 0.179,
+    "delta_miou_minus_conf": 0.289,
+    "delta_miou_ci95_pct": [
+     0.128,
+     0.679
+    ],
+    "delta_miou_ci95": [
+     0.023,
+     0.461
+    ],
+    "delta_omitted_minus_conf": -0.45,
+    "delta_omitted_ci95_pct": [
+     -0.636,
+     -0.007
+    ],
+    "delta_omitted_ci95": [
+     -0.78,
+     -0.25
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.684,
+     0.989
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.152,
+     0.909
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 13,
+      "rho_miou": 0.89,
+      "rho_conf": 0.538
+     },
+     "without_maskformer": {
+      "n": 11,
+      "rho_miou": 0.909,
+      "rho_conf": 0.645
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": 0.714
+     }
+    },
+    "targets_min_per_cell": 5,
+    "targets_median_per_cell": [
+     14,
+     43
+    ],
+    "noise_ceiling_conf": 0.82
+   }
+  },
+  "within_domain_split_half": {
+   "brightness-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.769,
+    "split_half_rho_conf_5_95": [
+     0.663,
+     0.864
+    ],
+    "split_half_rho_omitted": 0.962,
+    "spearman_brown_conf": 0.869
+   },
+   "contrast-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.907,
+    "split_half_rho_conf_5_95": [
+     0.811,
+     0.961
+    ],
+    "split_half_rho_omitted": 0.965,
+    "spearman_brown_conf": 0.951
+   },
+   "dark-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.937,
+    "split_half_rho_conf_5_95": [
+     0.875,
+     0.982
+    ],
+    "split_half_rho_omitted": 0.991,
+    "spearman_brown_conf": 0.968
+   },
+   "dark-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.962,
+    "split_half_rho_conf_5_95": [
+     0.929,
+     0.987
+    ],
+    "split_half_rho_omitted": 0.98,
+    "spearman_brown_conf": 0.981
+   },
+   "defocus_blur-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.825,
+    "split_half_rho_conf_5_95": [
+     0.678,
+     0.932
+    ],
+    "split_half_rho_omitted": 0.918,
+    "spearman_brown_conf": 0.904
+   },
+   "fog": {
+    "n_frames": 329,
+    "split_half_rho_conf": 0.417,
+    "split_half_rho_conf_5_95": [
+     0.152,
+     0.654
+    ],
+    "split_half_rho_omitted": 0.933,
+    "spearman_brown_conf": 0.589
+   },
+   "fog-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.777,
+    "split_half_rho_conf_5_95": [
+     0.646,
+     0.893
+    ],
+    "split_half_rho_omitted": 0.974,
+    "spearman_brown_conf": 0.875
+   },
+   "fog-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.874,
+    "split_half_rho_conf_5_95": [
+     0.793,
+     0.946
+    ],
+    "split_half_rho_omitted": 0.952,
+    "spearman_brown_conf": 0.933
+   },
+   "gaussian_noise-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.916,
+    "split_half_rho_conf_5_95": [
+     0.861,
+     0.968
+    ],
+    "split_half_rho_omitted": 0.989,
+    "spearman_brown_conf": 0.956
+   },
+   "motion_blur-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.759,
+    "split_half_rho_conf_5_95": [
+     0.604,
+     0.886
+    ],
+    "split_half_rho_omitted": 0.96,
+    "spearman_brown_conf": 0.863
+   },
+   "night": {
+    "n_frames": 338,
+    "split_half_rho_conf": 0.854,
+    "split_half_rho_conf_5_95": [
+     0.764,
+     0.918
+    ],
+    "split_half_rho_omitted": 0.988,
+    "spearman_brown_conf": 0.921
+   },
+   "rain": {
+    "n_frames": 345,
+    "split_half_rho_conf": 0.356,
+    "split_half_rho_conf_5_95": [
+     0.039,
+     0.604
+    ],
+    "split_half_rho_omitted": 0.945,
+    "spearman_brown_conf": 0.525
+   },
+   "shot_noise-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.958,
+    "split_half_rho_conf_5_95": [
+     0.921,
+     0.982
+    ],
+    "split_half_rho_omitted": 0.972,
+    "spearman_brown_conf": 0.978
+   },
+   "snow": {
+    "n_frames": 364,
+    "split_half_rho_conf": 0.547,
+    "split_half_rho_conf_5_95": [
+     0.242,
+     0.771
+    ],
+    "split_half_rho_omitted": 0.936,
+    "spearman_brown_conf": 0.707
+   }
+  },
+  "summary": {
+   "delta_miou_ci_excludes_0": 9,
+   "delta_omitted_ci_excludes_0": 6
+  }
+ },
+ "12": {
+  "models": [
+   "deeplabv3plus-r101",
+   "deeplabv3plus-r18",
+   "mask2former-swin-large",
+   "mask2former-swin-small",
+   "mask2former-swin-tiny",
+   "maskformer-resnet101",
+   "segformer-b0",
+   "segformer-b1",
+   "segformer-b2",
+   "segformer-b3",
+   "segformer-b4",
+   "segformer-b5"
+  ],
+  "pairs": {
+   "fog~fog-3": {
+    "rho_miou": 0.783,
+    "rho_conf": 0.762,
+    "rho_omitted": 0.776,
+    "delta_miou_minus_conf": 0.021,
+    "delta_miou_ci95_pct": [
+     -0.049,
+     0.608
+    ],
+    "delta_miou_ci95": [
+     -0.126,
+     0.105
+    ],
+    "delta_omitted_minus_conf": 0.014,
+    "delta_omitted_ci95_pct": [
+     -0.126,
+     0.566
+    ],
+    "delta_omitted_ci95": [
+     -0.263,
+     0.182
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.287,
+     0.971
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.406,
+     0.942
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.818,
+      "rho_conf": 0.782
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.738,
+      "rho_conf": 0.619
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.943,
+      "rho_conf": -0.086
+     }
+    },
+    "targets_min_per_cell": 3,
+    "targets_median_per_cell": [
+     12,
+     45
+    ],
+    "noise_ceiling_conf": 0.731
+   },
+   "fog~fog-5": {
+    "rho_miou": 0.832,
+    "rho_conf": 0.734,
+    "rho_omitted": 0.895,
+    "delta_miou_minus_conf": 0.098,
+    "delta_miou_ci95_pct": [
+     -0.021,
+     0.545
+    ],
+    "delta_miou_ci95": [
+     -0.096,
+     0.259
+    ],
+    "delta_omitted_minus_conf": 0.161,
+    "delta_omitted_ci95_pct": [
+     -0.056,
+     0.566
+    ],
+    "delta_omitted_ci95": [
+     -0.13,
+     0.448
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.463,
+     0.971
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.221,
+     0.978
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.891,
+      "rho_conf": 0.685
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.929,
+      "rho_conf": 0.738
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.6,
+      "rho_conf": 0.2
+     }
+    },
+    "targets_min_per_cell": 3,
+    "targets_median_per_cell": [
+     12,
+     57
+    ],
+    "noise_ceiling_conf": 0.727
+   },
+   "night~dark-3": {
+    "rho_miou": 0.909,
+    "rho_conf": -0.287,
+    "rho_omitted": 0.811,
+    "delta_miou_minus_conf": 1.196,
+    "delta_miou_ci95_pct": [
+     0.909,
+     1.315
+    ],
+    "delta_miou_ci95": [
+     1.056,
+     1.42
+    ],
+    "delta_omitted_minus_conf": 1.098,
+    "delta_omitted_ci95_pct": [
+     0.825,
+     1.245
+    ],
+    "delta_omitted_ci95": [
+     0.916,
+     1.308
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.608,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.8,
+     0.419
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.964,
+      "rho_conf": -0.309
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.833,
+      "rho_conf": 0.048
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.829,
+      "rho_conf": -0.486
+     }
+    },
+    "targets_min_per_cell": 8,
+    "targets_median_per_cell": [
+     24,
+     75
+    ],
+    "noise_ceiling_conf": 0.909
+   },
+   "night~dark-5": {
+    "rho_miou": 0.916,
+    "rho_conf": -0.028,
+    "rho_omitted": 0.685,
+    "delta_miou_minus_conf": 0.944,
+    "delta_miou_ci95_pct": [
+     0.797,
+     1.182
+    ],
+    "delta_miou_ci95": [
+     0.727,
+     1.084
+    ],
+    "delta_omitted_minus_conf": 0.713,
+    "delta_omitted_ci95_pct": [
+     0.559,
+     0.979
+    ],
+    "delta_omitted_ci95": [
+     0.489,
+     0.853
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.614,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.628,
+     0.627
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.988,
+      "rho_conf": -0.006
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.857,
+      "rho_conf": 0.333
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": -0.486
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     24,
+     118
+    ],
+    "noise_ceiling_conf": 0.924
+   },
+   "night~brightness-5": {
+    "rho_miou": 0.958,
+    "rho_conf": -0.329,
+    "rho_omitted": 0.874,
+    "delta_miou_minus_conf": 1.287,
+    "delta_miou_ci95_pct": [
+     0.888,
+     1.413
+    ],
+    "delta_miou_ci95": [
+     1.147,
+     1.494
+    ],
+    "delta_omitted_minus_conf": 1.203,
+    "delta_omitted_ci95_pct": [
+     0.792,
+     1.336
+    ],
+    "delta_omitted_ci95": [
+     1.07,
+     1.458
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.802,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.789,
+     0.459
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.964,
+      "rho_conf": -0.248
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.929,
+      "rho_conf": -0.452
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": -0.771
+     }
+    },
+    "targets_min_per_cell": 8,
+    "targets_median_per_cell": [
+     24,
+     24
+    ],
+    "noise_ceiling_conf": 0.893
+   },
+   "rain~motion_blur-3": {
+    "rho_miou": 0.93,
+    "rho_conf": 0.413,
+    "rho_omitted": 0.706,
+    "delta_miou_minus_conf": 0.517,
+    "delta_miou_ci95_pct": [
+     0.322,
+     1.126
+    ],
+    "delta_miou_ci95": [
+     0.137,
+     0.768
+    ],
+    "delta_omitted_minus_conf": 0.294,
+    "delta_omitted_ci95_pct": [
+     0.102,
+     0.942
+    ],
+    "delta_omitted_ci95": [
+     -0.09,
+     0.506
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.671,
+     0.993
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.309,
+     0.853
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.891,
+      "rho_conf": 0.115
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.905,
+      "rho_conf": 0.333
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": 0.886
+     }
+    },
+    "targets_min_per_cell": 2,
+    "targets_median_per_cell": [
+     5,
+     53
+    ],
+    "noise_ceiling_conf": 0.635
+   },
+   "rain~defocus_blur-3": {
+    "rho_miou": 0.846,
+    "rho_conf": 0.364,
+    "rho_omitted": 0.0,
+    "delta_miou_minus_conf": 0.483,
+    "delta_miou_ci95_pct": [
+     0.224,
+     1.063
+    ],
+    "delta_miou_ci95": [
+     0.075,
+     0.776
+    ],
+    "delta_omitted_minus_conf": -0.364,
+    "delta_omitted_ci95_pct": [
+     -0.608,
+     0.294
+    ],
+    "delta_omitted_ci95": [
+     -0.889,
+     -0.102
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.495,
+     0.993
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.329,
+     0.816
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.77,
+      "rho_conf": 0.018
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.976,
+      "rho_conf": 0.429
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.943,
+      "rho_conf": 0.657
+     }
+    },
+    "targets_min_per_cell": 2,
+    "targets_median_per_cell": [
+     5,
+     24
+    ],
+    "noise_ceiling_conf": 0.661
+   },
+   "snow~gaussian_noise-3": {
+    "rho_miou": 0.846,
+    "rho_conf": -0.259,
+    "rho_omitted": 0.657,
+    "delta_miou_minus_conf": 1.105,
+    "delta_miou_ci95_pct": [
+     0.734,
+     1.35
+    ],
+    "delta_miou_ci95": [
+     0.79,
+     1.374
+    ],
+    "delta_omitted_minus_conf": 0.916,
+    "delta_omitted_ci95_pct": [
+     0.468,
+     1.203
+    ],
+    "delta_omitted_ci95": [
+     0.6,
+     1.262
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.483,
+     0.972
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.717,
+     0.464
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.83,
+      "rho_conf": -0.43
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.857,
+      "rho_conf": -0.048
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": 0.886
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     14,
+     163
+    ],
+    "noise_ceiling_conf": 0.843
+   },
+   "snow~shot_noise-3": {
+    "rho_miou": 0.846,
+    "rho_conf": -0.552,
+    "rho_omitted": 0.664,
+    "delta_miou_minus_conf": 1.399,
+    "delta_miou_ci95_pct": [
+     0.958,
+     1.538
+    ],
+    "delta_miou_ci95": [
+     1.203,
+     1.621
+    ],
+    "delta_omitted_minus_conf": 1.217,
+    "delta_omitted_ci95_pct": [
+     0.685,
+     1.386
+    ],
+    "delta_omitted_ci95": [
+     0.993,
+     1.527
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.493,
+     0.978
+    ],
+    "model_boot_rho_conf_ci95": [
+     -0.827,
+     0.107
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.83,
+      "rho_conf": -0.636
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.857,
+      "rho_conf": -0.714
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 0.771,
+      "rho_conf": 0.943
+     }
+    },
+    "targets_min_per_cell": 0,
+    "targets_median_per_cell": [
+     14,
+     147
+    ],
+    "noise_ceiling_conf": 0.859
+   },
+   "snow~contrast-5": {
+    "rho_miou": 0.923,
+    "rho_conf": 0.783,
+    "rho_omitted": 0.028,
+    "delta_miou_minus_conf": 0.14,
+    "delta_miou_ci95_pct": [
+     0.063,
+     0.524
+    ],
+    "delta_miou_ci95": [
+     0.014,
+     0.245
+    ],
+    "delta_omitted_minus_conf": -0.755,
+    "delta_omitted_ci95_pct": [
+     -0.881,
+     -0.294
+    ],
+    "delta_omitted_ci95": [
+     -1.02,
+     -0.594
+    ],
+    "model_boot_rho_miou_ci95": [
+     0.656,
+     1.0
+    ],
+    "model_boot_rho_conf_ci95": [
+     0.425,
+     0.955
+    ],
+    "lofo": {
+     "without_deeplab": {
+      "n": 10,
+      "rho_miou": 0.891,
+      "rho_conf": 0.721
+     },
+     "without_maskformer": {
+      "n": 8,
+      "rho_miou": 0.905,
+      "rho_conf": 0.833
+     },
+     "without_segformer": {
+      "n": 6,
+      "rho_miou": 1.0,
+      "rho_conf": 0.714
+     }
+    },
+    "targets_min_per_cell": 5,
+    "targets_median_per_cell": [
+     14,
+     40
+    ],
+    "noise_ceiling_conf": 0.853
+   }
+  },
+  "within_domain_split_half": {
+   "brightness-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.839,
+    "split_half_rho_conf_5_95": [
+     0.741,
+     0.937
+    ],
+    "split_half_rho_omitted": 0.951,
+    "spearman_brown_conf": 0.912
+   },
+   "contrast-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.918,
+    "split_half_rho_conf_5_95": [
+     0.839,
+     0.965
+    ],
+    "split_half_rho_omitted": 0.977,
+    "spearman_brown_conf": 0.957
+   },
+   "dark-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.895,
+    "split_half_rho_conf_5_95": [
+     0.783,
+     0.965
+    ],
+    "split_half_rho_omitted": 0.983,
+    "spearman_brown_conf": 0.945
+   },
+   "dark-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.952,
+    "split_half_rho_conf_5_95": [
+     0.923,
+     0.986
+    ],
+    "split_half_rho_omitted": 0.962,
+    "spearman_brown_conf": 0.976
+   },
+   "defocus_blur-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.84,
+    "split_half_rho_conf_5_95": [
+     0.699,
+     0.944
+    ],
+    "split_half_rho_omitted": 0.928,
+    "spearman_brown_conf": 0.913
+   },
+   "fog": {
+    "n_frames": 329,
+    "split_half_rho_conf": 0.411,
+    "split_half_rho_conf_5_95": [
+     0.133,
+     0.671
+    ],
+    "split_half_rho_omitted": 0.881,
+    "spearman_brown_conf": 0.582
+   },
+   "fog-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.847,
+    "split_half_rho_conf_5_95": [
+     0.748,
+     0.93
+    ],
+    "split_half_rho_omitted": 0.972,
+    "spearman_brown_conf": 0.917
+   },
+   "fog-5": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.832,
+    "split_half_rho_conf_5_95": [
+     0.72,
+     0.916
+    ],
+    "split_half_rho_omitted": 0.931,
+    "spearman_brown_conf": 0.908
+   },
+   "gaussian_noise-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.876,
+    "split_half_rho_conf_5_95": [
+     0.811,
+     0.958
+    ],
+    "split_half_rho_omitted": 0.985,
+    "spearman_brown_conf": 0.934
+   },
+   "motion_blur-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.729,
+    "split_half_rho_conf_5_95": [
+     0.543,
+     0.86
+    ],
+    "split_half_rho_omitted": 0.969,
+    "spearman_brown_conf": 0.843
+   },
+   "night": {
+    "n_frames": 338,
+    "split_half_rho_conf": 0.776,
+    "split_half_rho_conf_5_95": [
+     0.65,
+     0.888
+    ],
+    "split_half_rho_omitted": 0.99,
+    "spearman_brown_conf": 0.874
+   },
+   "rain": {
+    "n_frames": 345,
+    "split_half_rho_conf": 0.314,
+    "split_half_rho_conf_5_95": [
+     -0.021,
+     0.581
+    ],
+    "split_half_rho_omitted": 0.926,
+    "spearman_brown_conf": 0.478
+   },
+   "shot_noise-3": {
+    "n_frames": 317,
+    "split_half_rho_conf": 0.942,
+    "split_half_rho_conf_5_95": [
+     0.888,
+     0.979
+    ],
+    "split_half_rho_omitted": 0.956,
+    "spearman_brown_conf": 0.97
+   },
+   "snow": {
+    "n_frames": 364,
+    "split_half_rho_conf": 0.614,
+    "split_half_rho_conf_5_95": [
+     0.349,
+     0.846
+    ],
+    "split_half_rho_omitted": 0.881,
+    "spearman_brown_conf": 0.761
+   }
+  },
+  "summary": {
+   "delta_miou_ci_excludes_0": 8,
+   "delta_omitted_ci_excludes_0": 5
+  }
+ }
+}

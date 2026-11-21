@@ -63,29 +63,43 @@ def main():
     D = pd.DataFrame(rows)
     D.to_csv(out + ".csv", index=False)
 
-    plt.rcParams.update({"font.size": 8, "axes.edgecolor": "#8a8a85", "axes.linewidth": 0.6,
-                         "xtick.color": "#55554f", "ytick.color": "#55554f"})
-    fig, axes = plt.subplots(1, 4, figsize=(7.2, 2.25), sharey=True)
+    # drawn at the manuscript text width (390 pt = 5.4 in) so that LaTeX does not shrink the fonts
+    plt.rcParams.update({"font.size": 8.5, "axes.edgecolor": "#8a8a85", "axes.linewidth": 0.6,
+                         "xtick.color": "#55554f", "ytick.color": "#55554f", "xtick.labelsize": 8, "ytick.labelsize": 8})
+    YMAX = 20.0      # points above are shown at the top edge with their value (all are synthetic noise corruptions)
+    fig, axes2 = plt.subplots(2, 2, figsize=(5.4, 4.6), sharey=True)
+    axes = axes2.ravel()
     for ax, m in zip(axes, MODELS):
         d = D[D.model == m]
         for g, (c, mk, s) in STYLE.items():
-            e = d[d.group == g]
+            e = d[(d.group == g) & (d.y <= YMAX)]
             if g == "Cityscapes clean":
                 ax.scatter(e.x, e.y, s=s, facecolors="none", edgecolors="#1f1f1c", linewidths=1.2, zorder=4, label=g)
             else:
                 ax.scatter(e.x, e.y, s=s, c=c, marker=mk, edgecolors="#fcfcfb", linewidths=0.8, zorder=3, label=g)
+        over = d[d.y > YMAX]
+        assert set(over.group) <= {"Cityscapes-C (synthetic)"}, over
+        for j, (_, r) in enumerate(over.sort_values("x").iterrows()):
+            ax.scatter([r.x], [YMAX + 0.4], marker=r"$\uparrow$", s=60, c=STYLE["Cityscapes-C (synthetic)"][0],
+                       clip_on=False, zorder=5)
+            dx, ha = ((-3, "right") if j % 2 == 0 else (3, "left")) if len(over) > 1 else (0, "center")
+            ax.annotate(f"{r.y:.0f}%", (r.x, YMAX + 0.4), xytext=(dx, 3), textcoords="offset points", ha=ha,
+                        fontsize=7.5, color="#55554f", annotation_clip=False)
+        ax.set_ylim(-1, YMAX + 1.5)
         for _, r in d[(d.group == "ACDC adverse (real)") & (d.condition == "night")].iterrows():
-            ax.annotate(r.condition, (r.x, r.y), xytext=(3, 2), textcoords="offset points", fontsize=6, color="#55554f")
-        ax.set_title(LABEL[m], fontsize=8)
+            ax.annotate(r.condition, (r.x, r.y), xytext=(4, 2), textcoords="offset points", fontsize=7.5, color="#55554f")
+        ax.set_title(LABEL[m], fontsize=9)
         ax.grid(color="#e6e5e0", linewidth=0.5)
         ax.set_axisbelow(True)
-        ax.set_xlabel("omitted objects (%)")
         for sp in ("top", "right"):
             ax.spines[sp].set_visible(False)
-    axes[0].set_ylabel("confident omissions into\nbackground (% of omitted)")
+    for ax in axes2[1]:
+        ax.set_xlabel("omitted objects (%)")
+    for ax in axes2[:, 0]:
+        ax.set_ylabel("confident omissions into\nbackground (% of omitted)")
     h, lab = axes[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="upper center", ncol=6, frameon=False, fontsize=6.5, handletextpad=0.3, columnspacing=1.0)
-    fig.tight_layout(rect=(0, 0, 1, 0.88))
+    fig.legend(h, lab, loc="upper center", ncol=3, frameon=False, fontsize=8, handletextpad=0.3, columnspacing=1.2)
+    fig.tight_layout(rect=(0, 0, 1, 0.9), h_pad=1.2)
     fig.savefig(out + ".pdf")
     fig.savefig(out + ".png", dpi=300)
     print(D.groupby(["model", "group"]).y.agg(["min", "median", "max", "size"]).round(1).to_string())

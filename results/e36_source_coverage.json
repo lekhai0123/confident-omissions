@@ -1,0 +1,128 @@
+{
+ "n_targets": 470,
+ "units": 7872,
+ "sources": {
+  "detector": {
+   "regions_per_unit": 56.24,
+   "k=1": {
+    "coverage": 0.0809,
+    "regions_per_unit": 1.02,
+    "excess_share": 0.94
+   },
+   "k=2": {
+    "coverage": 0.1723,
+    "regions_per_unit": 2.04,
+    "excess_share": 0.93
+   },
+   "k=5": {
+    "coverage": 0.3574,
+    "regions_per_unit": 5.1,
+    "excess_share": 0.912
+   },
+   "k=10": {
+    "coverage": 0.6021,
+    "regions_per_unit": 10.19,
+    "excess_share": 0.914
+   },
+   "k=20": {
+    "coverage": 0.7128,
+    "regions_per_unit": 20.33,
+    "excess_share": 0.928
+   },
+   "k=all": {
+    "coverage": 0.866,
+    "regions_per_unit": 56.24,
+    "excess_share": 0.947
+   },
+   "coverage_by_group_all": {
+    "person/rider": 0.86,
+    "car": 0.961,
+    "truck/bus/train": 0.68,
+    "two-wheeler": 0.806
+   }
+  },
+  "second segmenter": {
+   "regions_per_unit": 30.49,
+   "k=1": {
+    "coverage": 0.1553,
+    "regions_per_unit": 1.02,
+    "excess_share": 0.93
+   },
+   "k=2": {
+    "coverage": 0.1957,
+    "regions_per_unit": 2.03,
+    "excess_share": 0.935
+   },
+   "k=5": {
+    "coverage": 0.2617,
+    "regions_per_unit": 5.02,
+    "excess_share": 0.95
+   },
+   "k=10": {
+    "coverage": 0.3191,
+    "regions_per_unit": 9.79,
+    "excess_share": 0.962
+   },
+   "k=20": {
+    "coverage": 0.3596,
+    "regions_per_unit": 17.99,
+    "excess_share": 0.973
+   },
+   "k=all": {
+    "coverage": 0.3745,
+    "regions_per_unit": 30.49,
+    "excess_share": 0.983
+   },
+   "coverage_by_group_all": {
+    "person/rider": 0.352,
+    "car": 0.411,
+    "truck/bus/train": 0.333,
+    "two-wheeler": 0.389
+   }
+  },
+  "depth (Maag)": {
+   "regions_per_unit": 5.64,
+   "k=1": {
+    "coverage": 0.0894,
+    "regions_per_unit": 0.9,
+    "excess_share": 0.967
+   },
+   "k=2": {
+    "coverage": 0.1085,
+    "regions_per_unit": 1.69,
+    "excess_share": 0.973
+   },
+   "k=5": {
+    "coverage": 0.117,
+    "regions_per_unit": 3.43,
+    "excess_share": 0.982
+   },
+   "k=10": {
+    "coverage": 0.117,
+    "regions_per_unit": 4.92,
+    "excess_share": 0.987
+   },
+   "k=20": {
+    "coverage": 0.117,
+    "regions_per_unit": 5.64,
+    "excess_share": 0.989
+   },
+   "k=all": {
+    "coverage": 0.117,
+    "regions_per_unit": 5.64,
+    "excess_share": 0.989
+   },
+   "coverage_by_group_all": {
+    "person/rider": 0.067,
+    "car": 0.144,
+    "truck/bus/train": 0.2,
+    "two-wheeler": 0.056
+   }
+  }
+ },
+ "incremental_over_detector": {
+  "second segmenter": 0.017,
+  "depth (Maag)": 0.0043,
+  "detector_only_coverage": 0.866
+ }
+}

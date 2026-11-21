@@ -81,7 +81,7 @@ def main():
     axt = fig.add_subplot(gs[1, :])
     axt.axis("off")
     axt.text(0.5, 0.5, "Recall at one false alarm per image:  58.9% ACDC  |  53.4% BDD100K  |  69.5% WildDash2"
-             "     (uncertainty and OOD scores: $\\leq$ 8%)", ha="center", va="center", fontsize=13,
+             "     (OOD scores: $\\leq$ 10%)", ha="center", va="center", fontsize=13,
              bbox=dict(boxstyle="round,pad=0.5", fc="#f2f2ef", ec="#8a8a85"))
     fig.suptitle("Confident omissions: road users that semantic segmenters erase without warning", fontsize=15, x=0.01, ha="left")
     fig.savefig(out + ".png", dpi=150)
