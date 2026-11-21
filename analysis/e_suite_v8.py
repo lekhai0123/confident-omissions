@@ -38,7 +38,9 @@ def load(d: str):
                           usecols=["stem", "condition", "instance_id", "omitted", "confident_omission", "area", "predicted_as"])
         obj["model"] = tag
         obj["co_stuff"] = obj.confident_omission & obj.predicted_as.isin(STUFF)
-        p = attach(pd.read_csv(os.path.join(d, f"proposals_{tag}.csv")), obj)
+        raw = pd.read_csv(os.path.join(d, f"proposals_{tag}.csv"))
+        raw["row"] = np.arange(len(raw))   # row in the proposals CSV (joins the relabel pass); not a feature
+        p = attach(raw, obj)
         cs = obj[["stem", "condition", "instance_id", "co_stuff"]].rename(columns={"instance_id": "gt_instance_id"})
         p = p.merge(cs, on=["stem", "condition", "gt_instance_id"], how="left")
         p["co_stuff"] = p.co_stuff.fillna(False).astype(bool)

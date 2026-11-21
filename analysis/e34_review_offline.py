@@ -39,6 +39,7 @@ from e_suite_v8 import ADVERSE, MODELS, STUFF, feature_sets, load  # noqa: E402
 DET = ["rtdetr", "rtdetr_gamma"]
 GROUPS = {"person": ["person"], "rider": ["rider"], "car": ["car"], "large vehicle": ["truck", "bus", "train"],
           "two-wheeler": ["motorcycle", "bicycle"]}
+L3_COLS = ["det_score", "p_self_stuff_frac", "p_ent_mean"]   # logistic baseline on three box features
 SIZE_BINS = [(0, 1024), (1024, 4096), (4096, 16384), (16384, 10 ** 9)]   # pixels at the evaluated resolution
 
 

@@ -42,13 +42,14 @@ figure of the paper.
 | Connected components vs. instances (Sec. 6.1) | `analysis/e29_cc_merge.py` | `results/e29_cc_merge.json` |
 | Figs. 5-6 | `analysis/e9_figure_split.py` | - |
 | Cost (Sec. 6.6) | `notebook/pilot.py --mode cost` | - |
-| Appendix A (definition sensitivity) | `analysis/definition_sensitivity.py` | `results/definition_sensitivity*.csv` |
+| Appendix A (definition sensitivity, joint criterion, method comparison per variant) | `analysis/definition_sensitivity.py`, `analysis/e37_relabel.py` | `results/definition_sensitivity*.csv`, `results/e37_relabel.json` |
+| Table 4 MSP row; Appendix D (objects as connected components on ACDC and WildDash2) | `analysis/e37_relabel.py` | `results/e37_relabel.json` |
 | Appendix C (hit criterion) | `analysis/e27_matching.py` | `results/e27_matching.json` |
 | Graphical abstract | `analysis/graphical_abstract.py` | - |
 
 `notebook/pilot.py --mode relabel` re-runs only the segmenters on the stored detector boxes. It computes the joint
 definition check, the box-level maximum softmax probability and objects as connected components. Its inputs come
-from `analysis/make_relabel_ref.py`.
+from `analysis/make_relabel_ref.py`, and `analysis/e37_relabel.py` analyses its output.
 
 Other scripts in `analysis/` are earlier or auxiliary analyses, such as the leakage audit (`e11_audit.py`) and
 threshold transfer (`e6_transfer.py`). Settings, seeds, software versions and the lists of evaluated frames are
