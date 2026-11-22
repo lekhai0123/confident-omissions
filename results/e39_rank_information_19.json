@@ -1,0 +1,186 @@
+{
+ "19": {
+  "fog|cs": {
+   "rho_cs_miou": 0.128,
+   "p_cs_miou": 0.601,
+   "rho_cs_omitted": -0.618,
+   "p_cs_omitted": 0.005,
+   "rho_miou_omitted": -0.761,
+   "R2_cs_rank_on_miou_omitted": 0.66,
+   "perm_p": 0.0002
+  },
+  "fog|cs_obj": {
+   "rho_cs_miou": -0.475,
+   "p_cs_miou": 0.04,
+   "rho_cs_omitted": 0.071,
+   "p_cs_omitted": 0.772,
+   "rho_miou_omitted": -0.761,
+   "R2_cs_rank_on_miou_omitted": 0.426,
+   "perm_p": 0.017
+  },
+  "night|cs": {
+   "rho_cs_miou": -0.325,
+   "p_cs_miou": 0.175,
+   "rho_cs_omitted": 0.447,
+   "p_cs_omitted": 0.055,
+   "rho_miou_omitted": -0.851,
+   "R2_cs_rank_on_miou_omitted": 0.212,
+   "perm_p": 0.145
+  },
+  "night|cs_obj": {
+   "rho_cs_miou": -0.606,
+   "p_cs_miou": 0.006,
+   "rho_cs_omitted": 0.731,
+   "p_cs_omitted": 0.0,
+   "rho_miou_omitted": -0.851,
+   "R2_cs_rank_on_miou_omitted": 0.535,
+   "perm_p": 0.003
+  },
+  "rain|cs": {
+   "rho_cs_miou": -0.004,
+   "p_cs_miou": 0.989,
+   "rho_cs_omitted": -0.053,
+   "p_cs_omitted": 0.831,
+   "rho_miou_omitted": -0.854,
+   "R2_cs_rank_on_miou_omitted": 0.011,
+   "perm_p": 0.9054
+  },
+  "rain|cs_obj": {
+   "rho_cs_miou": -0.281,
+   "p_cs_miou": 0.244,
+   "rho_cs_omitted": 0.304,
+   "p_cs_omitted": 0.206,
+   "rho_miou_omitted": -0.854,
+   "R2_cs_rank_on_miou_omitted": 0.094,
+   "perm_p": 0.4358
+  },
+  "snow|cs": {
+   "rho_cs_miou": 0.432,
+   "p_cs_miou": 0.065,
+   "rho_cs_omitted": -0.844,
+   "p_cs_omitted": 0.0,
+   "rho_miou_omitted": -0.611,
+   "R2_cs_rank_on_miou_omitted": 0.723,
+   "perm_p": 0.0
+  },
+  "snow|cs_obj": {
+   "rho_cs_miou": 0.085,
+   "p_cs_miou": 0.728,
+   "rho_cs_omitted": -0.565,
+   "p_cs_omitted": 0.012,
+   "rho_miou_omitted": -0.611,
+   "R2_cs_rank_on_miou_omitted": 0.426,
+   "perm_p": 0.0108
+  },
+  "all|cs": {
+   "rho_cs_miou": -0.067,
+   "p_cs_miou": 0.786,
+   "rho_cs_omitted": 0.142,
+   "p_cs_omitted": 0.562,
+   "rho_miou_omitted": -0.884,
+   "R2_cs_rank_on_miou_omitted": 0.036,
+   "perm_p": 0.743
+  },
+  "all|cs_obj": {
+   "rho_cs_miou": -0.575,
+   "p_cs_miou": 0.01,
+   "rho_cs_omitted": 0.634,
+   "p_cs_omitted": 0.004,
+   "rho_miou_omitted": -0.884,
+   "R2_cs_rank_on_miou_omitted": 0.402,
+   "perm_p": 0.0184
+  }
+ },
+ "16": {
+  "fog|cs": {
+   "rho_cs_miou": -0.147,
+   "p_cs_miou": 0.587,
+   "rho_cs_omitted": -0.521,
+   "p_cs_omitted": 0.039,
+   "rho_miou_omitted": -0.638,
+   "R2_cs_rank_on_miou_omitted": 0.659,
+   "perm_p": 0.002
+  },
+  "fog|cs_obj": {
+   "rho_cs_miou": -0.585,
+   "p_cs_miou": 0.017,
+   "rho_cs_omitted": 0.041,
+   "p_cs_omitted": 0.879,
+   "rho_miou_omitted": -0.638,
+   "R2_cs_rank_on_miou_omitted": 0.529,
+   "perm_p": 0.0082
+  },
+  "night|cs": {
+   "rho_cs_miou": -0.285,
+   "p_cs_miou": 0.284,
+   "rho_cs_omitted": 0.374,
+   "p_cs_omitted": 0.154,
+   "rho_miou_omitted": -0.876,
+   "R2_cs_rank_on_miou_omitted": 0.147,
+   "perm_p": 0.3442
+  },
+  "night|cs_obj": {
+   "rho_cs_miou": -0.503,
+   "p_cs_miou": 0.047,
+   "rho_cs_omitted": 0.621,
+   "p_cs_omitted": 0.01,
+   "rho_miou_omitted": -0.876,
+   "R2_cs_rank_on_miou_omitted": 0.392,
+   "perm_p": 0.0396
+  },
+  "rain|cs": {
+   "rho_cs_miou": -0.035,
+   "p_cs_miou": 0.897,
+   "rho_cs_omitted": -0.071,
+   "p_cs_omitted": 0.795,
+   "rho_miou_omitted": -0.794,
+   "R2_cs_rank_on_miou_omitted": 0.028,
+   "perm_p": 0.8354
+  },
+  "rain|cs_obj": {
+   "rho_cs_miou": -0.344,
+   "p_cs_miou": 0.193,
+   "rho_cs_omitted": 0.326,
+   "p_cs_omitted": 0.218,
+   "rho_miou_omitted": -0.794,
+   "R2_cs_rank_on_miou_omitted": 0.126,
+   "perm_p": 0.406
+  },
+  "snow|cs": {
+   "rho_cs_miou": 0.318,
+   "p_cs_miou": 0.231,
+   "rho_cs_omitted": -0.838,
+   "p_cs_omitted": 0.0,
+   "rho_miou_omitted": -0.506,
+   "R2_cs_rank_on_miou_omitted": 0.718,
+   "perm_p": 0.0
+  },
+  "snow|cs_obj": {
+   "rho_cs_miou": -0.006,
+   "p_cs_miou": 0.983,
+   "rho_cs_omitted": -0.574,
+   "p_cs_omitted": 0.02,
+   "rho_miou_omitted": -0.506,
+   "R2_cs_rank_on_miou_omitted": 0.448,
+   "perm_p": 0.0216
+  },
+  "all|cs": {
+   "rho_cs_miou": -0.129,
+   "p_cs_miou": 0.633,
+   "rho_cs_omitted": 0.135,
+   "p_cs_omitted": 0.617,
+   "rho_miou_omitted": -0.868,
+   "R2_cs_rank_on_miou_omitted": 0.019,
+   "perm_p": 0.8856
+  },
+  "all|cs_obj": {
+   "rho_cs_miou": -0.555,
+   "p_cs_miou": 0.026,
+   "rho_cs_omitted": 0.553,
+   "p_cs_omitted": 0.026,
+   "rho_miou_omitted": -0.868,
+   "R2_cs_rank_on_miou_omitted": 0.329,
+   "perm_p": 0.0828
+  }
+ }
+}

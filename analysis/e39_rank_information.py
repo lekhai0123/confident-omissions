@@ -10,7 +10,11 @@ and pooled over the four:
 Low correlations / low R^2 = the confident share ranks the segmenters differently from the usual metrics, so a
 practitioner who selects by mIoU or object recall does not also select for few confident omissions.
 
-usage: python e39_rank_information.py <15-model merged dir> <common dir> <out json>
+Extended mode (E40 data, 19 configurations / 16 checkpoints): mIoU of every segmenter is pooled from per-image
+confusion counts on the same common frames as the confident share (re-run of the 15 original segmenters, see E40),
+and the objects of the four further checkpoints come from their own run.
+
+usage: python e39_rank_information.py <15-model merged dir> <common dir> <out json> [<new acdc dir> <confusion acdc dir>]
 """
 
 from __future__ import annotations
@@ -37,27 +41,57 @@ def r2_rank(y, X):
     return 1 - (res ** 2).sum() / ((y - y.mean()) ** 2).sum()
 
 
+def conf_miou(df, common):
+    """mIoU per real condition pooled from per-image confusion counts on the common frames"""
+    df = df.copy()
+    df["stem"] = df.stem.astype(str)
+    df = df[df.condition.isin(REAL)].merge(common, on=["stem", "condition"])
+    out = {}
+    for c, g in df.groupby("condition"):
+        tp, gt, pr = (g[[f"{k}_{i}" for i in range(19)]].sum().to_numpy() for k in ("tp", "gt", "pr"))
+        iou = tp / np.maximum(gt + pr - tp, 1)
+        out[c] = float(np.mean(iou[gt > 0]))
+    return out
+
+
 def main():
     d, common_dir, out = sys.argv[1:4]
+    extended = len(sys.argv) >= 6
     summ = json.load(open(os.path.join(d, "summary.json"), encoding="utf-8"))
     common = pd.read_csv(os.path.join(common_dir, "images_segformer-b0.csv"), usecols=["stem", "condition"]).drop_duplicates()
+    common["stem"] = common.stem.astype(str)
+    files = sorted(glob.glob(os.path.join(d, "objects_*.csv")))
+    MI = {}
+    if extended:
+        new_dir, conf_dir = sys.argv[4:6]
+        files += sorted(glob.glob(os.path.join(new_dir, "objects_*.csv")))
+        for f in glob.glob(os.path.join(conf_dir, "confusion_*.csv")):
+            MI[os.path.basename(f)[len("confusion_"):-4]] = conf_miou(pd.read_csv(f), common)
+        for f in glob.glob(os.path.join(new_dir, "images_*.csv")):
+            MI[os.path.basename(f)[len("images_"):-4]] = conf_miou(pd.read_csv(f), common)
     stats = {}
-    for f in sorted(glob.glob(os.path.join(d, "objects_*.csv"))):
+    for f in files:
         tag = os.path.basename(f)[len("objects_"):-4]
         o = pd.read_csv(f, usecols=["stem", "condition", "omitted", "confident_omission", "predicted_as"])
+        o["stem"] = o.stem.astype(str)
         o = o[o.condition.isin(REAL)].merge(common, on=["stem", "condition"])
         o["co_bg"] = o.confident_omission & o.predicted_as.isin(STUFF)
         st = {}
         for c in REAL + ["all"]:
             q = o if c == "all" else o[o.condition == c]
-            mi = (np.mean([summ["models"][tag]["miou_by_condition"][r]["argmax"]["miou"] for r in REAL]) if c == "all"
-                  else summ["models"][tag]["miou_by_condition"][c]["argmax"]["miou"])
+            if extended:
+                mi = np.mean([MI[tag][r] for r in REAL]) if c == "all" else MI[tag][c]
+            else:
+                mi = (np.mean([summ["models"][tag]["miou_by_condition"][r]["argmax"]["miou"] for r in REAL]) if c == "all"
+                      else summ["models"][tag]["miou_by_condition"][c]["argmax"]["miou"])
             st[c] = {"miou": mi, "omitted": q.omitted.mean(), "cs": q.co_bg.sum() / max(1, q.omitted.sum()),
                      "cs_obj": q.co_bg.mean()}
         stats[tag] = st
     rng = np.random.default_rng(0)
     res = {}
-    for set_name, tags in (("15", sorted(stats)), ("12", sorted(t for t in stats if t not in VARIANTS))):
+    n_all, n_ind = ("19", "16") if extended else ("15", "12")
+    print("segmenters:", len(stats))
+    for set_name, tags in ((n_all, sorted(stats)), (n_ind, sorted(t for t in stats if t not in VARIANTS))):
         res[set_name] = {}
         for c in REAL + ["all"]:
             mi = np.array([stats[t][c]["miou"] for t in tags])

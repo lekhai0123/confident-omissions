@@ -30,7 +30,7 @@ figure of the paper.
 | Fig. 2 (omitted vs. confident share) | `analysis/fig_cobg_share.py` | `results/fig_cobg_share.csv` |
 | Table 2, Table B.2 (rank agreement of 19 segmenters, difference of rank correlations with images and segmenters resampled, repeatability, leave-one-family-out) | `analysis/e40_rank_extended.py` | `results/e40_rank_extended.json` |
 | Table B.1 and earlier rank analyses (13 and 15 configurations, `imagecorruptions` check) | `analysis/e13_rank.py`, `analysis/e28_e13_subset.py`, `analysis/e32_build_15models.py`, `analysis/e35_rank_stability.py`, `analysis/e24_imagecorruptions.py` | `results/e32_*.json`, `results/e28_*.json`, `results/e35_rank_stability.json`, `results/e24_imagecorruptions.json` |
-| Appendix B (confident share versus mIoU and omitted share) | `analysis/e39_rank_information.py` | `results/e39_rank_information.json` |
+| Appendix B (confident share versus mIoU and omitted share; 19 configurations with `<new acdc dir> <confusion acdc dir>`) | `analysis/e39_rank_information.py` | `results/e39_rank_information_19.json`, `results/e39_rank_information.json` (15) |
 | Sec. 4.3 (information in the segmenter) | `analysis/e10_e12.py` | - |
 | Sec. 4.4 (correlated failures, coverage by source) | `analysis/e16_correlated.py`, `analysis/e36_source_coverage.py` | `results/e16_correlated.json`, `results/e36_source_coverage.json` |
 | Fig. 3 (method) | drawn by hand from the assets of `analysis/fig3_assets.py` | - |
