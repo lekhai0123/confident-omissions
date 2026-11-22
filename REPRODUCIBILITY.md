@@ -4,16 +4,29 @@ Everything needed to rebuild the tables from the datasets, apart from the datase
 
 ## Environment
 
-All experiments ran as Kaggle script kernels on one NVIDIA Tesla T4 (16 GB):
+There are two environments.
+
+**GPU runs** (`notebook/pilot.py`: segmentation, detection, proposals, features, timing) ran as Kaggle script
+kernels on one NVIDIA Tesla T4 (16 GB) with the Kaggle image's packages:
 
 - Python 3.13.16
 - PyTorch 2.11.0+cu130
 - transformers 5.20.2
-- scikit-learn and scipy as in `requirements.txt`
+
+**Analysis** (`analysis/*.py`: training of the verifier and all baselines, bootstrap statistics, tables) ran on CPU
+with the versions pinned in `requirements.txt` (Python 3.12.9, scikit-learn 1.9.1, NumPy 2.5.4, pandas 3.1.1,
+SciPy 1.18.1; the torch / transformers pins there are only needed to run `pilot.py` locally). Gradient-boosting
+results depend on the scikit-learn version as well as on the seed; another scikit-learn version can shift recall
+by a few points (compare the seed spread reported in Sec. 6.4); use the pinned version to
+reproduce the tables exactly.
 
 Segmenter and detector inference runs in float16 autocast. Unit tests (`pytest notebook/test_pilot.py`) run on CPU.
 
-Analysis scripts run on CPU with Python 3.12 (Windows) or 3.13. A re-run on another GPU reproduces the stored
+The verifier's feature vector has 26 columns: the 25 features of Table 3 plus `src_owl`, the indicator of an
+open-vocabulary detector that is not used in the reported runs and is therefore always 0; `p_fill` is constant 1 for
+box proposals.
+
+Analysis scripts also run with Python 3.13. A re-run on another GPU reproduces the stored
 per-object statistics up to float16 rounding: on a GTX 1080 Ti, the largest difference in the correctly predicted
 pixel share of an object was 0.4%, and no object changed label.
 

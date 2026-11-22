@@ -48,6 +48,7 @@ figure of the paper.
 | Appendix C (hit criterion) | `analysis/e27_matching.py`, `analysis/e38_review2.py` (all baselines) | `results/e27_matching.json`, `results/e38_review2.json` |
 | Sec. 6.2-6.4, Appendix A (logistic regression on the verifier's features, training seeds, low budgets, other targets, Faster R-CNN with simple scorers) | `analysis/e38_review2.py` | `results/e38_review2.json` |
 | Table 5 unseen CNNs with simple scorers | `analysis/e38b_cnn_simple.py` | `results/e38b_cnn_simple.json` |
+| Table 4 row with logistic regression on the verifier's features; Appendix D (bootstrap over all images with thresholds re-estimated in every resample) | `analysis/e38_review2.py`, `analysis/e41_review3_ci.py` | `results/e38_review2.json`, `results/e41_review3_ci.json` |
 | Graphical abstract | `analysis/graphical_abstract.py` | - |
 
 `notebook/pilot.py --mode relabel` re-runs only the segmenters on the stored detector boxes. It computes the joint
