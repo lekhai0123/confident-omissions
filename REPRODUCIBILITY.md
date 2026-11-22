@@ -21,8 +21,8 @@ pixel share of an object was 0.4%, and no object changed label.
 
 | Role | Identifier |
 |---|---|
-| Segmenters (Hugging Face) | `nvidia/segformer-b{0..5}-finetuned-cityscapes-1024-1024`; `nvidia/segformer-b0-finetuned-cityscapes-{512-1024,640-1280,768-768}`; `facebook/maskformer-resnet101-cityscapes`; `facebook/mask2former-swin-{tiny,small,large}-cityscapes-semantic` |
-| Segmenters (OpenMMLab) | `deeplabv3plus_r101-d8_512x1024_80k_cityscapes_20200606_114143-068fcfe9.pth`, `deeplabv3plus_r18-d8_512x1024_80k_cityscapes_20201226_080942-cff257fe.pth` (URLs in `notebook/pilot.py`, `MMSEG_URLS`) |
+| Segmenters (Hugging Face) | `nvidia/segformer-b{0..5}-finetuned-cityscapes-1024-1024`; `nvidia/segformer-b0-finetuned-cityscapes-{512-1024,640-1280,768-768}`; `facebook/maskformer-resnet101-cityscapes`; `facebook/mask2former-swin-{tiny,small,large}-cityscapes-semantic`; `shi-labs/oneformer_cityscapes_swin_large`; `tue-mps/cityscapes_semantic_eomt_large_1024` (rank analysis only) |
+| Segmenters (OpenMMLab) | `deeplabv3plus_r101-d8_512x1024_80k_cityscapes_20200606_114143-068fcfe9.pth`, `deeplabv3plus_r18-d8_512x1024_80k_cityscapes_20201226_080942-cff257fe.pth`; `pspnet_r101-d8_512x1024_80k_cityscapes_20200606_112211-e1e1100f.pth`, `fcn_r101-d8_512x1024_80k_cityscapes_20200606_113038-3fb937eb.pth` (rank analysis only; URLs in `notebook/pilot.py`, `MMSEG_URLS`) |
 | Detector | `PekingU/rtdetr_r50vd_coco_o365` (main); torchvision `fasterrcnn_resnet50_fpn_v2` with `COCO_V1` weights (detector swap) |
 | Depth (baseline) | `depth-anything/Depth-Anything-V2-Small-hf`; the foreground/background network is trained with `pilot.py --mode maag_train` |
 
@@ -66,7 +66,7 @@ of the sorted validation list form the calibration set.
 
 **Proposals.**
 - RT-DETR runs at a score threshold of 0.05, on the normal and on the gamma-corrected (x^0.5) image.
-- At most 60 detector boxes and at most 90 proposals (110 in the ACDC run) are kept. Detector boxes are taken first.
+- At most 60 detector boxes per image and monitored segmenter (normal and gamma passes together; 51-57 on average) are kept, and these are the only candidates that the verifier and all compared methods rank. The cap on the total number of regions (`--max-props`, 90; 110 in the ACDC run v11) only limits regions from other sources (the second segmenter, depth-based and ML-rule regions), which are taken after the detector boxes and do not enter the main comparison; it never truncates the detector boxes.
 
 **Matching.**
 - Each proposal is assigned to the object of which it covers the largest fraction (`proposal_records`).
@@ -82,4 +82,10 @@ of the sorted validation list form the calibration set.
 - Paired differences: 2000 resamples of source images, seed 0 (`analysis/e10_e12.py`, `paired_ci`).
 - Recall intervals: 500 resamples.
 - Rank correlations: 1000 resamples. The intervals of rank-correlation differences are bias-corrected
-  (`analysis/e35_rank_stability.py`).
+  (`analysis/e35_rank_stability.py`, `analysis/e40_rank_extended.py`). In `e40_rank_extended.py` both correlations
+  are resampled: mIoU is pooled from per-image confusion counts (`pilot.py --mode confusion --save-confusion`). For
+  the 15 original configurations these counts come from a re-run with the same corruption seeds
+  (`seed * 1000003 + k * 101 + condition index`, k = position of the frame in the original run); deterministic
+  corruptions reproduce the stored predictions, while Gaussian and shot noise, fog, darkening and motion blur are a
+  new draw with the same parameters (condition-level mIoU changes by at most 3.6 points). A two-level bootstrap
+  also resamples the segmenters (draws with fewer than five distinct segmenters are skipped).

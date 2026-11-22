@@ -28,8 +28,9 @@ figure of the paper.
 | Fig. 1 (example) | `analysis/fig_teaser.py` | - |
 | Table 1 (prevalence) | `analysis/table1_prevalence.py` | `results/table1_prevalence.json` |
 | Fig. 2 (omitted vs. confident share) | `analysis/fig_cobg_share.py` | `results/fig_cobg_share.csv` |
-| Table 2, Appendix B (synthetic vs. real rank agreement) | `analysis/e13_rank.py`, `analysis/e28_e13_subset.py`, `analysis/e32_build_15models.py`, `analysis/e24_imagecorruptions.py` | `results/e32_*.json`, `results/e28_*.json`, `results/e24_imagecorruptions.json` |
-| Table B.2 (difference of rank correlations, repeatability) | `analysis/e35_rank_stability.py` | `results/e35_rank_stability.json` |
+| Table 2, Table B.2 (rank agreement of 19 segmenters, difference of rank correlations with images and segmenters resampled, repeatability, leave-one-family-out) | `analysis/e40_rank_extended.py` | `results/e40_rank_extended.json` |
+| Table B.1 and earlier rank analyses (13 and 15 configurations, `imagecorruptions` check) | `analysis/e13_rank.py`, `analysis/e28_e13_subset.py`, `analysis/e32_build_15models.py`, `analysis/e35_rank_stability.py`, `analysis/e24_imagecorruptions.py` | `results/e32_*.json`, `results/e28_*.json`, `results/e35_rank_stability.json`, `results/e24_imagecorruptions.json` |
+| Appendix B (confident share versus mIoU and omitted share) | `analysis/e39_rank_information.py` | `results/e39_rank_information.json` |
 | Sec. 4.3 (information in the segmenter) | `analysis/e10_e12.py` | - |
 | Sec. 4.4 (correlated failures, coverage by source) | `analysis/e16_correlated.py`, `analysis/e36_source_coverage.py` | `results/e16_correlated.json`, `results/e36_source_coverage.json` |
 | Fig. 3 (method) | drawn by hand from the assets of `analysis/fig3_assets.py` | - |
@@ -44,12 +45,16 @@ figure of the paper.
 | Cost (Sec. 6.6) | `notebook/pilot.py --mode cost` | - |
 | Appendix A (definition sensitivity, joint criterion, method comparison per variant) | `analysis/definition_sensitivity.py`, `analysis/e37_relabel.py` | `results/definition_sensitivity*.csv`, `results/e37_relabel.json` |
 | Table 4 MSP row; Appendix D (objects as connected components on ACDC and WildDash2) | `analysis/e37_relabel.py` | `results/e37_relabel.json` |
-| Appendix C (hit criterion) | `analysis/e27_matching.py` | `results/e27_matching.json` |
+| Appendix C (hit criterion) | `analysis/e27_matching.py`, `analysis/e38_review2.py` (all baselines) | `results/e27_matching.json`, `results/e38_review2.json` |
+| Sec. 6.2-6.4, Appendix A (logistic regression on the verifier's features, training seeds, low budgets, other targets, Faster R-CNN with simple scorers) | `analysis/e38_review2.py` | `results/e38_review2.json` |
+| Table 5 unseen CNNs with simple scorers | `analysis/e38b_cnn_simple.py` | `results/e38b_cnn_simple.json` |
 | Graphical abstract | `analysis/graphical_abstract.py` | - |
 
 `notebook/pilot.py --mode relabel` re-runs only the segmenters on the stored detector boxes. It computes the joint
 definition check, the box-level maximum softmax probability and objects as connected components. Its inputs come
-from `analysis/make_relabel_ref.py`, and `analysis/e37_relabel.py` analyses its output.
+from `analysis/make_relabel_ref.py`, and `analysis/e37_relabel.py` analyses its output. `notebook/pilot.py --mode confusion`
+re-runs segmenters on a list of (frame, condition) pairs and stores per-image confusion counts; `analysis/e40_rank_extended.py`
+uses them to resample mIoU together with the confident share.
 
 Other scripts in `analysis/` are earlier or auxiliary analyses, such as the leakage audit (`e11_audit.py`) and
 threshold transfer (`e6_transfer.py`). Settings, seeds, software versions and the lists of evaluated frames are

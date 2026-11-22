@@ -327,7 +327,12 @@ def parse_args(argv=None):
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--smoke", action="store_true", help="tiny local run: 3 images, quarter resolution, 2 conditions")
     # --mode p4 (v6): several models + ground-truth-free signals, image-major loop with a time budget
-    p.add_argument("--mode", choices=["pilot", "p4", "maag_train", "cost", "relabel"], default="pilot")
+    p.add_argument("--mode", choices=["pilot", "p4", "maag_train", "cost", "relabel", "confusion"], default="pilot")
+    p.add_argument("--stems-file", default="", help="p4: CSV (stem, condition); only these pairs are processed, the "
+                   "image index k (corruption seed) of the full ordering is kept")
+    p.add_argument("--save-confusion", action="store_true", help="p4: per-image per-class counts (tp_c, gt_c, pr_c)")
+    p.add_argument("--pairs-file", default="", help="confusion: CSV (dataset, stem, condition, ci, k)")
+    p.add_argument("--chunk", type=int, default=5, help="confusion: models held on the GPU at the same time")
     p.add_argument("--ref-dir", default="", help="relabel: folder with <set>/summary.json, images.csv, props_<tag>.csv.gz")
     p.add_argument("--relabel-sets", default="acdc", help="relabel: comma-separated sub-folders of --ref-dir")
     p.add_argument("--cost-frames", type=int, default=20)
@@ -647,6 +652,8 @@ def main(argv=None) -> dict:
         return run_cost(args)
     if args.mode == "relabel":
         return run_relabel(args)
+    if args.mode == "confusion":
+        return run_confusion(args)
     os.makedirs(args.out, exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     log(f"python {platform.python_version()} torch {torch.__version__} device {device}"
@@ -831,9 +838,15 @@ MMSEG_URLS = {
     "deeplabv3plus-r18": "https://download.openmmlab.com/mmsegmentation/v0.5/deeplabv3plus/"
                          "deeplabv3plus_r18-d8_512x1024_80k_cityscapes/"
                          "deeplabv3plus_r18-d8_512x1024_80k_cityscapes_20201226_080942-cff257fe.pth",
+    "pspnet-r101": "https://download.openmmlab.com/mmsegmentation/v0.5/pspnet/pspnet_r101-d8_512x1024_80k_cityscapes/"
+                   "pspnet_r101-d8_512x1024_80k_cityscapes_20200606_112211-e1e1100f.pth",
+    "fcn-r101": "https://download.openmmlab.com/mmsegmentation/v0.5/fcn/fcn_r101-d8_512x1024_80k_cityscapes/"
+                "fcn_r101-d8_512x1024_80k_cityscapes_20200606_113038-3fb937eb.pth",
 }
 MMSEG_ARCH = {"deeplabv3plus-r101": dict(depth=101, head=dict(cin=2048, ch=512, c1_in=256, c1_ch=48)),
-              "deeplabv3plus-r18": dict(depth=18, head=dict(cin=512, ch=128, c1_in=64, c1_ch=12))}
+              "deeplabv3plus-r18": dict(depth=18, head=dict(cin=512, ch=128, c1_in=64, c1_ch=12)),
+              "pspnet-r101": dict(depth=101, head_type="psp", head=dict(cin=2048, ch=512)),
+              "fcn-r101": dict(depth=101, head_type="fcn", head=dict(cin=2048, ch=512))}
 
 
 class _ConvBN(torch.nn.Module):
@@ -948,13 +961,44 @@ class _DLV3PHead(torch.nn.Module):
         return self.conv_seg(feat), feat
 
 
-class MMSegDeepLabV3Plus(torch.nn.Module):
-    """DeepLabV3+ R101-D8 with the OpenMMLab Cityscapes weights (strict load; auxiliary FCN head dropped)."""
+class _PSPHead(torch.nn.Module):
+    """mmseg PSPHead: pyramid pooling (1, 2, 3, 6) + 3x3 bottleneck."""
 
-    def __init__(self, url: str, depth: int = 101, head: dict | None = None):
+    def __init__(self, cin=2048, ch=512, n_cls=19, pool_scales=(1, 2, 3, 6)):
+        super().__init__()
+        self.psp_modules = torch.nn.ModuleList(
+            [torch.nn.Sequential(torch.nn.AdaptiveAvgPool2d(s), _ConvBN(cin, ch, 1)) for s in pool_scales])
+        self.bottleneck = _ConvBN(cin + len(pool_scales) * ch, ch, 3, padding=1)
+        self.conv_seg = torch.nn.Conv2d(ch, n_cls, 1)
+
+    def forward(self, c1, x):
+        outs = [x] + [F.interpolate(m(x), size=x.shape[2:], mode="bilinear", align_corners=False) for m in self.psp_modules]
+        feat = self.bottleneck(torch.cat(outs, 1))
+        return self.conv_seg(feat), feat
+
+
+class _FCNHead(torch.nn.Module):
+    """mmseg FCNHead (num_convs=2, concat_input=True)."""
+
+    def __init__(self, cin=2048, ch=512, n_cls=19):
+        super().__init__()
+        self.convs = torch.nn.Sequential(_ConvBN(cin, ch, 3, padding=1), _ConvBN(ch, ch, 3, padding=1))
+        self.conv_cat = _ConvBN(cin + ch, ch, 3, padding=1)
+        self.conv_seg = torch.nn.Conv2d(ch, n_cls, 1)
+
+    def forward(self, c1, x):
+        feat = self.conv_cat(torch.cat([x, self.convs(x)], 1))
+        return self.conv_seg(feat), feat
+
+
+class MMSegDeepLabV3Plus(torch.nn.Module):
+    """ResNetV1c-D8 + DeepLabV3+ / PSP / FCN head with the OpenMMLab Cityscapes weights (strict load; auxiliary FCN
+    head dropped). The name is kept for compatibility; head_type selects the decode head."""
+
+    def __init__(self, url: str, depth: int = 101, head: dict | None = None, head_type: str = "dlv3p"):
         super().__init__()
         self.backbone = _ResNetV1cD8(depth)
-        self.decode_head = _DLV3PHead(**(head or {}))
+        self.decode_head = {"dlv3p": _DLV3PHead, "psp": _PSPHead, "fcn": _FCNHead}[head_type](**(head or {}))
         ck = torch.hub.load_state_dict_from_url(url, map_location="cpu", weights_only=False)
         sd = {k: v for k, v in ck["state_dict"].items() if not k.startswith("auxiliary_head")}
         self.load_state_dict(sd, strict=True)
@@ -973,6 +1017,22 @@ class Segmenter:
         if name.startswith("mmseg:"):      # per-pixel CNN (OpenMMLab weights, plain PyTorch re-implementation)
             self.kind, self.tag = "mmseg", name.split(":", 1)[1]
             self.model = MMSegDeepLabV3Plus(MMSEG_URLS[self.tag], **MMSEG_ARCH[self.tag]).eval().to(device)
+            self._feat = None
+            return
+        if "oneformer" in name or "eomt" in name:   # universal segmenters, query-based like Mask2Former
+            self.kind = "oneformer" if "oneformer" in name else "eomt"
+            base = name.split("/")[-1]
+            self.tag = ("oneformer-" + base.split("cityscapes_")[-1].replace("_", "-") if self.kind == "oneformer"
+                        else "eomt-" + base.split("eomt_")[-1].replace("_", "-"))
+            if self.kind == "oneformer":
+                from transformers import OneFormerForUniversalSegmentation as M, OneFormerProcessor
+                proc = OneFormerProcessor.from_pretrained(name)
+                self.task_inputs = proc(images=np.zeros((64, 64, 3), np.uint8), task_inputs=["semantic"],
+                                        return_tensors="pt")["task_inputs"].to(device)
+            else:
+                from transformers import AutoModelForUniversalSegmentation as M
+                self.window = 1024   # EoMT-L 1024: square windows, shortest edge resized to 1024 (as its processor)
+            self.model = M.from_pretrained(name).eval().to(device)
             self._feat = None
             return
         self.kind = "m2f" if ("mask2former" in name or "maskformer" in name) else "segformer"
@@ -995,11 +1055,59 @@ class Segmenter:
     def _hook(self, module, inp):
         self._feat = inp[0]
 
+    def _eomt(self, inp: torch.Tensor):
+        """EoMT on square windows: resize the shortest edge to the window size, tile the long side with evenly
+        spaced (overlapping) windows, average the per-window query evidence (class prob x mask prob) and the patch
+        features where windows overlap. Returns an object with the fields the Mask2Former branch reads."""
+        from types import SimpleNamespace
+        H, W = inp.shape[-2:]
+        w = self.window
+        sc = w / min(H, W)
+        h2, w2 = int(round(H * sc / 16)) * 16, int(round(W * sc / 16)) * 16
+        h2, w2 = max(h2, w), max(w2, w)
+        x = F.interpolate(inp, size=(h2, w2), mode="bilinear", align_corners=False)
+        long_ = max(h2, w2)
+        n = int(np.ceil(long_ / w))
+        starts = np.linspace(0, long_ - w, n).round().astype(int) if n > 1 else [0]
+        sem_acc = cnt = feat_acc = fcnt = None
+        for s0 in starts:
+            win = x[..., :, s0:s0 + w] if w2 >= h2 else x[..., s0:s0 + w, :]
+            o = self.model(pixel_values=win)
+            cls = o.class_queries_logits.float().softmax(-1)[..., :-1]
+            masks = o.masks_queries_logits.float().sigmoid()
+            sem = torch.einsum("bqc,bqhw->bchw", cls, masks)
+            g = int(round(np.sqrt(o.last_hidden_state.shape[1] - self.model.config.num_queries
+                                  - 1 - getattr(self.model.config, "num_register_tokens", 0))))
+            pf = o.last_hidden_state[:, -g * g:].float().transpose(1, 2).reshape(1, -1, g, g)
+            if sem_acc is None:
+                mh, mw = sem.shape[-2:]
+                fh_, fw_ = pf.shape[-2:]
+                fy, fx = mh / w, fh_ / w
+                SH, SW = (int(round(h2 * fy)), int(round(w2 * fy)))
+                FH, FW = (int(round(h2 * fx)), int(round(w2 * fx)))
+                sem_acc = sem.new_zeros(1, sem.shape[1], SH, SW); cnt = sem.new_zeros(1, 1, SH, SW)
+                feat_acc = pf.new_zeros(1, pf.shape[1], FH, FW); fcnt = pf.new_zeros(1, 1, FH, FW)
+            a, b = int(round(s0 * fy)), int(round(s0 * fx))
+            if w2 >= h2:
+                sem_acc[..., a:a + mw] += sem; cnt[..., a:a + mw] += 1
+                feat_acc[..., b:b + fw_] += pf; fcnt[..., b:b + fw_] += 1
+            else:
+                sem_acc[..., a:a + mh, :] += sem; cnt[..., a:a + mh, :] += 1
+                feat_acc[..., b:b + fh_, :] += pf; fcnt[..., b:b + fh_, :] += 1
+        return SimpleNamespace(sem=sem_acc / cnt.clamp_min(1), patch_features=feat_acc / fcnt.clamp_min(1))
+
     @torch.no_grad()
     def __call__(self, x: torch.Tensor, want_feat: bool = True):
         inp = (x - MEAN.to(x.device)) / STD.to(x.device)
         with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=self.device == "cuda"):
-            out = self.model(inp) if self.kind == "mmseg" else self.model(pixel_values=inp)
+            if self.kind == "mmseg":
+                out = self.model(inp)
+            elif self.kind == "oneformer":
+                out = self.model(pixel_values=inp, task_inputs=self.task_inputs)
+            elif self.kind == "eomt":
+                out = self._eomt(inp)
+            else:
+                out = self.model(pixel_values=inp)
         if self.kind == "mmseg":
             low, feat = out[0].float(), out[1]
             e_low = -torch.logsumexp(low, 1, keepdim=True)
@@ -1009,14 +1117,18 @@ class Segmenter:
             e_low = -torch.logsumexp(low, 1, keepdim=True)          # energy of the per-pixel logits
             r_low = e_low
         else:
-            cls = out.class_queries_logits.float().softmax(-1)[..., :-1]
-            masks = out.masks_queries_logits.float().sigmoid()
-            sem = torch.einsum("bqc,bqhw->bchw", cls, masks)
+            if self.kind == "eomt":   # already merged over windows (same query evidence as below)
+                sem = out.sem
+            else:
+                cls = out.class_queries_logits.float().softmax(-1)[..., :-1]
+                masks = out.masks_queries_logits.float().sigmoid()
+                sem = torch.einsum("bqc,bqhw->bchw", cls, masks)
             # evidence before normalisation (total query vote; RbA, Nayal et al. 2023) - lost in the normalised probs
             e_low = -sem.sum(1, keepdim=True).clamp_min(1e-6).log()
             r_low = -torch.tanh(sem).sum(1, keepdim=True)
             low = (sem / sem.sum(1, keepdim=True).clamp_min(1e-6)).clamp_min(1e-6).log()
-            feat = out.pixel_decoder_last_hidden_state
+            feat = (out.pixel_decoder_hidden_states[0] if self.kind == "oneformer" else
+                    out.patch_features if self.kind == "eomt" else out.pixel_decoder_last_hidden_state)
         self._feat = None
         if want_feat:
             self.last_unc = F.interpolate(torch.cat([e_low, r_low], 1), size=x.shape[-2:], mode="bilinear",
@@ -1857,6 +1969,13 @@ def run_p4(args) -> dict:
         cond_names = cond_names + ACDC_CONDS + [c + "_ref" for c in ACDC_CONDS]
     if args.max_images and args.dataset != "both":
         eval_items = eval_items[: args.max_images]
+    want = None
+    if args.stems_file:   # restrict to (stem, condition) pairs; k keeps its value in the full ordering (same seeds)
+        wf = pd.read_csv(_find_input(args.stems_file), usecols=["stem", "condition"])
+        want = {}
+        for st_, c_ in zip(wf.stem.astype(str), wf.condition):
+            want.setdefault(st_, set()).add(c_)
+        log(f"[p4] stems file: {len(want)} stems, {len(wf)} pairs")
     log(f"[p4] {len(items)} images; dev {len(dev_items)}, eval up to {len(eval_items)}; {len(conditions)} conditions; "
         f"budget {args.max_minutes} min")
     train_prior = train_class_prior(root)
@@ -1988,6 +2107,10 @@ def run_p4(args) -> dict:
         src_ds = args.dataset
         if src_ds == "both":
             src_ds, item = item
+        if want is not None:
+            st_ = item["stem"] if isinstance(item, dict) else item[0]
+            if st_ not in want or (isinstance(item, dict) and item["cond"] not in want[st_]):
+                continue
         if src_ds == "acdc":
             stem = item["stem"]
             x, inst, inv = load_acdc(item, s)
@@ -2005,6 +2128,8 @@ def run_p4(args) -> dict:
             x, inst = load_pair(img_path, inst_path, s)
             inv = None
             item_conds = [(ci, c, sv) for ci, (c, sv) in enumerate(conditions)]
+            if want is not None:
+                item_conds = [t for t in item_conds if cond_names[t[0]] in want[stem]]
         labels = labels_from_instances(inst)
         objs = instance_objects(inst, min_area)
         masks_d = [torch.from_numpy(mk).to(device) for _, _, mk in objs]
@@ -2039,6 +2164,8 @@ def run_p4(args) -> dict:
                 for rule, pr in (("argmax", pred_t), ("ml", pred_ml)):
                     cm = torch.bincount(labels_d[valid_d] * N_CLASSES + pr[valid_d], minlength=N_CLASSES ** 2)
                     S_["conf_mats"][(name, rule)] = S_["conf_mats"].get((name, rule), 0) + cm.reshape(N_CLASSES, N_CLASSES).cpu().numpy()
+                    if rule == "argmax":
+                        cm_img = cm.reshape(N_CLASSES, N_CLASSES).cpu().numpy()
                 pred, conf, ent = pred_t.cpu().numpy(), conf_t.cpu().numpy(), ent_t.cpu().numpy()
                 rows = object_records(pred, conf, ent, labels, objs, args.conf_thr, args.omit_frac)
                 for row, extra in zip(rows, object_extras(probs, pred_ml, masks_d, tids, args.omit_frac)):
@@ -2070,7 +2197,8 @@ def run_p4(args) -> dict:
                 per_model[m.tag] = {"rows": rows, "maps": maps, "probs_h": probs_h.half(), "pred_h": pred_t[::2, ::2],
                                     "pred_full": pred, "hist": class_histogram(pred_t),
                                     "margin_mean": float(margin_t.mean()), "ent_np": ent, "conf_np": conf,
-                                    "pixel_acc": float((pred_t[valid_d] == labels_d[valid_d]).float().mean()) if bool(valid_d.any()) else None}
+                                    "pixel_acc": float((pred_t[valid_d] == labels_d[valid_d]).float().mean()) if bool(valid_d.any()) else None,
+                                    "cm_img": cm_img}
             tophat = None
             if depth is not None:
                 disp = depth(xc, (max(1, H2 // 2), max(1, W2 // 2)))
@@ -2159,6 +2287,8 @@ def run_p4(args) -> dict:
                            **{f"img_{n}_mean": float(flat[i].mean()) for i, n in enumerate(signals)},
                            **{f"img_{n}_p99": float(p99[i]) for i, n in enumerate(signals)},
                            **{f"hist_{c}": float(hist[c]) for c in range(N_CLASSES)}}
+                if args.save_confusion:
+                    img_row.update(confusion_counts(P["cm_img"]))
                 S_["images"].append(img_row)
                 # sampled pixels (half-res): 0 correct, 1 confident-omission object, 2 other error, 3 other omitted object
                 co_union = torch.zeros_like(valid_h)
@@ -2199,6 +2329,105 @@ def run_p4(args) -> dict:
             write_outputs(False, n_done, per)
     summ = write_outputs(True, n_done, (time.time() - t_loop) / max(1, n_done))
     log(f"[p4] done: {n_done} images in {(time.time() - t_start) / 60:.0f} min")
+    return summ
+
+
+def confusion_counts(cm: np.ndarray) -> dict:
+    """Per-class counts of one image (rows: label, cols: prediction): true positives, labelled and predicted pixels.
+    Pooled IoU_c over any image set = sum tp_c / (sum gt_c + sum pr_c - sum tp_c)."""
+    tp, gt, pr = np.diag(cm), cm.sum(1), cm.sum(0)
+    return {**{f"tp_{c}": int(tp[c]) for c in range(N_CLASSES)}, **{f"gt_{c}": int(gt[c]) for c in range(N_CLASSES)},
+            **{f"pr_{c}": int(pr[c]) for c in range(N_CLASSES)}}
+
+
+def _find_input(path: str) -> str:
+    if os.path.exists(path):
+        return path
+    hit = glob.glob(f"/kaggle/input/**/{os.path.basename(path)}", recursive=True)
+    if not hit:
+        raise SystemExit(f"input file not found: {path}")
+    return hit[0]
+
+
+def run_confusion(args) -> dict:
+    """Argmax-only pass: per-image per-class confusion counts for given (dataset, stem, condition, ci, k) pairs.
+    Corruptions use the seeds of the original p4 run (k = image index in that run's ordering, ci = condition index),
+    so the corrupted images are the ones the stored object statistics were computed on. No temperature (argmax is
+    invariant to it), no features. Models are processed in chunks; each image is loaded once per chunk."""
+    import pandas as pd
+    t_start = time.time()
+    deadline = t_start + args.max_minutes * 60
+    os.makedirs(args.out, exist_ok=True)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    pairs = pd.read_csv(_find_input(args.pairs_file))
+    pairs["stem"] = pairs.stem.astype(str)
+    log(f"[confusion] {len(pairs)} pairs, datasets {pairs.dataset.value_counts().to_dict()}, device {device}")
+    cs = {st_: (img, inst) for st_, img, inst in list_val(find_root(args.data_root))} if (pairs.dataset == "cityscapes").any() else {}
+    ac = {}
+    if (pairs.dataset == "acdc").any():
+        ac = {(it["stem"], it["cond"]): it for it in list_acdc(find_acdc_root(args.acdc_root), tuple(args.acdc_splits.split(",")), args.acdc_ref)}
+    names = [n for n in args.models.split(",") if n]
+    groups = list(pairs.groupby(["dataset", "stem"], sort=False))
+    out_rows = {}
+    done_models = []
+    for c0 in range(0, len(names), args.chunk):
+        seg = [Segmenter(n, device) for n in names[c0:c0 + args.chunk]]
+        log(f"[confusion] models {[m.tag for m in seg]}")
+        t_loop, n_img = time.time(), 0
+        for (ds, stem), g in groups:
+            if time.time() > deadline:
+                log("[confusion] time budget reached")
+                break
+            if ds == "cityscapes":
+                if stem not in cs:
+                    continue
+                x, inst = load_pair(*cs[stem], args.scale)
+                todo = list(zip(g.condition, g.ci, g.k))
+            else:
+                todo = [(c, 0, 0) for c in g.condition]
+            for cond_name, ci, k in todo:
+                if ds == "acdc":
+                    it = ac.get((stem, cond_name))
+                    if it is None:
+                        continue
+                    xc, inst, _ = load_acdc(it, args.scale)
+                else:
+                    c_, sv_ = parse_conditions(cond_name)[0]
+                    g_ = torch.Generator().manual_seed(args.seed * 1_000_003 + int(k) * 101 + int(ci))
+                    r_ = np.random.default_rng(args.seed * 1_000_003 + int(k) * 101 + int(ci))
+                    xc = corrupt_v6(x.to(device), c_, sv_, g_, r_)
+                labels = torch.from_numpy(labels_from_instances(inst).astype(np.int64)).to(device)
+                valid = labels != 255
+                xc = xc.to(device)
+                for m in seg:
+                    logits, _ = m(xc, want_feat=False)
+                    pred = logits[0].argmax(0)
+                    del logits
+                    cm = torch.bincount(labels[valid] * N_CLASSES + pred[valid], minlength=N_CLASSES ** 2)
+                    cm = cm.reshape(N_CLASSES, N_CLASSES).cpu().numpy()
+                    out_rows.setdefault(m.tag, []).append({"dataset": ds, "stem": stem, "condition": cond_name, "model": m.tag,
+                                                          "pixel_acc": float(np.trace(cm) / max(1, cm.sum())),
+                                                          **confusion_counts(cm)})
+            n_img += 1
+            if n_img % 200 == 0:
+                log(f"[confusion] {n_img}/{len(groups)} images, {(time.time() - t_loop) / n_img:.2f} s/image, "
+                    f"elapsed {(time.time() - t_start) / 60:.0f} min")
+                for tag, rows in out_rows.items():
+                    pd.DataFrame(rows).to_csv(os.path.join(args.out, f"confusion_{tag}.csv"), index=False)
+        for tag, rows in out_rows.items():
+            pd.DataFrame(rows).to_csv(os.path.join(args.out, f"confusion_{tag}.csv"), index=False)
+        done_models += [m.tag for m in seg]
+        del seg
+        if device == "cuda":
+            torch.cuda.empty_cache()
+        if time.time() > deadline:
+            break
+    summ = {"settings": vars(args), "models_done": done_models, "n_pairs": int(len(pairs)),
+            "rows": {t: len(r) for t, r in out_rows.items()}, "elapsed_min": round((time.time() - t_start) / 60, 1),
+            "status": "done" if len(done_models) == len(names) else "partial"}
+    with open(os.path.join(args.out, "summary_confusion.json"), "w", encoding="utf-8") as f:
+        json.dump(summ, f, indent=2, default=str)
+    log(f"[confusion] {summ['status']}: {summ['rows']}")
     return summ
 
 
